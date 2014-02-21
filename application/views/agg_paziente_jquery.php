@@ -31,7 +31,7 @@ text-align:left;
 }
 <!--  MIE CLASSI-->
 
-
+<!--  modifica  -->
 .fumo_si,
 .fumo_ex {
     display:none;
