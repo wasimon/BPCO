@@ -338,7 +338,7 @@ echo form_open('esami/MMSE');
     <td ><input name="ling6" type="radio" value="1" /></td>
     <td  ><input name="ling6" type="radio" value="0" /></td>
   </tr>
-  <tr><td></td><td colspan="3"><img height="200px" src="<?=site_url()."img/mmse.gif";?>" /></td></tr>
+  <tr><td></td><td colspan="3"><img height="200px" src="<?=base_url()."img/mmse.gif";?>" /></td></tr>
   <tr>
     <td colspan="2">&nbsp;</td>
     <td>&nbsp;</td>

@@ -92,7 +92,7 @@ td.barra:hover {
 
 A:link , A:visited { color: #000000; text-decoration: none; }
 A:hover { text-decoration: underline; }
-
+<? //$esami_count['t_spsms'] = 1?>
 <? if ($esami_count['t_antropometria']>0):?>#t_antropometria{ background-color: green;}<?endif;?>
 <? if ($esami_count['t_mrc']>0):?>#t_mrc{ background-color: green;}<?endif;?>
 <? if ($esami_count['t_mmse']>0):?>#t_mmse{ background-color: green;}<?endif;?>
@@ -124,9 +124,21 @@ A:hover { text-decoration: underline; }
 
 Nome: <?=$anagrafica->nome?><br />
 Cognome: <?=$anagrafica->cognome?><br />
+
+
+<?
+if ($esami_count['t_antropometria']==1&&$esami_count['t_mrc']==1&&$esami_count['t_mmse']==1&&$esami_count['t_tinetti']==1&&$esami_count['t_sf36']==1&&$esami_count['t_sft']==1&&$esami_count['t_sgrq']==1&&$esami_count['t_cicloerg']==1):?>
+
+<br>
+genera il programma di trattamento
+
+<?endif;?>
+			<?//print_r ($esami_count);?>
+
+
+<br>
 antropometria
 <canvas id="canvas" height="250" width="300"></canvas>
-
 </div>
 <div id="split2">
 
@@ -149,7 +161,7 @@ antropometria
 <? endif;?>
 <table id="aggiungi">
 
-  <tr><td id="aggiungi" ><a href="<?=base_url()?>esami/antropometria/<?=$codicefiscale?>">AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href="<?=base_url()?>index.php/esami/antropometria/<?=$codicefiscale?>">AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 
@@ -166,12 +178,12 @@ antropometria
                  <td><a href='<?=base_url()?>index.php/visualizza/MRC/<?=$mrc->idmrc?>'>Visualizza</a></td>
 			</tr>
 		<? endforeach?>
-</table><br /><br />
+</table>
 <? else:?>
 <table class="esame"><tr><th>VALUTAZIONE NON EFFETTUATA</th></tr></table>
 <? endif;?>
 <table id="aggiungi">
-  <tr><td id="aggiungi" ><a href="<?=base_url();?>esami/mrc/<?=$codicefiscale?>">AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href="<?=base_url();?>index.php/esami/mrc/<?=$codicefiscale?>">AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 <!-- DIV SF36 -->
@@ -192,7 +204,7 @@ antropometria
 <table class="esame"><tr><th>VALUTAZIONE NON EFFETTUATA</th></tr></table>
 <? endif;?>
 <table id="aggiungi">
-  <tr><td id="aggiungi" ><a href='<?=base_url()?>esami/sf36/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href='<?=base_url()?>index.php/esami/sf36/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 
@@ -216,7 +228,7 @@ antropometria
 <tr><th>VALUTAZIONE NON EFFETTUATA</th></tr></table>
 <? endif;?>
 <table id="aggiungi">
-  <tr><td id="aggiungi" ><a href='<?=base_url()?>esami/sgrq/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href='<?=base_url()?>index.php/esami/sgrq/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 
@@ -238,7 +250,7 @@ antropometria
 <table class="esame"><tr><th>VALUTAZIONE NON EFFETTUATA</th></tr></table>
 <? endif;?>
 <table id="aggiungi">
-  <tr><td id="aggiungi" ><a href='<?=base_url()?>esami/cicloerg/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href='<?=base_url()?>index.php/esami/cicloerg/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 
@@ -260,7 +272,7 @@ antropometria
 <table class="esame"><tr><th>VALUTAZIONE NON EFFETTUATA</th></tr></table>
 <? endif;?>
 <table id="aggiungi">
-  <tr><td id="aggiungi" ><a href='<?=base_url()?>esami/sft/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href='<?=base_url()?>index.php/esami/sft/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 
@@ -282,7 +294,7 @@ antropometria
 <table class="esame"><tr><th>VALUTAZIONE NON EFFETTUATA</th></tr></table>
 <? endif;?>
 <table id="aggiungi">
-  <tr><td id="aggiungi" ><a href='<?=base_url()?>esami/tinetti/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href='<?=base_url()?>index.php/esami/tinetti/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 
@@ -305,7 +317,7 @@ antropometria
 <table class="esame"><tr><th>VALUTAZIONE NON EFFETTUATA</th></tr></table>
 <? endif;?>
 <table id="aggiungi">
-  <tr><td id="aggiungi" ><a href='<?=base_url()?>esami/mmse/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href='<?=base_url()?>index.php/esami/mmse/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 <!--   FINE DIV DESTRO-->

@@ -1,5 +1,39 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+<script>
+
+  $(document).ready(function(){
+
+    $("#commentForm").validate();
+
+  });
+
+  </script>
+<script>
+function startCalc(){
+interval = setInterval("calc()",1);
+}
+function calc(){
+    
+peso = document.form.peso.value;
+ripetizioni = document.form.ripetizioni.value;
+
+massimale = peso/1,0278-(0,0278*ripetizioni));
+
+if (document.form.peso.value==null||document.calcolat.peso.value==0 || document.calcolat.ripetizioni.value==null||document.calcolat.ripetizioni.value==0)
+{
+          document.calcolat.massimale.value = '';
+}
+else{
+document.calcolat.massimale.value = massimale;
+}
+}
+function stopCalc(){
+clearInterval(interval);
+}
+</script>
+
 <style type="text/css">
 th { text-align:left;
    
@@ -291,15 +325,23 @@ echo form_open('esami/SFT', $attributes);
 <br />
 <fieldset>
 
+
+	
+	
 <legend>Determinazione carico massimale</legend>
 
 <table width="50%"><tr>
 <th>Peso utilizzato (Kg)</th>
-<th>Numero di ripetizioni</th></tr>
+<th>Numero di ripetizioni</th>
+<th>Massimale teorico</th></tr>
 <tr>
- <td><input type="text" <?=$x?>   name="peso" value="<? if($display)echo $sft->peso  ;?>" size="10" id="peso" /></td><td><input type="text" <?=$x?>   name="ripetizioni" value="<? if($display)echo $sft->ripetizioni  ;?>" size="10" id="ripetizioni" /></td></tr></table>
+ <td><input type="text" <?=$x?> class="required number"  name="peso" value="<? if($display)echo $sft->peso  ;?>" size="10" id="peso" /></td>
+ <td><input type="text" <?=$x?> class="required number"  name="ripetizioni" value="<? if($display)echo $sft->ripetizioni  ;?>" size="10" id="ripetizioni" onFocus="startCalc();" onBlur="stopCalc();"></td>
+ <td><input type="text" disabled="disabled" <?=$x?>   name="massimale" value="<? if($display)echo $sft->massimale  ;?>" size="10" id="massimale" /></td>
+</tr></table>
 </fieldset>
-<!--  //calcolare con formula di brzycki il massimale!!!   --->
+
+<!--  //calcolare con formula di brzycki il massimale!!!   -->
 
 <br />
 
