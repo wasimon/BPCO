@@ -4,46 +4,58 @@
 <script>
 
   $(document).ready(function(){
-
-    $("#commentForm").validate();
-
+    $("#sftForm").validate();
   });
 
   </script>
 <script>
 function startCalc(){
-interval = setInterval("calc()",1);
+	interval = setInterval("calc()",200);
 }
+
 function calc(){
-    
-peso = document.form.peso.value;
-ripetizioni = document.form.ripetizioni.value;
-
-massimale = peso/1,0278-(0,0278*ripetizioni));
-
-if (document.form.peso.value==null||document.calcolat.peso.value==0 || document.calcolat.ripetizioni.value==null||document.calcolat.ripetizioni.value==0)
+	peso = $('#peso').val();
+	ripetizioni = $('#ripetizioni').val();
+	
+	if (peso <= 0 || ripetizioni <= 0 ) {
+		$('input[name=massimale]').val('');
+	}
+	else {
+		massimale = peso/(1.0278-(0.0278*ripetizioni));
+		
+		$('input[name=massimale]').val( nt2dp(massimale,0) );
+	}
+	
+	
+}
+function nt2dp(num,dp)
 {
-          document.calcolat.massimale.value = '';
+	// rounds num to dp decimal places
+  num=num*1+(0.55/Math.pow(10,dp));
+
+  if (dp>0) {
+		dp=dp+1;
+	}
+	b=Math.floor(num).toString().length+dp;
+  return num.toString().substr(0,b);
 }
-else{
-document.calcolat.massimale.value = massimale;
-}
-}
+
+
 function stopCalc(){
-clearInterval(interval);
+	clearInterval(interval);
 }
 </script>
 
 <style type="text/css">
-th { text-align:left;
-   
+th {
+	text-align:left; 
 }
-table { text-align:center;
-   
+table {
+	text-align:center; 
 }
-.dx { text-align:right;
-width: 50px;
-
+.dx {
+	text-align:right;
+	width: 50px;
 }
 .num { text-align:left;
 width: 50px;
@@ -68,68 +80,55 @@ td.risultati{
     display:none;
 }
 </style>
+
 <script type="text/javascript">
 function verifica_aria(){
     
-    if(document.form.aria[1].checked == true)
-    {
-        $('#sel1').slideUp();
-        
-    }
-    else if(document.form.aria[0].checked == true)
-    {
-        $('#sel1').slideDown();
-        
-    }
+	if(document.form.aria[1].checked == true) {
+		$('#sel1').slideUp();
+	}
+	else if(document.form.aria[0].checked == true){
+		$('#sel1').slideDown();
+	}
 };
+
 function verifica_pausa(){
-    
-    if(document.form.pausa[1].checked == true)
-    {
-        $('#sel2').slideUp();
+	if(document.form.pausa[1].checked == true) {
+		$('#sel2').slideUp();
+	}
+	else if(document.form.pausa[0].checked == true) {
+		$('#sel2').slideDown();
         
-    }
-    else if(document.form.pausa[0].checked == true)
-    {
-        $('#sel2').slideDown();
-        
-    }
+	}
 };
+
 function verifica_sintomi(){
     
-    if(document.form.sintomi[1].checked == true)
-    {
+    if(document.form.sintomi[1].checked == true) {
         $('#sel3').slideUp();
-        
     }
-    else if(document.form.sintomi[0].checked == true)
-    {
+    else if(document.form.sintomi[0].checked == true) {
         $('#sel3').slideDown();
-        
     }
 };
+
 function verifica_stop(){
     
-    if(document.form.stop[1].checked == true)
-    {
+    if(document.form.stop[1].checked == true) {
         $('#sel4').slideUp();
-        
     }
-    else if(document.form.stop[0].checked == true)
-    {
+    else if(document.form.stop[0].checked == true) {
         $('#sel4').slideDown();
-        
     }
 };
+
 </script>
+<?php if(isset($display)): ?>
+
 <?php
-// visualizazione esame 
-if(isset($display)):
-$x='disabled';
-$indietro = $sft->codfis;
+	$x='disabled';
+	$indietro = $sft->codfis;
 ?>
-
-
 
 <style type="text/css">
 td {
@@ -141,35 +140,34 @@ td.esame_enabled {
 }
 </style>
 
-<?
-else:
-$display=0;
-$x='';
-endif;
+<?php else: ?>
+<?php
+	$display=0;
+	$x='';
 ?>
+<?php endif; ?>
 
 <h1>Senior Fitness Test</h1>
 <?if(isset($inserito)):?>
-    <div class="risultato">
-        <?if($inserito===true):?>
-            <h2>Esame inserito con successo!</h2>
+<div class="risultato">
+	<?if($inserito===true):?>
+	<h2>Esame inserito con successo!</h2>
             
-             <td><a href='<?=base_url()?>pz/crea_index/<?=$codfis?>'>Torna alla pagina del paziente</a></td>            
-        <?else:?>
-            <span class="error">Errore nell'inserimento esame:<?=$inserito;?></span>
-        <?endif?>
-    </div>
+	<td><a href='<?=base_url()?>pz/crea_index/<?=$codfis?>'>Torna alla pagina del paziente</a></td>            
+	<?else:?>
+	<span class="error">Errore nell'inserimento esame:<?=$inserito;?></span>
+	<?endif?>
+</div>
 <?endif;?>
 
 
 <?php
-$attributes = array('class' => 'cmxform', 'id' => 'commentForm', 'name' => 'form');
+$attributes = array('class' => 'cmxform', 'id' => 'sftForm', 'name' => 'form');
 echo form_open('esami/SFT', $attributes);
 ?>    
 
 <fieldset>
 <legend>Test del cammino</legend>
-
 
 <table width="100%" align="center">
 

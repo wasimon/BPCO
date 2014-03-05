@@ -10,5 +10,8 @@
 <body>
 <? $logged = $this->session->userdata('is_logged_in'); ?>
 <?php if($logged) echo anchor('login/logout', 'Logout');?>
-
-
+<header>
+	<?php if (!empty($messages)): ?>
+		<section id="messages"></section>
+	<?php endif ?>
+</header>

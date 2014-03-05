@@ -138,7 +138,7 @@ table.risultati{
 
 <div id="fotter">
 <? $logged = $this->session->userdata('is_logged_in'); ?>
-<?php if($logged) echo anchor('login/logout', 'LOG-OUT');?>
+<?php if(!empty($logged) && $logged) echo anchor('login/logout', 'LOG-OUT');?>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>

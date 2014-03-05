@@ -10,11 +10,10 @@
 |
 |	http://example.com/
 |
+| If this is not set then CodeIgniter will guess the protocol, domain and
+| path to your installation.
 */
-// $config['base_url']	= "http://127.0.0.1:8888/JEFF";
-$config['base_url']	= "http://127.0.0.1";
-//$config['base_url']	= "";
-//$config['base_url']	= "http://127.0.0.1/index.php/";
+$config['base_url']	= "";
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +25,7 @@ $config['base_url']	= "http://127.0.0.1";
 | variable so that it is blank.
 |
 */
-$config['index_page'] = "index.php";
+$config['index_page'] = "";
 
 /*
 |--------------------------------------------------------------------------
@@ -106,7 +105,7 @@ $config['enable_hooks'] = FALSE;
 | http://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'MY_';
+$config['subclass_prefix'] = 'BPCO_';
 
 
 /*
@@ -198,7 +197,7 @@ $config['log_path'] = '';
 | codes to set your own date formatting
 |
 */
-$config['log_date_format'] = 'Y-m-d H:i:s';
+$config['log_date_format'] = 'd-m-Y H:i:s';
 
 /*
 |--------------------------------------------------------------------------

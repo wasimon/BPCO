@@ -8,11 +8,7 @@ class Membership_model extends CI_Model {
 		$this->db->where('password', md5($this->input->post('password')));
 		$query = $this->db->get('medico');
 		
-		if($query->num_rows == 1)
-		{
-			return true;
-		}
-		
+		return ($query->num_rows === 1);
 	}
 	
 	function create_member()
@@ -22,7 +18,7 @@ class Membership_model extends CI_Model {
 			'nome' => $this->input->post('first_name'),
 			'cognome' => $this->input->post('last_name'),
 			'email' => $this->input->post('email_address'),	
-            'telefono' => $this->input->post('telefono'),		
+			'telefono' => $this->input->post('telefono'),		
 			'username' => $this->input->post('username'),
 			'password' => md5($this->input->post('password'))						
 		);
