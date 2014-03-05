@@ -2,6 +2,17 @@
 
 class Esami_model extends CI_Model {
 
+	
+function get_esami($cf){
+	
+
+
+$anagrafica = $this->db->get_where('paziente', array('codfis' => $cf));
+	
+	return $anagrafica;
+	
+}
+
 function create_tinetti($input){
         
 	$etot=0;        
@@ -29,7 +40,6 @@ function create_antropometria($input){
   
     $insert = $this->db->insert('t_antropometria', $input);
     return $insert;
-    echo 'inserito?';
     }    
    
 function create_SF36($input){

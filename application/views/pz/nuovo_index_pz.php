@@ -1,4 +1,5 @@
 <html><head>
+<!-- TODO -->	
 	<script src="http://127.0.0.1/JS/Chart.js"></script>
 	<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
 	<style>
@@ -92,7 +93,7 @@ td.barra:hover {
 
 A:link , A:visited { color: #000000; text-decoration: none; }
 A:hover { text-decoration: underline; }
-<? //$esami_count['t_spsms'] = 1?>
+
 <? if ($esami_count['t_antropometria']>0):?>#t_antropometria{ background-color: green;}<?endif;?>
 <? if ($esami_count['t_mrc']>0):?>#t_mrc{ background-color: green;}<?endif;?>
 <? if ($esami_count['t_mmse']>0):?>#t_mmse{ background-color: green;}<?endif;?>
@@ -102,7 +103,9 @@ A:hover { text-decoration: underline; }
 <? if ($esami_count['t_sgrq']>0):?>#t_sgrq{ background-color: green;}<?endif;?>
 <? if ($esami_count['t_cicloerg']>0):?>#t_cicloerg{ background-color: green;}<?endif;?>
 </style>
-</head><body>
+
+</head>
+<body>
 <div id="container" class="clearfix">
 <!-- riga indice -->
 <div id="barra">
@@ -124,14 +127,17 @@ A:hover { text-decoration: underline; }
 
 Nome: <?=$anagrafica->nome?><br />
 Cognome: <?=$anagrafica->cognome?><br />
+Data di nascita: <?=$anagrafica->datanascita?><br />
+Codice fiscale: <?=$anagrafica->codfis?><br />
 
 
 <?
 if ($esami_count['t_antropometria']==1&&$esami_count['t_mrc']==1&&$esami_count['t_mmse']==1&&$esami_count['t_tinetti']==1&&$esami_count['t_sf36']==1&&$esami_count['t_sft']==1&&$esami_count['t_sgrq']==1&&$esami_count['t_cicloerg']==1):?>
 
 <br>
-genera il programma di trattamento
-
+<a href="<?=site_url()?>/esami/prog/<?=$codicefiscale?>"> genera il programma di trattamento</a>
+<?else:?>
+Devi effettuare tutte le valutazioni per poter generare il programma.
 <?endif;?>
 			<?//print_r ($esami_count);?>
 
@@ -150,9 +156,9 @@ antropometria
 <tr><td colspan="2" id="titolo">ANTROPOMETRIA</td></tr><tr><th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
 <? foreach($t_antropometria as $ant):?>
 			<tr>
-                <td><?= $ant->data?></td>
+                <td><?=strftime( ' %d - %m - %g ',  strtotime($ant->data));?></td>
                 <td><?= $ant->BMI?></td>
-                 <td><a href="<?=base_url()?>index.php/visualizza/antropometria/<?= $ant->idantro?>">Visualizza</a></td>
+                 <td><a href="<?=site_url()?>/visualizza/antropometria/<?= $ant->idantro?>">Visualizza</a></td>
 			</tr>
 		<? endforeach?>
 </table>
@@ -161,7 +167,7 @@ antropometria
 <? endif;?>
 <table id="aggiungi">
 
-  <tr><td id="aggiungi" ><a href="<?=base_url()?>index.php/esami/antropometria/<?=$codicefiscale?>">AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href="<?=site_url()?>/esami/antropometria/<?=$codicefiscale?>">AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 
@@ -173,9 +179,9 @@ antropometria
 <? foreach($t_mrc as $mrc):?>
 
 			<tr>
-                <td><?= $mrc->data?></td>
+                <td><?=strftime( ' %d - %m - %g ',  strtotime($mrc->data));?></td>
                 <td><?= $mrc->mrc?></td>
-                 <td><a href='<?=base_url()?>index.php/visualizza/MRC/<?=$mrc->idmrc?>'>Visualizza</a></td>
+                 <td><a href='<?=site_url()?>/visualizza/MRC/<?=$mrc->idmrc?>'>Visualizza</a></td>
 			</tr>
 		<? endforeach?>
 </table>
@@ -183,7 +189,7 @@ antropometria
 <table class="esame"><tr><th>VALUTAZIONE NON EFFETTUATA</th></tr></table>
 <? endif;?>
 <table id="aggiungi">
-  <tr><td id="aggiungi" ><a href="<?=base_url();?>index.php/esami/mrc/<?=$codicefiscale?>">AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href="<?=site_url()?>/esami/mrc/<?=$codicefiscale?>">AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 <!-- DIV SF36 -->
@@ -194,9 +200,9 @@ antropometria
 <tr><th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
 <? foreach($t_sf36 as $sf):?>
 			<tr>
-                <td><?= $sf->data?></td>
+                <td><?=strftime( ' %d - %m - %g ',  strtotime($sf->data));?></td>
                 <td><?= $sf->sf1?></td>
-                <td><a href="<?=base_url();?>index.php/visualizza/sf36/<?= $sf->idsf36?>">Visualizza</a></td>
+                <td><a href="<?=site_url()?>/visualizza/sf36/<?= $sf->idsf36?>">Visualizza</a></td>
 			</tr>
 		<? endforeach?>
 </table>
@@ -204,7 +210,7 @@ antropometria
 <table class="esame"><tr><th>VALUTAZIONE NON EFFETTUATA</th></tr></table>
 <? endif;?>
 <table id="aggiungi">
-  <tr><td id="aggiungi" ><a href='<?=base_url()?>index.php/esami/sf36/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href='<?=site_url()?>/esami/sf36/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 
@@ -216,9 +222,9 @@ antropometria
 <th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
 <? foreach($t_sgrq as $sg):?>
 			<tr>
-                <td><?= $sg->data?></td>
+                <td><?=strftime( ' %d - %m - %g ',  strtotime($sg->data));?></td>
                 <td><?= $sg->sgrq1?></td>
-                <td><a href="<?=base_url();?>index.php/visualizza/SGRQ/<?= $sg->idsgrq?>">Visualizza</a></td>
+                <td><a href="<?=site_url();?>/visualizza/SGRQ/<?= $sg->idsgrq?>">Visualizza</a></td>
 			</tr>
 		<? endforeach?>
 </table>
@@ -228,7 +234,7 @@ antropometria
 <tr><th>VALUTAZIONE NON EFFETTUATA</th></tr></table>
 <? endif;?>
 <table id="aggiungi">
-  <tr><td id="aggiungi" ><a href='<?=base_url()?>index.php/esami/sgrq/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href='<?=site_url()?>/esami/sgrq/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 
@@ -240,9 +246,9 @@ antropometria
 <tr><th>Data esame</th><th>Totale</th></tr>
 <? foreach($t_cicloerg as $ciclo):?>
 			<tr>
-                <td><?= $ciclo->data?></td>
+                <td><?=strftime( ' %d - %m - %g ',  strtotime($ciclo->data));?></td>
                 <td><?= $ciclo->fcbase ?></td>
-                <td><a href="<?=base_url();?>index.php/visualizza/cicloerg/<?= $ciclo->idciclo?>">Visualizza</a></td>
+                <td><a href="<?=site_url();?>/visualizza/cicloerg/<?= $ciclo->idciclo?>">Visualizza</a></td>
 			</tr>
 		<? endforeach?>
 </table>
@@ -250,7 +256,7 @@ antropometria
 <table class="esame"><tr><th>VALUTAZIONE NON EFFETTUATA</th></tr></table>
 <? endif;?>
 <table id="aggiungi">
-  <tr><td id="aggiungi" ><a href='<?=base_url()?>index.php/esami/cicloerg/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href='<?=site_url()?>/esami/cicloerg/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 
@@ -262,9 +268,9 @@ antropometria
 <tr><th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
 <? foreach($t_sft as $st):?>
 			<tr>
-                <td><?= $st->data?></td>
+                <td><?=strftime( ' %d - %m - %g ',  strtotime($st->data));?></td>
                 <td><?= $st->mwt?></td>
-                <td><a href="<?=base_url();?>index.php/visualizza/SFT/<?= $st->idsft?>">Visualizza</a></td>
+                <td><a href="<?=site_url();?>/visualizza/SFT/<?= $st->idsft?>">Visualizza</a></td>
 			</tr>
 		<? endforeach?>
 </table>
@@ -272,7 +278,7 @@ antropometria
 <table class="esame"><tr><th>VALUTAZIONE NON EFFETTUATA</th></tr></table>
 <? endif;?>
 <table id="aggiungi">
-  <tr><td id="aggiungi" ><a href='<?=base_url()?>index.php/esami/sft/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href='<?=site_url()?>/esami/sft/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 
@@ -284,9 +290,9 @@ antropometria
 <tr><th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
 <? foreach($t_tinetti as $tin):?>
 			<tr>
-                <td><?= $tin->data?></td>
+                <td><?=strftime( ' %d - %m - %g ',  strtotime($tin->data));?></td>
                 <td><?= $tin->tinettitotale?></td>
-                <td><a href="<?=base_url();?>index.php/visualizza/tinetti/<?= $tin->idtinetti?>">Visualizza</a></td>
+                <td><a href="<?=site_url();?>/visualizza/tinetti/<?= $tin->idtinetti?>">Visualizza</a></td>
 			</tr>
 		<? endforeach?>
 </table>
@@ -294,7 +300,7 @@ antropometria
 <table class="esame"><tr><th>VALUTAZIONE NON EFFETTUATA</th></tr></table>
 <? endif;?>
 <table id="aggiungi">
-  <tr><td id="aggiungi" ><a href='<?=base_url()?>index.php/esami/tinetti/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href='<?=site_url()?>/esami/tinetti/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 
@@ -307,9 +313,9 @@ antropometria
 <tr><th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
 <? foreach($t_mmse as $mmse):?>
 			<tr>
-                <td><?= $mmse->data?></td>
+                <td><?=strftime( ' %d - %m - %g ',  strtotime($mmse->data));?></td>
                 <td><?= $mmse->mmsetot?></td>
-                <td><a href="<?=base_url();?>index.php/visualizza/MMSE/<?= $mmse->idmmse?>">Visualizza</a></td>
+                <td><a href="<?=site_url();?>/visualizza/MMSE/<?= $mmse->idmmse?>">Visualizza</a></td>
 			</tr>
 		<? endforeach?>
 </table>
@@ -317,7 +323,7 @@ antropometria
 <table class="esame"><tr><th>VALUTAZIONE NON EFFETTUATA</th></tr></table>
 <? endif;?>
 <table id="aggiungi">
-  <tr><td id="aggiungi" ><a href='<?=base_url()?>index.php/esami/mmse/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+  <tr><td id="aggiungi" ><a href='<?=site_url()?>/esami/mmse/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 </table><br /><br />
 </div>
 <!--   FINE DIV DESTRO-->

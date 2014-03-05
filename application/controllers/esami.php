@@ -9,6 +9,16 @@ class Esami extends CI_Controller
         $this->load->model('esami_model');
 	}
     
+// GENERA IL PROGRAMMA DI ALLENAMENTO
+	
+	public function prog($codfisc) {
+	//echo $codfisc;
+	$risultato1 = $this->esami_model->get_esami($codfisc);
+	
+	}
+	
+	
+	
     function index($input)
 	{
 	   if($this->input->post('submit'))

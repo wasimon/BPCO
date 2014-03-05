@@ -143,7 +143,8 @@ echo 'boaaaa';
   //$input=$this->_visualizza_uno($this->uri(4));
   
   $this->view_data['pazienti'] = $this->db->get_where('paziente', array('codfis'=>$input))->result();
-     //echo $input;   
+    
+	 //echo $input;   
  $this->load->view('pz/index_pz', $this->view_data);  
 
         }
