@@ -8,19 +8,34 @@ class Site extends CI_Controller {
 	{
 		parent::__construct();
 
-		if( ! $this->session->userdata('is_logged_in')) 
-			$this->load->view('login_form');
-
 		$this->user = $this->session->all_userdata();
 	}
 
 	public function index()
 	{
-		$this->members_area();
+		if( ! $this->session->userdata('is_logged_in'))
+		{
+			$this->login();
+		}
+		 else
+		{
+			$this->members_area();
+		}
+	}
+	
+	public function login()
+	{
+		$this->load->view('login_form');
 	}
    
 	function members_area()
 	{
+		if( ! $this->session->userdata('is_logged_in'))
+		{
+			$this->login();
+			return;
+		}
+		
 		$input= $this->session->userdata('idmedico');
 		$this->view_data['pazienti'] = $this->db->get_where('paziente', array('idmedico'=>$input))->result();
 	
@@ -30,6 +45,12 @@ class Site extends CI_Controller {
     
 	function aggiungi_esame()
 	{
+		if( ! $this->session->userdata('is_logged_in'))
+		{
+			$this->login();
+			return;
+		}
+		
 		$codfis = $this->input->post('codfis');
 		$esame = $this->input->post('esame');
         
