@@ -47,7 +47,7 @@ class Login extends CI_Controller {
 		// incorrect username or password
 		else
 		{
-			$this->view_data['message'] = '<strong>Nome utente o password errati</strong>';
+			$this->view_data['message'] .= '<strong>Nome utente o password errati</strong>';
 			$this->login();
 		}
 	}	
@@ -79,7 +79,7 @@ class Login extends CI_Controller {
 		{			
 			if($query = $this->membership_model->create_member())
 			{
-				$this->view_data['message'] = '<strong>Account creato! <br/> Accedi subito</strong>';		  
+				$this->view_data['message'] .= '<strong>Account creato! <br/> Accedi subito</strong>';		  
 				$this->login();
 			}
 			else

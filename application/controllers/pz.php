@@ -11,7 +11,11 @@ class Pz extends CI_Controller
 		$this->load->model('pazienti_model', 'pazienti');
 		$this->load->model('esami_model', 'esami');
 
-		$view_data = array();
+		$this->view_data = array();
+		
+		if ($this->session->flashdata('message')) {
+			$this->view_data['message'] = "<p style='color:green;font-weight:700;'>".$this->session->flashdata('message')."</p>";
+		}
 	}
 
 	function aggiungi($mid)
@@ -40,7 +44,7 @@ class Pz extends CI_Controller
 		}
 		else
 		{
-			$this->view_data['message'] = "<p>Completa questo form per aggiungere un nuovo paziente.</p>";
+			$this->view_data['message'] .= "<p>Completa questo form per aggiungere un nuovo paziente.</p>";
 			$this->load->view('agg_paziente', $this->view_data);
 		}
 	}
@@ -133,8 +137,7 @@ class Pz extends CI_Controller
 
 
 	function crea_index($input)
-	{    
-		//echo $input;
+	{
 
 		#$elenco = array(0 => 't_antropometria','t_cicloerg','t_mmse','t_mrc','t_sf36','t_sft','t_sgrq','t_spsms','t_tinetti');
 		$esami_count = array(

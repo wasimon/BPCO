@@ -122,6 +122,12 @@ A:hover { text-decoration: underline; }
 </tr></table>
 </div>
 
+<?php if (!empty($message)): ?>
+	<div id="messaggi">
+		<?= $message ?>
+	</div>
+<?php endif ?>
+
 <!-- PRIMA COLONNA -->
 <div id="split1" class="clearfix">
 
