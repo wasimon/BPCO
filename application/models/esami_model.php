@@ -80,6 +80,9 @@ class Esami_model extends CI_Model {
     
 	function create_mrc($input)
 	{
+		if ( empty($input['durata_notte']) ) {
+			$input['durata_notte'] = 0;
+		}
 		$insert = $this->db->insert('t_mrc', $input);
 		return $insert;
 	}
