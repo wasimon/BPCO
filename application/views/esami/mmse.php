@@ -82,6 +82,7 @@ tr.esame_enabled {
 					checked_count++;
 				}
 			}
+			
 			if(checked_count == 21) {
 				return true;
 			} else {

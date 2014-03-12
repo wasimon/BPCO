@@ -125,7 +125,7 @@ echo form_open('esami/tinetti');
 <tr ><td class="num">8</td><th class="centro">Girarsi a 360 gradi</th><td>&nbsp;</td></tr>
 <tr ><td>&nbsp;</td><td>A passi discontinui</td><td class="dx">0 <input type="radio" name="e8" value="0" checked/> </td></tr>
 <tr ><td>&nbsp;</td><td>A passi continui</td><td class="dx">1 <input type="radio" name="e8" value="1"/> </td></tr>
-<tr ><td>&nbsp;</td><td>Instabile</td><td class="dx">0 <input type="radio" name="e9" value="0"/> </td></tr>
+<tr ><td>&nbsp;</td><td>Instabile</td><td class="dx">0 <input type="radio" name="e9" value="0" checked/> </td></tr>
 <tr><td>&nbsp;</td><td>Stabile</td><td class="dx">1 <input type="radio" name="e9" value="1"/> </td></tr>
 </table>
 
