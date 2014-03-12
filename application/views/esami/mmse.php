@@ -71,39 +71,33 @@ tr.esame_enabled {
 			for (var i = 10; i >= 1; i--) {
 				if ($("input[name=or"+i+"]").is(':checked')) {
 					checked_count++;
+				}
 			}
+			
 			for (var i = 5; i >= 1; i--) {
 				if ($("input[name=calcolo"+i+"]").is(':checked')) {
 					checked_count++;
 				}
+			}
 			
-			for (var i = 6; i >= 1; i--) {
+			for (var i = 6; i >= 3; i--) {
 				if ($("input[name=ling"+i+"]").is(':checked')) {
 					checked_count++;
 				}
 			}
 			
-			if(checked_count == 21) {
+			if(checked_count == 18) {
 				return true;
 			} else {
-				window.alert("Devi selezionare una risposta per ogni domanda.\n Risposte mancanti: "+(21 - checked_count));
+				window.alert("Devi selezionare una risposta per ogni domanda.\n Risposte mancanti: "+(18 - checked_count));
 				return false;
 			}
-		});
 		
-	});
+	})});
 </script>
 
 <?php endif; ?>
 
-<?  /*
-else:
-$display=0;
-$x='';
-endif;
-
-*/
-?>
 
 <h1>Mini Mental State (MMSE)</h1>
 

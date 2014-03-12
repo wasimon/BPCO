@@ -1,6 +1,14 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+<script>
 
+  $(document).ready(function(){
+    $("#cicloForm").validate();
+  });
+
+  </script>
+  
 <style type="text/css">
 th { text-align:left;
    
@@ -84,7 +92,7 @@ endif;
 
 
 <?php
-$attributes = array('class' => 'cmxform', 'id' => 'commentForm', 'name' => 'form');
+$attributes = array('class' => 'cmxform', 'id' => 'cicloForm', 'name' => 'form');
 echo form_open('esami/cicloerg', $attributes);
 ?>   
 
@@ -114,16 +122,16 @@ echo form_open('esami/cicloerg', $attributes);
   <th>massimale</th><th>predetto</th><th>% predetto</th></tr>
 <tr>
   <th>FC (bpm)</th>
-  <td><input type="text" <?=$x?>   name="fcbase" value="<? if($display)echo $ciclo->fcbase  ;?>" size="10" id="fcbase" /></td>
-  <td><input type="text" <?=$x?>   name="fcmax" value="<? if($display)echo $ciclo->fcmax  ;?>" size="10" id="fcmax" /></td>
-  <td><input type="text" <?=$x?>   name="fcpredetto" value="<? if($display)echo $ciclo->fcpredetto  ;?>" size="10" id="fcpredetto" /></td>
+  <td><input type="text" <?=$x?>  class="required number" name="fcbase" value="<? if($display)echo $ciclo->fcbase  ;?>" size="10" id="fcbase" /></td>
+  <td><input type="text" <?=$x?>  class="required number" name="fcmax" value="<? if($display)echo $ciclo->fcmax  ;?>" size="10" id="fcmax" /></td>
+  <td><input type="text" <?=$x?>  class="required number" name="fcpredetto" value="<? if($display)echo $ciclo->fcpredetto  ;?>" size="10" id="fcpredetto" /></td>
   <td></td>
 </tr>
 <tr><th>PAO (mmHg)</th>
   <td><input type="text" <?=$x?>   name="p1" value="<? if($display)echo $ciclo->p1  ;?>" size="5" /> / <input type="text" <?=$x?>   name="p2" value="<? if($display)echo $ciclo->p2  ;?>" size="5" /></td>
   <td><input type="text" <?=$x?>   name="p3" value="<? if($display)echo $ciclo->p3  ;?>" size="5" /> / <input type="text" <?=$x?>   name="p4" value="<? if($display)echo $ciclo->p4  ;?>" size="5" /></td><td></td><td></td></tr>
 <tr>
-  <th>VO2 (L/min)</th><td><input type="text" <?=$x?>   name="vo2base" value="<? if($display)echo $ciclo->vo2base  ;?>" size="10" id="vo2base" /></td><td><input type="text" <?=$x?>   name="vo2max" value="<? if($display)echo $ciclo->vo2max  ;?>" size="10" id="vo2max" /></td><td><input type="text" <?=$x?>   name="vo2predetto" value="<? if($display)echo $ciclo->vo2predetto  ;?>" size="10" id="vo2predetto" /></td><td></td></tr>
+  <th>VO2 (L/min)</th><td><input type="text" <?=$x?> class="required number"  name="vo2base" value="<? if($display)echo $ciclo->vo2base  ;?>" size="10" id="vo2base" /></td><td><input type="text" <?=$x?> class="required number"  name="vo2max" value="<? if($display)echo $ciclo->vo2max  ;?>" size="10" id="vo2max" /></td><td><input type="text" <?=$x?> class="required number"  name="vo2predetto" value="<? if($display)echo $ciclo->vo2predetto  ;?>" size="10" id="vo2predetto" /></td><td></td></tr>
 
 <tr>
   <th>VE (L/min)</th><td><input type="text" <?=$x?>   name="vebase" value="<? if($display)echo $ciclo->vebase  ;?>" size="10" id="vebase" /></td><td><input type="text" <?=$x?>   name="vemax" value="<? if($display)echo $ciclo->vemax  ;?>" size="10" id="vemax" /></td><td></td><td></td></tr>

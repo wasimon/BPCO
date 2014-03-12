@@ -5,7 +5,7 @@
 
   $(document).ready(function(){
 
-    $("#commentForm").validate();
+    $("#mrcForm").validate();
 
   });
 
@@ -112,7 +112,7 @@ endif;
 <?endif;?>
 
 <?php
-$attributes = array('class' => 'cmxform', 'id' => 'commentForm', 'name' =>'form');
+$attributes = array('class' => 'cmxform', 'id' => 'mrcForm', 'name' =>'form');
 echo form_open('esami/mrc', $attributes);
 ?>
 
@@ -148,7 +148,7 @@ echo form_open('esami/mrc', $attributes);
   <tr>
     <th>&nbsp;</th>
     <td>Durata della dispnea (anni) :</td>
-    <td><input <?=$x?> type="text"  name="durata_anni" value="<? if($display)echo $mrc->durata_anni  ;?>" size="10" class=" number" id="durata_anni" /> </td>
+    <td><input <?=$x?> type="text"  name="durata_anni" class="required number" value="<? if($display)echo $mrc->durata_anni  ;?>" size="10" class=" number" id="durata_anni" /> </td>
   </tr>
   <tr>
     <th>&nbsp;</th>
