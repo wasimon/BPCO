@@ -50,12 +50,31 @@ tr.esame_enabled {
     background-color: lime;
 }
 </style>
-<?
-else:
-$display=0;
+<?php else: ?>
+<?php $display=0; ?>
+<script type="text/javascript" charset="utf-8">
+	// INPUT type="radio"
+	jQuery().ready(function($) {
+		$("#sgrq-form").on('submit', function(){
+			var checked_count = 0;
+			
+			for (var i = 49; i >= 1; i--) {
+				if ($("input[name=sgrq"+i+"]").is(':checked')) {
+					checked_count++;
+				}
+			}
+			if(checked_count == 49) {
+				return true;
+			} else {
+				window.alert("Devi selezionare una risposta per ogni domanda.\n Risposte mancanti: "+(49 - checked_count));
+				return false;
+			}
+		});
+		
+	});
+</script>
 
-endif;
-?>
+<?php endif; ?>
 
 
 <h1>ST-GEORGE RESPIRATORY QUESTIONNAIRE (SGRQ)</h1>
@@ -75,7 +94,7 @@ endif;
 
 
 <?php
-echo form_open('esami/sgrq');
+echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 ?>
 
 <TABLE align="center" border=0 cellspacing=0 cellpadding=3>
