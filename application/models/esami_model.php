@@ -29,14 +29,30 @@ class Esami_model extends CI_Model {
 		$insert = $this->db->insert('t_tinetti', array_merge($my_tinetti, $data));
 		return $insert;
 	}
-    
-
-	function create_antropometria($input)
+	
+	// Antropometria
+	function getAntropometria($codfis)
+	{
+		try {
+			$this->db->order_by('idantro', 'DESC');
+			$results = $this->db->get_where('t_antropometria', array('codfis' => $codfis), 1, 0);
+			
+			if($results->num_rows())
+				return $results->row();
+			
+		} catch (Exception $e) {
+			log_message('warning', 'Error while loading CicloERG for :'.$codfis);
+		}
+		
+		return NULL;
+	}
+	function createAntropometria($input)
 	{
 		$insert = $this->db->insert('t_antropometria', $input);
 		return $insert;
 	}    
-   
+
+
 	function create_SF36($input)
 	{
 		$insert = $this->db->insert('t_SF36', $input);
@@ -86,8 +102,26 @@ class Esami_model extends CI_Model {
 		$insert = $this->db->insert('t_mrc', $input);
 		return $insert;
 	}
-    
-	function create_cicloerg($input)
+
+
+// Ciclo ERG
+	function getCicloERG($codfis)
+	{
+		try {
+			$this->db->order_by('idciclo', 'DESC');
+			$results = $this->db->get_where('t_cicloerg', array('codfis' => $codfis), 1, 0);
+			
+			if($results->num_rows())
+				return $results->row();
+			
+		} catch (Exception $e) {
+			log_message('warning', 'Error while loading CicloERG for :'.$codfis);
+		}
+		
+		return NULL;
+	}
+	
+	function createCicloERG($input)
 	{
 		$insert = $this->db->insert('t_cicloerg', $input);
 		return $insert;

@@ -51,11 +51,11 @@ class Esami extends CI_Controller
                     
 				case 'cicloerg':
 					unset($data['pausa']);
-					$succes = $this->esami_model->create_cicloerg($data);
+					$succes = $this->esami_model->createCicloERG($data);
 					break;
                     
 				case 'antropometria':
-					$succes = $this->esami_model->create_antropometria($data);
+					$succes = $this->esami_model->createAntropometria($data);
 					break;        
                     
 				default:

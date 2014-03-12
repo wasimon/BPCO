@@ -17,13 +17,13 @@ class Pazienti_model extends CI_Model
 
 	function getByCF($CF)
 	{	
-		$pz = $this->db->get_where('paziente', array('codfis' => $CF), 0, 1);
+		$pz = $this->db->get_where('paziente', array('codfis' => $CF), 1, 0);
 		
 		if ($pz->num_rows()) {
 			return $pz->row();
 		}
 		
-		return FALSE;
+		return NULL;
 	}
 	
 	function getBy($filters, $or_query=FALSE)
