@@ -1,16 +1,9 @@
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
-<script src="<?=base_url('js/jQueryUI/ui/minified/jquery.ui.core.min.js')?>"></script>
-<script src="<?=base_url('js/jQueryUI/ui/minified/jquery.ui.datepicker.min.js')?>"></script>
-<link href="<?=base_url('js/jQueryUI/themes/ui-lightness/jquery.ui.all.css')?>" rel="stylesheet" type="text/css" />
-<!-- </a><link rel="stylesheet" href="<?=site_url()."js/jqtransform.css";?>" type="text/css" media="all" />
-<script type="text/javascript" src="<?=site_url()."js/jquery.jqtransform.js";?>"></script>
-<script language="javascript">
-$(function(){
-$('form').jqTransform({imgPath:'<?=site_url().'js/img/';?>'});
-});
-</script>
--->
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+
 <style type="text/css">
 td{
 	text-align: left;
@@ -36,15 +29,14 @@ function verifica_fumo(){
 	}
 };
 
-$(document).ready(function(){
-
-	$("#addPazienteForm").validate();  
-	$("#datanascita").datepicker( { 
-		dateFormat: 'yy-mm-dd',
+jQuery(document).ready(function(){
+	j = jQuery.noConflict();
+	// j("#addPazienteForm").validate();  
+	j("#datanascita").datepicker( { 
+		dateFormat: 'dd-mm-yy',
 		changeYear: true,
 		changeMonth: true,
-		maxDate: '+1d',
-		yearRange: '1921:2000'
+		yearRange: '1900:2010'
 	});
 });
 
