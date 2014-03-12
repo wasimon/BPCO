@@ -77,6 +77,8 @@ class Esami_model extends CI_Model {
 		$totale += $data['ric'];
 
 		$data['mmsetot'] = $totale;
+		$data['mmseagg'] = 0; //TODO: Correggere il coefficente d'aggiustamento
+		$data['mmsefinale'] = 0; //TODO: Correggere il coefficente finale
 
 		$insert = $this->db->insert('t_MMSE', $data);
 		return $insert;
