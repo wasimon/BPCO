@@ -29,8 +29,8 @@ A:hover { text-decoration: underline; }
             <th>Numero</th>
     		<th>Parte corpo</th>
             <th>Posizione</th>
-            <th>Difficoltà cognitiva</th>
-    		<th>Difficoltà motoria</th>
+            <th>Difficolt&aacute; cognitiva</th>
+    		<th>Difficolt&aacute; motoria</th>
             
          
            	

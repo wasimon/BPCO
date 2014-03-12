@@ -119,7 +119,7 @@ echo form_open('pz/aggiungi', $attributes);
        <td class="submit" id="dati"><input type="text"  name="statocivile"  class="required"id="statocivile" /></td>
      </tr>
      <tr>
-       <td id="label">Scolarità:</td>
+       <td id="label">Scolarit&aacute;:</td>
        <td class="submit" id="dati"><input type="text"  name="scolarita"  class="required number" id="scolarita" /></td>
      </tr>
      <tr>
@@ -147,7 +147,7 @@ echo form_open('pz/aggiungi', $attributes);
     <td id="dati"><input  name="indirizzovia" type="text" class="required" minlength="2" id="indirizzovia"   /></td>
   </tr>
 <tr>
-    <td id="label">Città:</td>
+    <td id="label">Citt&aacute;:</td>
     <td id="dati"><input  name="indirizzocitta" type="text" class="required" minlength="2" id="indirizzocitta"  /></td>
   </tr><tr>
     <td id="label">CAP:</td>
@@ -217,11 +217,11 @@ echo form_open('pz/aggiungi', $attributes);
   </tr>
   
   <tr class="fumo_si">
-    <td id="label">Età inizio:</td>
+    <td id="label">Et&aacute; inizio:</td>
     <td id="dati"><input type="text"  name="fumo_eta_inizio"  id="fumo_eta_inizio" class=" number"/></td>
   </tr>
   <tr class="fumo_ex">
-    <td id="label">Età fine:</td>
+    <td id="label">Et&aacute; fine:</td>
     <td id="dati"><input type="text"  name="fumo_eta_fine"  class=" number" id="fumo_eta_fine" /></td>
   </tr>
   <tr class="fumo_si">
@@ -233,7 +233,7 @@ echo form_open('pz/aggiungi', $attributes);
     <td id="dati"><input type="text"  name="pack_anno"  class=" number" id="pack_anno" /></td>
   </tr> 
    <tr>
-    <td id="label">Commorbidità:</td>
+    <td id="label">Commorbidit&aacute;:</td>
     <td id="dati"><textarea name="commorbidita" id="commorbidita" cols="20" rows="5"></textarea></td>
   </tr>
 

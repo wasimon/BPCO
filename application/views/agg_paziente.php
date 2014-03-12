@@ -97,7 +97,7 @@ jQuery(document).ready(function(){
 					<td class="dati"><input type="text"  name="statocivile"  class="required"id="statocivile" /></td>
 				</tr>
 				<tr>
-					<td id="label">Scolarità:</td>
+					<td id="label">Scolarit&aacute;:</td>
 					<td class="dati"><input type="text"  name="scolarita"  class="required number" id="scolarita" /></td>
 				</tr>
 				<tr>
@@ -125,7 +125,7 @@ jQuery(document).ready(function(){
 					<td class="dati"><input  name="indirizzovia" type="text" class="required" minlength="2" id="indirizzovia"   /></td>
 				</tr>
 				<tr>
-					<td id="label">Città:</td>
+					<td id="label">Citt&aacute;:</td>
 					<td class="dati"><input  name="indirizzocitta" type="text" class="required" minlength="2" id="indirizzocitta"  /></td>
 				</tr><tr>
 					<td id="label">CAP:</td>
@@ -195,11 +195,11 @@ jQuery(document).ready(function(){
 					</tr>
   
 					<tr class="fumo_si">
-						<td id="label">Età inizio:</td>
+						<td id="label">Et&aacute; inizio:</td>
 						<td class="dati"><input type="text"  name="fumo_eta_inizio"  id="fumo_eta_inizio" class=" number"/></td>
 					</tr>
 					<tr class="fumo_ex">
-						<td id="label">Età fine:</td>
+						<td id="label">Et&aacute; fine:</td>
 						<td class="dati"><input type="text"  name="fumo_eta_fine"  class=" number" id="fumo_eta_fine" /></td>
 					</tr>
 					<tr class="fumo_si">
@@ -211,7 +211,7 @@ jQuery(document).ready(function(){
 						<td class="dati"><input type="text"  name="pack_anno"  class=" number" id="pack_anno" /></td>
 					</tr> 
 					<tr>
-						<td id="label">Commorbidità:</td>
+						<td id="label">Commorbidit&aacute;:</td>
 						<td class="dati"><textarea name="commorbidita" id="commorbidita" cols="20" rows="5"></textarea></td>
 					</tr>
 

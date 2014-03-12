@@ -71,38 +71,33 @@ tr.esame_enabled {
 			for (var i = 10; i >= 1; i--) {
 				if ($("input[name=or"+i+"]").is(':checked')) {
 					checked_count++;
+				}
 			}
+			
 			for (var i = 5; i >= 1; i--) {
 				if ($("input[name=calcolo"+i+"]").is(':checked')) {
 					checked_count++;
 				}
+			}
 			
-			for (var i = 6; i >= 1; i--) {
+			for (var i = 6; i >= 3; i--) {
 				if ($("input[name=ling"+i+"]").is(':checked')) {
 					checked_count++;
 				}
 			}
-			if(checked_count == 21) {
+			
+			if(checked_count == 18) {
 				return true;
 			} else {
-				window.alert("Devi selezionare una risposta per ogni domanda.\n Risposte mancanti: "+(21 - checked_count));
+				window.alert("Devi selezionare una risposta per ogni domanda.\n Risposte mancanti: "+(18 - checked_count));
 				return false;
 			}
-		});
 		
-	});
+	})});
 </script>
 
 <?php endif; ?>
 
-<?  /*
-else:
-$display=0;
-$x='';
-endif;
-
-*/
-?>
 
 <h1>Mini Mental State (MMSE)</h1>
 
@@ -181,7 +176,7 @@ echo form_open('esami/MMSE', array('id'=>"MMSE-form"));
   </tr>
   <tr>
     <th>3.</th>
-    <td>Città</td>
+    <td>Citt&aacute;</td>
     <td ><input name="or8" type="radio" value="1" /></td>
     <td ><input name="or8" type="radio" value="0" /></td>
   </tr>
@@ -323,7 +318,7 @@ echo form_open('esami/MMSE', array('id'=>"MMSE-form"));
  
   <tr>
    
-    <td colspan="3">Far eseguire un comando in 3 tempi ( es. prendere il foglio nella mano destra, piegarlo a metà, metterlo sul pavimento)</td>
+    <td colspan="3">Far eseguire un comando in 3 tempi ( es. prendere il foglio nella mano destra, piegarlo a met&aacute;, metterlo sul pavimento)</td>
   <td >
   <select name="ling2" id="ling2" <?=$x;?> >
   <? if ($display) echo '<option>';
@@ -340,7 +335,7 @@ echo form_open('esami/MMSE', array('id'=>"MMSE-form"));
   
     <tr>
 
-    <td colspan="3">Far scrivere al paziente una frase. Controllare se è comprensibile e se contiene un soggetto ed un verbo</td>
+    <td colspan="3">Far scrivere al paziente una frase. Controllare se &egrave; comprensibile e se contiene un soggetto ed un verbo</td>
     <td >
   
     <select name="ling3" id="ling3" <?=$x;?> >

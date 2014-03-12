@@ -63,7 +63,7 @@ echo form_open('pz/iscrizione_3', $attributes);
   </tr>
   <tr>
     
-    <td id="label">2. Cammino più lentamente della gente della mia stessa età quando vado in piano, oppure mi devo fermare per respirare quando cammino al mio passo.</td>
+    <td id="label">2. Cammino pi&ugrave; lentamente della gente della mia stessa et&aacute; quando vado in piano, oppure mi devo fermare per respirare quando cammino al mio passo.</td>
     <td id="dati" ><input name="mrc" type="radio" value="2" /></td>
   </tr>
   <tr>
@@ -136,7 +136,7 @@ echo form_open('pz/iscrizione_3', $attributes);
   </tr>
   <tr>
     
-    <td>Il catarro è di tipo:</td>
+    <td>Il catarro &eacute; di tipo:</td>
     <td><input name="qualita_catarro" type="radio" value="bianco" /> mucoso (bianco)</td>
   </tr>
   <tr>
@@ -161,7 +161,7 @@ echo form_open('pz/iscrizione_3', $attributes);
   
     <tr>
     
-    <td>Negli ultimi 6 mesi la quantità media di catarro (al di fuori delle bronchiti) durante una giornata è:</td>
+    <td>Negli ultimi 6 mesi la quantit&aacute; media di catarro (al di fuori delle bronchiti) durante una giornata &eacute;:</td>
        <td><input name="quantita_catarro" type="radio" value="1" /> 
        &lt;1 cucchiaio da minestra</td>
   </tr>

@@ -87,7 +87,7 @@ td {
 
 <TR>
 
-  <TD ><STRONG>1.</STRONG> In generale, direbbe che la Sua salute è:</TD>
+  <TD ><STRONG>1.</STRONG> In generale, direbbe che la Sua salute &egrave;:</TD>
 
 </TR>
 
@@ -142,7 +142,7 @@ td {
 
   <TH align="center"><FONT size=-1>Decisamente migliore adesso</FONT></TH>
   <TH align="center"><FONT size=-1>Un po' migliore adesso</FONT></TH>
-  <TH align="center"><FONT size=-1>Più o meno uguale</FONT></TH>
+  <TH align="center"><FONT size=-1>Pi&ugrave; o meno uguale</FONT></TH>
   <TH align="center"><FONT size=-1>Un po' peggiore adesso</FONT></TH>
   <TH align="center"><FONT size=-1>Decisamente peggiore adesso</FONT></TH>
 
@@ -173,7 +173,7 @@ td {
 
 <TR>
 
-  <TD colspan=7><P><STRONG>3.</STRONG> Le seguenti domande riguardano alcune attività che potrebbe svolgere nel corso di una qualsiasi giornata. La <EM>Sua salute</EM> La limita <EM>attualmente</EM> nello svolgimento di queste attività?</TD>
+  <TD colspan=7><P><STRONG>3.</STRONG> Le seguenti domande riguardano alcune attivit&aacute; che potrebbe svolgere nel corso di una qualsiasi giornata. La <EM>Sua salute</EM> La limita <EM>attualmente</EM> nello svolgimento di queste attivit&aacute;?</TD>
 
 </TR>
 
@@ -193,7 +193,7 @@ td {
 
 <tr class="riga_colorata">
 
-  <TD colspan=4><STRONG>Attività fisicamente impegnative,</STRONG> come correre, sollevare oggetti pesanti, praticare sport faticosi</TD>
+  <TD colspan=4><STRONG>Attivit&aacute; fisicamente impegnative,</STRONG> come correre, sollevare oggetti pesanti, praticare sport faticosi</TD>
   <TD align="center"><INPUT type="radio" name="sf3" value=0></TD>
   <TD align="center"><INPUT type="radio" name="sf3" value=1></TD>
   <TD align="center"><INPUT type="radio" name="sf3" value=2></TD>
@@ -204,7 +204,7 @@ td {
 
 <TR>
 
-  <TD colspan=4><STRONG>Attività di moderato impegno fisico,</STRONG> come spostare un tavolo, usare l'aspirapolvere, giocare a bocce o fare un giretto in bicicletta</TD>
+  <TD colspan=4><STRONG>Attivit&aacute; di moderato impegno fisico,</STRONG> come spostare un tavolo, usare l'aspirapolvere, giocare a bocce o fare un giretto in bicicletta</TD>
 
  <TD align="center"><INPUT type="radio" name="sf4" value=0></TD>
   <TD align="center"><INPUT type="radio" name="sf4" value=1></TD>
@@ -318,7 +318,7 @@ td {
 
 <TR>
 
-  <TD colspan=7><P><STRONG>4.</STRONG> <EM>Nelle ultime 4 settimane</EM>,ha riscontrato i seguenti problemi sul lavoro o nelle altre attività quotidiane, <EM>a causa della Sua salute fisica?</EM></TD>
+  <TD colspan=7><P><STRONG>4.</STRONG> <EM>Nelle ultime 4 settimane</EM>,ha riscontrato i seguenti problemi sul lavoro o nelle altre attivit&aacute; quotidiane, <EM>a causa della Sua salute fisica?</EM></TD>
 
 </TR>
 
@@ -337,7 +337,7 @@ td {
 
 <tr class="riga_colorata">
 
-  <TD colspan=5>Ha ridotto <STRONG>il tempo</STRONG> dedicato al lavoro o ad altre attività</TD>
+  <TD colspan=5>Ha ridotto <STRONG>il tempo</STRONG> dedicato al lavoro o ad altre attivit&aacute;</TD>
   <TD align="center"><INPUT type="radio" name="sf13" value=0></TD>
   <TD align="center"><INPUT type="radio" name="sf13" value=1></TD>
 
@@ -357,7 +357,7 @@ td {
 
 <tr class="riga_colorata">
 
-  <TD colspan=5>Ha dovuto limitare alcuni <STRONG>tipi</STRONG> di lavoro o di altre attività</TD>
+  <TD colspan=5>Ha dovuto limitare alcuni <STRONG>tipi</STRONG> di lavoro o di altre attivit&aacute;</TD>
 
     <TD align="center"><INPUT type="radio" name="sf15" value=0></TD>
   <TD align="center"><INPUT type="radio" name="sf15" value=1></TD>
@@ -366,7 +366,7 @@ td {
 
 <TR>
 
-  <TD colspan=5>Ha avuto <STRONG>difficoltà</STRONG> nell'eseguire il lavoro o altre attività (ad esempio, ha fatto più fatica)</TD>
+  <TD colspan=5>Ha avuto <STRONG>difficolt&aacute;</STRONG> nell'eseguire il lavoro o altre attivit&aacute; (ad esempio, ha fatto pi&ugrave; fatica)</TD>
   <TD align="center"><INPUT type="radio" name="sf16" value=0></TD>
   <TD align="center"><INPUT type="radio" name="sf16" value=1></TD>
 
@@ -384,7 +384,7 @@ td {
 
 <TR>
 
-  <TD colspan=7><P><STRONG>5.</STRONG> <EM>Nelle ultime 4 settimane</EM>, ha riscontrato i seguenti problemi sul lavoro o nelle altre attività, <EM>a causa del Suo stato emotivo</EM> (quale il sentirsi depresso o ansioso)?</TD>
+  <TD colspan=7><P><STRONG>5.</STRONG> <EM>Nelle ultime 4 settimane</EM>, ha riscontrato i seguenti problemi sul lavoro o nelle altre attivit&aacute;, <EM>a causa del Suo stato emotivo</EM> (quale il sentirsi depresso o ansioso)?</TD>
 
 </TR>
 
@@ -403,7 +403,7 @@ td {
 
 <tr class="riga_colorata">
 
-  <TD colspan=5>Ha ridotto <STRONG>il tempo</STRONG> dedicato al lavoro o ad altre attività</TD>
+  <TD colspan=5>Ha ridotto <STRONG>il tempo</STRONG> dedicato al lavoro o ad altre attivit&aacute;</TD>
   <TD align="center"><INPUT type="radio" name="sf17" value=0></TD>
   <TD align="center"><INPUT type="radio" name="sf17" value=1></TD>
 
@@ -423,7 +423,7 @@ td {
 
 <tr class="riga_colorata">
 
-  <TD colspan=5>Ha avuto un calo di <STRONG>concentrazione</STRONG> sul lavoro o in altre attività</TD>
+  <TD colspan=5>Ha avuto un calo di <STRONG>concentrazione</STRONG> sul lavoro o in altre attivit&aacute;</TD>
 
     <TD align="center"><INPUT type="radio" name="sf19" value=0></TD>
   <TD align="center"><INPUT type="radio" name="sf19" value=1></TD>
@@ -442,7 +442,7 @@ td {
 
 <TR>
 
-  <TD colspan=7><P><STRONG>6.</STRONG> <EM>Nelle ultime 4 settimane</EM>, in che misura la Sua salute fisica o il Suoi stato emotivo hanno interferito con le normali attività sociali con la famiglia, gli amici, i vicini di casa, i gruppi di cui fa parte?</TD>
+  <TD colspan=7><P><STRONG>6.</STRONG> <EM>Nelle ultime 4 settimane</EM>, in che misura la Sua salute fisica o il Suoi stato emotivo hanno interferito con le normali attivit&aacute; sociali con la famiglia, gli amici, i vicini di casa, i gruppi di cui fa parte?</TD>
 
 </TR>
 
@@ -569,11 +569,11 @@ td {
 
 <TR> 
 
-  <TD colspan=7><P><STRONG>9.</STRONG> Le seguenti domande si riferiscono a come si è sentito <EM>nelle ultime 4 settimane</EM>. Risponda a ciascuna domanda scegliendo la risposta che più si avvicina al Suo caso.
+  <TD colspan=7><P><STRONG>9.</STRONG> Le seguenti domande si riferiscono a come si &egrave; sentito <EM>nelle ultime 4 settimane</EM>. Risponda a ciascuna domanda scegliendo la risposta che pi&ugrave; si avvicina al Suo caso.
 
 
 
-    <P>Per quanto tempo <EM>nelle ultime 4 settimane</EM> si è sentito...</TD>
+    <P>Per quanto tempo <EM>nelle ultime 4 settimane</EM> si &egrave; sentito...</TD>
 
 </TR>
 
@@ -624,7 +624,7 @@ td {
 
 <tr class="riga_colorata">
 
-  <TD>così giù di morale che niente avrebbe potuto tirarLa su?</TD>
+  <TD>cos&igrave; gi&ugrave; di morale che niente avrebbe potuto tirarLa su?</TD>
 
     <TD align="center"><INPUT type="radio" name="sf25" value=0></TD>
   <TD align="center"><INPUT type="radio" name="sf25" value=1></TD>
@@ -721,7 +721,7 @@ td {
 
 
 <TR>
-  <TD colspan=7><P><STRONG>10.</STRONG> <EM>Nelle ultime 4 settimane</EM>, per quanto tempo la <EM>Sua salute fisica o il Suo stato emotivo</EM> hanno interferito nelle Sue attività sociali, in famiglia, con gli amici?</TD>
+  <TD colspan=7><P><STRONG>10.</STRONG> <EM>Nelle ultime 4 settimane</EM>, per quanto tempo la <EM>Sua salute fisica o il Suo stato emotivo</EM> hanno interferito nelle Sue attivit&aacute; sociali, in famiglia, con gli amici?</TD>
 
 </TR>
 
@@ -777,7 +777,7 @@ td {
 
 <tr class="riga_colorata">
 
-  <TD colspan=2>Mi pare di ammalarmi un po' più facilmente degli altri</TD>
+  <TD colspan=2>Mi pare di ammalarmi un po' pi&ugrave; facilmente degli altri</TD>
   <TD align="center"><INPUT type="radio" name="sf33" value=0></TD>
   <TD align="center"><INPUT type="radio" name="sf33" value=1></TD>
   <TD align="center"><INPUT type="radio" name="sf33" value=2></TD>
@@ -790,7 +790,7 @@ td {
 
 <TR>
 
-  <TD colspan=2>La mia salute è come quella degli altri</TD>
+  <TD colspan=2>La mia salute &egrave; come quella degli altri</TD>
 	  <TD align="center"><INPUT type="radio" name="sf34" value=0></TD>
 		<TD align="center"><INPUT type="radio" name="sf34" value=1></TD>
 		<TD align="center"><INPUT type="radio" name="sf34" value=2></TD>
@@ -799,7 +799,7 @@ td {
 	</TR>
 	
 	<tr class="riga_colorata">
-	  <TD colspan=2>Mi aspetto che la mia salute andrà peggiorando</TD>
+	  <TD colspan=2>Mi aspetto che la mia salute andr&aacute; peggiorando</TD>
 		<TD align="center"><INPUT type="radio" name="sf35" value=0></TD>
 		<TD align="center"><INPUT type="radio" name="sf35" value=1></TD>
 	  <TD align="center"><INPUT type="radio" name="sf35" value=2></TD>

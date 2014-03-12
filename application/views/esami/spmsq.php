@@ -28,14 +28,14 @@ echo form_open('esami/SPMSQ');
   <table width="100%" align="center">
   <tr>
 <th>1.</th>
-<th>Qual'è la data di oggi? (giorno, mese, anno)</th>  <td colspan="2">si 
+<th>Qual'&egrave; la data di oggi? (giorno, mese, anno)</th>  <td colspan="2">si 
   <input type="radio" name="spsms1" value="1" />
   no
   <input type="radio" name="spsms1" value="0" checked="checked" /></td>
 
 </tr><tr>
 <th>2.</th>
-<th>Che giorno della settimana è?</th>  <td colspan="2">si 
+<th>Che giorno della settimana &egrave;?</th>  <td colspan="2">si 
   <input type="radio" name="spsms2" value="1" />
   no
   <input type="radio" name="spsms2" value="0" checked="checked" /></td>
@@ -44,7 +44,7 @@ echo form_open('esami/SPMSQ');
 
 <tr>
   <th>3.</th>
-<th>Qual è il nome di questo posto?</th>  
+<th>Qual &egrave; il nome di questo posto?</th>  
 <td colspan="2">si 
   <input type="radio" name="spsms3" value="1" />
   no
@@ -53,7 +53,7 @@ echo form_open('esami/SPMSQ');
 </tr>
 <tr>
   <th>4.</th>
-<th>Qual'è il suo numero di telefono? (o indirizzo)</th>  
+<th>Qual'&egrave; il suo numero di telefono? (o indirizzo)</th>  
 <td colspan="2">si 
   <input type="radio" name="spsms4" value="1" />
   no
@@ -69,7 +69,7 @@ echo form_open('esami/SPMSQ');
 
 </tr><tr>
 <th>6.</th>
-<th>Quando è nato?</th>  
+<th>Quando &egrave; nato?</th>  
 <td colspan="2">si 
   <input type="radio" name="spsms6" value="1" />
   no
@@ -77,7 +77,7 @@ echo form_open('esami/SPMSQ');
 
 </tr><tr>
 <th>7.</th>
-<th>Chi è il presidente della repubblica? (o Papa)</th>  
+<th>Chi &egrave; il presidente della repubblica? (o Papa)</th>  
 <td colspan="2">si 
   <input type="radio" name="spsms7" value="1" />
   no

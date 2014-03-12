@@ -68,7 +68,7 @@ class Esami extends CI_Controller
 				// $view_data['inserito'] = TRUE;
 				// $view_data['codfis'] = $data['codfis'];
 				// $this->load->view($carica, $view_data);
-				$this->session->set_flashdata('message', "Esame {$item} aggiunto con successo!");
+				$this->session->set_flashdata('message', "Esame {$input} aggiunto con successo!");
 				redirect("/pz/crea_index/{$data['codfis']}");
 			}
 			else
