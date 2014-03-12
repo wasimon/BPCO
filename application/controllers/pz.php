@@ -27,6 +27,9 @@ class Pz extends CI_Controller
 			$input_data = $this->input->post();
 			unset($input_data['submit']);
 			
+			// transform date to 'YYYY-MM-DD'
+			$input_data['datanascita'] = date('Y-m-d', strtotime($input_data['datanascita']));
+			
 			$insert = $this->pazienti->add($input_data);
 
 			if ($insert === FALSE)
