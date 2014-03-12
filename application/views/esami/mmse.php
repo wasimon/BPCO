@@ -60,11 +60,48 @@ tr.esame_enabled {
     background-color: lime;
 }
 </style>
-<?
+<?php else: ?>
+<?php $display=0; ?>
+<script type="text/javascript" charset="utf-8">
+	// INPUT type="radio"
+	jQuery().ready(function($) {
+		$("#MMSE-form").on('submit', function(){
+			var checked_count = 0;
+			
+			for (var i = 10; i >= 1; i--) {
+				if ($("input[name=or"+i+"]").is(':checked')) {
+					checked_count++;
+			}
+			for (var i = 5; i >= 1; i--) {
+				if ($("input[name=calcolo"+i+"]").is(':checked')) {
+					checked_count++;
+				}
+			
+			for (var i = 6; i >= 1; i--) {
+				if ($("input[name=ling"+i+"]").is(':checked')) {
+					checked_count++;
+				}
+			}
+			if(checked_count == 21) {
+				return true;
+			} else {
+				window.alert("Devi selezionare una risposta per ogni domanda.\n Risposte mancanti: "+(21 - checked_count));
+				return false;
+			}
+		});
+		
+	});
+</script>
+
+<?php endif; ?>
+
+<?  /*
 else:
 $display=0;
 $x='';
 endif;
+
+*/
 ?>
 
 <h1>Mini Mental State (MMSE)</h1>
@@ -83,7 +120,7 @@ endif;
 
 
 <?php
-echo form_open('esami/MMSE');
+echo form_open('esami/MMSE', array('id'=>"MMSE-form"));
 ?>
 
 
