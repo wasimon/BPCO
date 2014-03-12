@@ -5,38 +5,44 @@ class Pz extends CI_Controller
 
 	var $view_data = array();
 
-	function aggiungi($mid)
+	function __construct()
 	{
-		//$view_data['main_content'] = 'agg_paziente';
-		//$this->load->view('includes/template', $view_data);
-        
-		$this->load->view('agg_paziente');
-		//$this->load->view('agg_style');
+		parent::__construct();
+		$this->load->model('pazienti_model', 'pazienti');
+		$this->load->model('esami_model', 'esami');
 
+		$view_data = array();
 	}
 
-	function scrivi_pz()
+	function aggiungi($mid)
 	{
-		$input = $this->input->post();
-  
-		// var_dump($input);
-    
-		unset($input['submit']);
-		$insert = $this->db->insert('paziente', $input);
+		$this->view_data['id_medico'] = $mid;
 		
-		//$data['main_content'] = 'esami/antropometria';
-		//$this->load->view('includes/template', $data);
-         
-		//invece
-		//$data['iscrizione'] = TRUE;
-		//$this->load->view('esami/antropometria', $data);
-        
-		//invece
-		//echo 'Paziente inserito';
-		$this->load->view('esami/iscrizione_2');
-        
-       
-        
+		if ( $this->input->post('submit') )
+		{
+			$input_data = $this->input->post();
+			unset($input_data['submit']);
+			
+			$insert = $this->pazienti->add($input_data);
+
+			if ($insert === FALSE)
+			{
+				$view_data['message'] = "<p class='error'><em>Errore</em>: Impossibile aggiungere il paziente.</p>";
+				$this->load->view('agg_paziente', $this->view_data);
+				return;
+			}
+			else
+			{
+				$view_data['message'] = "<p style='color:green'>Paziente Aggiunto.</p>";
+				$this->load->view('esami/iscrizione_2', $this->view_data);
+				return;
+			}
+		}
+		else
+		{
+			$this->view_data['message'] = "<p>Completa questo form per aggiungere un nuovo paziente.</p>";
+			$this->load->view('agg_paziente', $this->view_data);
+		}
 	}
 
 	function iscrizione_2()
@@ -64,12 +70,6 @@ class Pz extends CI_Controller
 		$codfis = $input['codfis'];
 		$this->crea_index($codfis);
 	}
-
-	function listarella($input)
-	{
-		//$input=$this->visualizza_lista($this->session->userdata('idmedico'));
-		echo 'boaaaa';
-	}
      
 	function visualizza_lista($input)
 	{
@@ -79,15 +79,11 @@ class Pz extends CI_Controller
 
 	}
 
-	function visualizza_uno($input){
-   
-		//$input=$this->_visualizza_uno($this->uri(4));
-  
+	function visualizza_uno($input)
+	{
 		$this->view_data['pazienti'] = $this->db->get_where('paziente', array('codfis'=>$input))->result();
     
-		//echo $input;   
 		$this->load->view('pz/index_pz', $this->view_data);  
-
 	}
 
 	function edit($codfis)

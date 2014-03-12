@@ -38,8 +38,8 @@ margin-left: -50px;
 
  </style>
  
- <br><br><br><br><center>
- <h1>Metti in moto il tuo respiro</h1></center>
+ <br><br><br><br>
+ <center><h1>Metti in moto il tuo respiro</h1></center>
 <div id="intro" align="center">
 <fieldset >
 <legend>Login </legend>
@@ -47,21 +47,33 @@ margin-left: -50px;
 
     <?php 
 	echo form_open('login/validate_credentials');?>
-    <table>
-    <tr>
-    <td id="label">Username: </td>
-    <td id="dati"><input type="text" name="username" value="" id="username" /></td>
-    </tr>
-    <tr>
-    <td id="label">Password: </td>
-    <td id="dati"><input type="password" name="password" value="" id="password" /></td>
-    </tr>
-    <tr>
-    <td align="center" colspan="2">&nbsp;</td> </tr><tr>
-    <td align="center" colspan="2">  <?=form_submit('submit', 'Login');?>    </td>    </tr>
-    <td align="center" colspan="2">&nbsp;</td> </tr><tr>
-    <td align="center" colspan="2"><?=anchor('login/signup', 'Crea un Account');?></td> </tr><tr>
-    </table>
+	<table>
+		<?php if (!empty($message)): ?>
+			<tr>
+				<td align="center" colspan="2"><?= $message ?></td>
+			</tr>
+		<?php endif ?>
+		<tr>
+			<td id="label">Username: </td>
+			<td id="dati"><input type="text" name="username" value="" id="username" /></td>
+		</tr>
+		<tr>
+			<td id="label">Password: </td>
+			<td id="dati"><input type="password" name="password" value="" id="password" /></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2">  <?=form_submit('submit', 'Login');?></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><?=anchor('login/signup', 'Crea un Account');?></td>
+		</tr>
+	</table>
     <?=form_close();?>
 </fieldset>
 

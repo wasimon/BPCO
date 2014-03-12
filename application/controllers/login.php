@@ -2,10 +2,14 @@
 
 class Login extends CI_Controller {
 	
+	var $view_data;
+	
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->model('membership_model');
+
+		$view_data = array();
 	}
 	
 	function index()
@@ -15,35 +19,36 @@ class Login extends CI_Controller {
 	
 	function login()
 	{
-		$this->load->view('login_form');  
+		$this->load->view('login_form', $this->view_data);  
 	}
 	
 	function validate_credentials()
 	{
-		$query = $this->membership_model->validate();
-		$this->load->model('Data_model');
-		$mid = $this->Data_model->getId($this->input->post('username'));
-		$mnome = $this->Data_model->getNome($this->input->post('username'));
-        
-        
-        
-		if($query) // if the user's credentials validated...
+		if($this->membership_model->validate()) // if the user's credentials validated...
 		{
+			$this->load->model('dottori_model', 'dottori');
+			
+			$username = $this->input->post('username');
+			
+			$mid = $this->dottori->getId($username);
+			$mnome = $this->dottori->getNome($username);
+
 			$data = array(
-				'username' => $this->input->post('username'),
-				'is_logged_in' => true,
+				'username' => $username,
+				'is_logged_in' => TRUE,
 				'idmedico' => $mid,
 				'nome' => $mnome,
 			);
+			
 			$this->session->set_userdata($data);
 			redirect('site/index');
 		}
-		else // incorrect username or password
+		
+		// incorrect username or password
+		else
 		{
-		  
-			echo '<h2>Nome utente o password errati</h2>';		  
-			$this->index();
-            
+			$this->view_data['message'] = '<strong>Nome utente o password errati</strong>';
+			$this->login();
 		}
 	}	
 	
@@ -74,12 +79,11 @@ class Login extends CI_Controller {
 		{			
 			if($query = $this->membership_model->create_member())
 			{
-				echo '<h3>Account creato! <br/> Accedi subito</h3>';		  
-				$this->index();
+				$this->view_data['message'] = '<strong>Account creato! <br/> Accedi subito</strong>';		  
+				$this->login();
 			}
 			else
 			{
-
 				$this->load->view('signup_form');			
 			}
 		}

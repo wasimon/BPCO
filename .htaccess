@@ -2,5 +2,7 @@ Allow from all
 
 # Rewrite without index.php
 RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond $1 !^(index\.php|images|robots\.txt)
 RewriteRule ^(.*)$ /index.php/$1 [L]

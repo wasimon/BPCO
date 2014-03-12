@@ -37,5 +37,11 @@ define('FOPEN_WRITE_CREATE_STRICT', 			'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
+define('MEMBERSHIP_ENABLED', 'OK');
+define('MEMBERSHIP_DISABLED', 'DIS');
+define('MEMBERSHIP_BANNED', 'BAN');
+
+
+
 /* End of file constants.php */
 /* Location: ./system/application/config/constants.php */

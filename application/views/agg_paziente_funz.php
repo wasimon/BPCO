@@ -83,9 +83,9 @@ text-align:right;
 <h1>Aggiungi paziente</h1>
 <?php
 $attributes = array('class' => 'myform', 'id' => 'myform');
-echo form_open('pz/scrivi_pz', $attributes);
+echo form_open('pz/aggiungi', $attributes);
 ?>
-<form action="pz/scrivi_pz" name="myform" id="myform">
+<form action="pz/aggiungi" name="myform" id="myform">
 <fieldset>
 <legend>Dati anagrafici</legend>
 

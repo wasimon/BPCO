@@ -80,7 +80,7 @@ function verifica_fumo(){
 
 <?php
 $attributes = array('class' => 'cmxform', 'id' => 'commentForm');
-echo form_open('pz/scrivi_pz', $attributes);
+echo form_open('pz/aggiungi', $attributes);
 ?>
 
 <fieldset>
