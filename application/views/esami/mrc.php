@@ -129,7 +129,7 @@ echo form_open('esami/mrc', $attributes);
   </tr>
   <tr>
     <th>2.</th>
-    <td>Cammino più lentamente della gente della mia stessa età quando vado in piano, oppure mi devo fermare pe rrespirare quando cammino al mio passo.</td>
+    <td>Cammino pi&ugrave; lentamente della gente della mia stessa et&aacute; quando vado in piano, oppure mi devo fermare pe rrespirare quando cammino al mio passo.</td>
     <td><input <?=$x.$stampa_mrc[2]?> name="mrc" type="radio" value="2" /></td>
   </tr>
   <tr>
@@ -212,7 +212,7 @@ echo form_open('esami/mrc', $attributes);
   </tr>
   <tr>
     <th>&nbsp;</th>
-    <td>Il catarro è di tipo:</td>
+    <td>Il catarro &egrave; di tipo:</td>
     <td><input <?=$x.$stampa_espettorato[0]   ?> name="qualita_catarro" type="radio" value="0" /> mucoso (bianco)</td>
   </tr>
   <tr>
@@ -237,7 +237,7 @@ echo form_open('esami/mrc', $attributes);
   
     <tr>
     <th>&nbsp;</th>
-    <td>Negli ultimi 6 mesi la quantità media di catarro (al di fuori delle bronchiti) durante una giornata è:</td>
+    <td>Negli ultimi 6 mesi la quantit&aacute; media di catarro (al di fuori delle bronchiti) durante una giornata &egrave;:</td>
        <td><input <?=$x.$stampa_quantita[0]   ?>  name="quantita_catarro" type="radio" value="0" /> 
        &lt;1 cucchiaio da minestra</td>
   </tr>

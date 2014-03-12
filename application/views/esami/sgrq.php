@@ -108,7 +108,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 <TR>
   <td width="270">&nbsp;</td>
   <th align="center"><font size="-1">Quasi tutti i giorni della settimana</font></th>
-  <th align="center"><font size="-1">Per più giorni della settimana</font></th>
+  <th align="center"><font size="-1">Per pi&ugrave; giorni della settimana</font></th>
   <th align="center"><font size="-1">Qualche giorno nell'arco del mese</font></th>
   <th align="center"><font size="-1">Soltanto in caso di infezioni respiratorie</font></th>
   <th align="center"><font size="-1">Mai</font></th>
@@ -181,7 +181,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
   <TD>&nbsp;</TD>
 
-  <TH align="center"><FONT size="-1">più di 3 attacchi o crisi</FONT></TH>
+  <TH align="center"><FONT size="-1">pi&ugrave; di 3 attacchi o crisi</FONT></TH>
 
   <TH align="center"><font size="-1">3 attacchi o crisi </font></TH>
 
@@ -211,7 +211,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
 </TR>
 <tr><TD colspan=6><HR></TD></tr>
-<TD colspan=6><P>6) negli ultimi 12 mesi quanto tempo è durato l'attacco 
+<TD colspan=6><P>6) negli ultimi 12 mesi quanto tempo &egrave; durato l'attacco 
   o la crisi respiratoria peggiore che hai avuto? (se non ne 
   hai avute passa alla domanda 7)</TD>
   
@@ -223,9 +223,9 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
   <TD colspan=2>&nbsp;</TD>
 
-  <TH align="center"><FONT size="-1">una settimana o più</FONT></TH>
+  <TH align="center"><FONT size="-1">una settimana o pi&ugrave;</FONT></TH>
 
-  <TH align="center"><FONT size="-1">3 giorni o più </FONT></TH>
+  <TH align="center"><FONT size="-1">3 giorni o pi&ugrave; </FONT></TH>
 
   <TH align="center"><FONT size="-1">1 o 2 giorni</FONT> </TH>
 
@@ -294,7 +294,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
   <TD align="center"><INPUT type="radio" name="sgrq7" value=4></TD>
 </TR>
 <tr><TD colspan=6><HR></TD></tr>
-  <TD colspan=6><P> 8. Quando ha il respiro con i fischi e i sibili è peggiore 
+  <TD colspan=6><P> 8. Quando ha il respiro con i fischi e i sibili &egrave; peggiore 
     la mattina?</TD>
 
 </TR>
@@ -335,7 +335,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
   <TD colspan=2>&nbsp;</TD>
 
-  <TH align="center">sono il problema più grave che ho</TH>
+  <TH align="center">sono il problema pi&ugrave; grave che ho</TH>
 
   <TH align="center">mi creano parecchi problemi</TH>
 
@@ -363,7 +363,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
   </TR>
   <tr><TD colspan=6><HR></TD></tr>
-    <TD colspan=6><P>10) se hai o hai avuto un'attività professionale, scegli 
+    <TD colspan=6><P>10) se hai o hai avuto un'attivit&aacute; professionale, scegli 
     una delle seguenti risposte</TD>
   
 </TR>
@@ -417,7 +417,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
 <TR>
 
-  <TD colspan=6><P>    1) quali delle seguenti attività generalmente ti causano il fiato corto in questi giorni</TD>
+  <TD colspan=6><P>    1) quali delle seguenti attivit&aacute; generalmente ti causano il fiato corto in questi giorni</TD>
 
 </TR>
 
@@ -709,7 +709,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
 <TR class="riga_colorata">
 
-  <TD colspan=4 class="riga_colorata">l'esercizio fisico per me è rischioso</TD>
+  <TD colspan=4 class="riga_colorata">l'esercizio fisico per me &egrave; rischioso</TD>
 
   <TD align="center"><INPUT type="radio" name="sgrq30" value=0></TD>
 
@@ -737,7 +737,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
 <TR>
 
-  <TD colspan=6><P>Questa sezione è dedicata alla cura che stai seguendo. Se non segui cure passa direttamente alla sezione 6</TD>
+  <TD colspan=6><P>Questa sezione &egrave; dedicata alla cura che stai seguendo. Se non segui cure passa direttamente alla sezione 6</TD>
 
 </TR>
 
@@ -812,7 +812,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
 <TR>
 
-  <TD colspan=6><P>Questa sezione riguarda il modo in cui le tue attività potrebbero essere influenzate dalla tua respirazione <br />
+  <TD colspan=6><P>Questa sezione riguarda il modo in cui le tue attivit&aacute; potrebbero essere influenzate dalla tua respirazione <br />
   </TD>
 
 </TR>
@@ -858,7 +858,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
 <tr class="riga_colorata">
 
-  <TD colspan=4>cammino più lentamente degli altri, oppure devo fermarmi per riposare</TD>
+  <TD colspan=4>cammino pi&ugrave; lentamente degli altri, oppure devo fermarmi per riposare</TD>
 
     <TD align="center"><INPUT type="radio" name="sgrq38" value=0></TD>
 
@@ -868,7 +868,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
 <TR>
 
-  <TD colspan=4>nelle attività come i lavori di casa impiego molto tempo, oppure devo fermarmi per riposare</TD>
+  <TD colspan=4>nelle attivit&aacute; come i lavori di casa impiego molto tempo, oppure devo fermarmi per riposare</TD>
 
   <TD align="center"><INPUT type="radio" name="sgrq39" value=0></TD>
 
@@ -896,7 +896,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 </TR>
 <TR class="riga_colorata">
 
-  <TD colspan=4>a causa della mia respirazione ho difficoltà a fare cose com, ad esempio, camminare in salita, portare gli 
+  <TD colspan=4>a causa della mia respirazione ho difficolt&aacute; a fare cose com, ad esempio, camminare in salita, portare gli 
     oggetti salendo le scale, fare piccoli lavori in giardino 
     (come togliere le erbacce), ballare, giocare a bocce</TD>
 
@@ -908,7 +908,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
 <TR>
 
-  <TD colspan=4>a causa della mia respirazione ho difficoltà a fare cose 
+  <TD colspan=4>a causa della mia respirazione ho difficolt&aacute; a fare cose 
     come, ad esempio, portare carichi pesanti, zappare il 
     giardino o spalare la neve, correre per fare esercizio o 
     camminare velocemenete (8 km/h), giocare a tennis o 
@@ -921,7 +921,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 </TR>
 <TR class="riga_colorata">
 
-  <TD colspan=4>a causa della mia respirazione ho difficoltà a fare cose 
+  <TD colspan=4>a causa della mia respirazione ho difficolt&aacute; a fare cose 
     come, ad esempio, lavori manuali molto pesanti, 
     andare in bicicletta, correre, nuotare velocemente o 
     praticare sport faticosi</TD>
@@ -1024,9 +1024,9 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
 <TR>
 
-  <TD colspan=6><P>E' riportato di seguito un elenco di attività che i tuoi disturbi, forse, ti impediscono di svolgere (questo 
-    elenco serve semplicemente come esempio per ricordarti come la mancanza di fiato può limitarti in alcune 
-    attività. Non devi rispondere a nessuna domanda.  
+  <TD colspan=6><P>E' riportato di seguito un elenco di attivit&aacute; che i tuoi disturbi, forse, ti impediscono di svolgere (questo 
+    elenco serve semplicemente come esempio per ricordarti come la mancanza di fiato pu&ograve; limitarti in alcune 
+    attivit&aacute;. Non devi rispondere a nessuna domanda.  
     <P>      • fare passeggiate o portare a spasso il cane <br />
       • fare lavori in casa o in giardino <br />
       • avere rapporti sessuali <br />
@@ -1048,7 +1048,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
 <TR>
 
-   <TD colspan=6><P>Per piacere, scrivi in questo spazio qualsiasi altra attività importante che i tuoi disturbi respiratori ti 
+   <TD colspan=6><P>Per piacere, scrivi in questo spazio qualsiasi altra attivit&aacute; importante che i tuoi disturbi respiratori ti 
     impediscono di svolgere:   
     <P>
       <textarea name="sgrq50" id="sgrq50" cols="45" rows="5"><? if($display)echo $sgrq->sgrq50;?></textarea>
@@ -1070,7 +1070,7 @@ echo form_open('esami/sgrq', array('id'=>"sgrq-form"));
 
   <TD colspan=6><P>    Ora ti preghiamo di barrare l'affermazione che secondo
     te descrive meglio il modo in cui i tuoi disturbi
-    respiratori limitano la tua attività quotidiana:</TD>
+    respiratori limitano la tua attivit&aacute; quotidiana:</TD>
 
 </TR>
 

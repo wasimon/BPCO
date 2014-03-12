@@ -176,7 +176,7 @@ echo form_open('esami/MMSE', array('id'=>"MMSE-form"));
   </tr>
   <tr>
     <th>3.</th>
-    <td>Città</td>
+    <td>Citt&aacute;</td>
     <td ><input name="or8" type="radio" value="1" /></td>
     <td ><input name="or8" type="radio" value="0" /></td>
   </tr>
@@ -318,7 +318,7 @@ echo form_open('esami/MMSE', array('id'=>"MMSE-form"));
  
   <tr>
    
-    <td colspan="3">Far eseguire un comando in 3 tempi ( es. prendere il foglio nella mano destra, piegarlo a metà, metterlo sul pavimento)</td>
+    <td colspan="3">Far eseguire un comando in 3 tempi ( es. prendere il foglio nella mano destra, piegarlo a met&aacute;, metterlo sul pavimento)</td>
   <td >
   <select name="ling2" id="ling2" <?=$x;?> >
   <? if ($display) echo '<option>';
@@ -335,7 +335,7 @@ echo form_open('esami/MMSE', array('id'=>"MMSE-form"));
   
     <tr>
 
-    <td colspan="3">Far scrivere al paziente una frase. Controllare se è comprensibile e se contiene un soggetto ed un verbo</td>
+    <td colspan="3">Far scrivere al paziente una frase. Controllare se &egrave; comprensibile e se contiene un soggetto ed un verbo</td>
     <td >
   
     <select name="ling3" id="ling3" <?=$x;?> >

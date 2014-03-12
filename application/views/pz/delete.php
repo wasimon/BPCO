@@ -24,7 +24,7 @@ window.setTimeout("doRedirect()", 4000);
 <br /><br />
 
 <center>
-	<h2>Il paziente è stato eliminato.</h2>
+	<h2>Il paziente &egrave; stato eliminato.</h2>
 	<br />
 	<br>
 	<b>Stai per essere reindirizzato ad altra pagina.
@@ -50,7 +50,7 @@ window.setTimeout("doRedirect()", 4000);
 		</form>
 		<?
 	else:
-		echo 'Errore: il paziente è già stato rimosso';
+		echo 'Errore: il paziente &egrave; gi&aacute; stato rimosso';
 	endif;
 	?>
 	<?endif;?>

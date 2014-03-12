@@ -75,7 +75,7 @@ echo form_open('esami/tinetti');
 </table><table width="100%">
 <tr ><td class="num">3</td><th class="centro">Tentativo di alzarsi</th><td>&nbsp;</td></tr>
 <tr class="<?if($display AND $tinetti->e3 == 0) echo "esame_enabled";?>" ><td>&nbsp;</td><td>E'incapace senza aiuto</td><td class="dx">0 <input type="radio" name="e3" value="0" checked/> </td></tr>
-<tr class="<?if($display AND $tinetti->e3 == 1) echo "esame_enabled";?>" ><td>&nbsp;</td><td>Capace ma richiede più di un tentativo</td><td class="dx">1 <input type="radio" name="e3" value="1"/> </td></tr>
+<tr class="<?if($display AND $tinetti->e3 == 1) echo "esame_enabled";?>" ><td>&nbsp;</td><td>Capace ma richiede pi&ugrave; di un tentativo</td><td class="dx">1 <input type="radio" name="e3" value="1"/> </td></tr>
 <tr class="<?if($display AND $tinetti->e3 == 2) echo "esame_enabled";?>" ><td>&nbsp;</td><td>Capace al primo tentativo</td><td class="dx">2 <input type="radio" name="e3" value="2"/> </td></tr>
 </table>
 <table width="100%">
@@ -125,7 +125,7 @@ echo form_open('esami/tinetti');
 
 <table width="100%">
 <tr ><td class="num">10</td><th  class="centro">Inizio della deambulazione</th><td>&nbsp;</td></tr>
-<tr class="<?if($display AND $tinetti->a1 == 0) echo "esame_enabled";?>" ><td>&nbsp;</td><td>Una certa esitazione o più tentativi</td><td class="dx">0 <input type="radio" name="a1" value="0" checked/> </td></tr>
+<tr class="<?if($display AND $tinetti->a1 == 0) echo "esame_enabled";?>" ><td>&nbsp;</td><td>Una certa esitazione o pi&ugrave; tentativi</td><td class="dx">0 <input type="radio" name="a1" value="0" checked/> </td></tr>
 <tr class="<?if($display AND $tinetti->a1 == 1) echo "esame_enabled";?>" ><td>&nbsp;</td><td>Nessuna esitazione</td><td class="dx">1 <input type="radio" name="a1" value="1"/> </td></tr>
 </table>
 <table width="100%">
@@ -153,7 +153,7 @@ echo form_open('esami/tinetti');
 
 </table>
 <table width="100%">
-<tr ><td class="num">13</td><th class="centro">Continuità del passo</th><td>&nbsp;</td></tr>
+<tr ><td class="num">13</td><th class="centro">Continuit&aacute; del passo</th><td>&nbsp;</td></tr>
 <tr class="<?if($display AND $tinetti->a7 == 0) echo "esame_enabled";?>" ><td>&nbsp;</td><td>Interrotto o discontinuo</td><td class="dx">0 <input type="radio" name="a7" value="0" checked/> </td></tr>
 <tr class="<?if($display AND $tinetti->a7 == 1) echo "esame_enabled";?>" ><td>&nbsp;</td><td>Continuo</td><td class="dx">1 <input type="radio" name="a7" value="1"/> </td></tr>
 

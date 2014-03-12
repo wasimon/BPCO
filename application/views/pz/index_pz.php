@@ -44,7 +44,7 @@ A:hover { text-decoration: underline; }
                 <tr><th>Data di nascita</th><td><?= $pz->datanascita?></td></tr>
                 <tr><th>Sesso</th><td><?= $pz->sesso?></td></tr>
                 <tr><th>Lougo di nascita</th><td><?= $pz->luogonascita?></td></tr>
-                <tr><th>Città</th><td><?= $pz->indirizzocitta?></td></tr>
+                <tr><th>Citt&aacute;</th><td><?= $pz->indirizzocitta?></td></tr>
                 
             </tr>        		
 		<? endforeach?>
