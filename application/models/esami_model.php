@@ -109,7 +109,7 @@ class Esami_model extends CI_Model {
 				return $results->row();
 			
 		} catch (Exception $e) {
-			log_message('warning', 'Error while loading CicloERG for :'.$codfis);
+			log_message('warning', 'Error while loading SFT for :'.$codfis);
 		}
 		
 		return NULL;

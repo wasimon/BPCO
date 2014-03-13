@@ -9,6 +9,7 @@ class Prog extends CI_Controller
 		parent::__construct();
 		$this->load->model('pazienti_model', 'pazienti');
 		$this->load->model('esami_model', 'esami');
+		$this->load->model('programmi_model', 'programmi');
 		
 		$this->view_data = array(
 			'hidden_fields'=>array(),
@@ -67,14 +68,37 @@ class Prog extends CI_Controller
 	}
 	
 	
-	function save()
+	function save($cf)
 	{
-		if ( ! $this->input->post('submit') ) {
+		if ( ! $this->input->post('submit') )
+		{
 			$this->index();
 		}
-		else {
+		 else
+		{
+			$codfis = $this->input->post('cf');
+			$default = $this->input->post('suggested_prog');
+			$selez[TIPO_PROG_AEROBICO] = $this->input->post('prog_aerobic');
+			$selez[TIPO_PROG_RINFORZO] = $this->input->post('prog_rinforzo');
+			$selez[TIPO_PROG_ADDOMINALI] = $this->input->post('prog_addominali');
 			
+			if($this->programmi->saveProg($codfis, $selez, $default))
+			{
+				if( $this->input->post('submit') == 'Salva e Stampa' )
+				{
+					// TODO: Generate and Send pdf!
+					$this->PDF($cf);
+				}
+				
+				$this->session->set_flashdata('message', '<p class="message">Programmi selezionati salvati con successo!</p>');
+				redirect("/pz/crea_index/{$cf}");
+			}
 		}
 	}
-}       
-       
+	
+	function PDF($cf)
+	{
+		# code...
+	}
+}
+ 

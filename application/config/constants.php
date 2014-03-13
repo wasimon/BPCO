@@ -41,6 +41,10 @@ define('MEMBERSHIP_ENABLED', 'OK');
 define('MEMBERSHIP_DISABLED', 'DIS');
 define('MEMBERSHIP_BANNED', 'BAN');
 
+define('TIPO_PROG_DAFEULT', '0DEF');
+define('TIPO_PROG_AEROBICO', '1AERO');
+define('TIPO_PROG_RINFORZO', '2RINF');
+define('TIPO_PROG_ADDOMINALI', '3ADDO');
 
 
 /* End of file constants.php */
