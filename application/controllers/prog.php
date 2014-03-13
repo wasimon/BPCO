@@ -20,6 +20,8 @@ class Prog extends CI_Controller
 		$prog_ch = 0;
 		$subj = $this->pazienti->getByCF($cf);
 		$erg = $this->esami->getCicloERG($cf);
+		$sft = $this->esami->getSFT($cf);
+		
 		$ratio = ($erg->vo2max / $erg->vo2predetto);
 
 		switch (TRUE) {
@@ -52,6 +54,9 @@ class Prog extends CI_Controller
 		
 
 		$this->view_data['cicloERG'] = $erg;
+		
+		$sft->max = $sft->massimale;
+		$this->view_data['sft'] = $sft;
 		
 		$this->view_data['hidden_fields'] = array( 
 			'cf'=>$cf,
