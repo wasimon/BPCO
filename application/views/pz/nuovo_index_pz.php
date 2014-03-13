@@ -122,20 +122,25 @@ A:hover { text-decoration: underline; }
 </tr></table>
 </div>
 
-<?php if (!empty($message)): ?>
-	<div id="messaggi">
-		<?= $message ?>
-	</div>
-<?php endif ?>
+
 
 <!-- PRIMA COLONNA -->
 <div id="split1" class="clearfix">
-
-Nome: <?=$anagrafica->nome?><br />
-Cognome: <?=$anagrafica->cognome?><br />
-Data di nascita: <?=$anagrafica->datanascita?><br />
-Codice fiscale: <?=$anagrafica->codfis?><br />
-
+<table border="1" style="solid" cellspacing="5" cellpadding="5">
+	
+	<?php if (!empty($message)): ?>
+	<tr><td colspan="2">
+		<div id="messaggi">
+			<?= $message ?>
+		</div>
+		</td></tr>
+	<?php endif ?>
+	
+	<tr><th>Nome:</th><td><?=$anagrafica->nome?></td></tr>
+	<tr><th>Cognome:</th><td><?=$anagrafica->cognome?></td></tr>
+	<tr><th>Data di nascita:</th><td><?=$anagrafica->datanascita?></td></tr>
+	<tr><th>Codice fiscale:</th><td><?=$anagrafica->codfis?></td></tr>
+</table>
 
 <?
 if ($esami_count['t_antropometria']==1&&$esami_count['t_mrc']==1&&$esami_count['t_mmse']==1&&$esami_count['t_tinetti']==1&&$esami_count['t_sf36']==1&&$esami_count['t_sft']==1&&$esami_count['t_sgrq']==1&&$esami_count['t_cicloerg']==1):?>
@@ -143,6 +148,9 @@ if ($esami_count['t_antropometria']==1&&$esami_count['t_mrc']==1&&$esami_count['
 <br>
 <a href="<?=site_url()?>/esami/prog/<?=$codicefiscale?>"> genera il programma di trattamento</a>
 <?else:?>
+<br>
+<br>
+
 Devi effettuare tutte le valutazioni per poter generare il programma.
 <?endif;?>
 			<?//print_r ($esami_count);?>
