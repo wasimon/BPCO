@@ -153,6 +153,7 @@ class Pz extends CI_Controller
 			't_sgrq' =>0,
 			't_spsms' =>0,
 			't_tinetti'=>0,
+			'prog_selezionati'=>0,
 		);
 		//$this->view_data['elenco'] = $elenco;
 

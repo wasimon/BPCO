@@ -123,10 +123,10 @@ A:hover { text-decoration: underline; }
 </div>
 
 
-
+<BR>
 <!-- PRIMA COLONNA -->
 <div id="split1" class="clearfix">
-<table border="1" style="solid" cellspacing="5" cellpadding="5">
+<table border="1" style="solid" cellspacing="4" cellpadding="4">
 	
 	<?php if (!empty($message)): ?>
 	<tr><td colspan="2">
@@ -140,26 +140,51 @@ A:hover { text-decoration: underline; }
 	<tr><th>Cognome:</th><td><?=$anagrafica->cognome?></td></tr>
 	<tr><th>Data di nascita:</th><td><?=$anagrafica->datanascita?></td></tr>
 	<tr><th>Codice fiscale:</th><td><?=$anagrafica->codfis?></td></tr>
-</table>
 
 <?
 if ($esami_count['t_antropometria']==1&&$esami_count['t_mrc']==1&&$esami_count['t_mmse']==1&&$esami_count['t_tinetti']==1&&$esami_count['t_sf36']==1&&$esami_count['t_sft']==1&&$esami_count['t_sgrq']==1&&$esami_count['t_cicloerg']==1):?>
 
-<br>
-<a href="<?=site_url()?>/esami/prog/<?=$codicefiscale?>"> genera il programma di trattamento</a>
+<tr><td colspan="2" bgcolor="green">
+<a href="<?=site_url()?>/esami/prog/<?=$codicefiscale?>"> GENERA IL PROGRAMMA DI TRATTAMENTO</a>
 <?else:?>
-<br>
-<br>
-
-Devi effettuare tutte le valutazioni per poter generare il programma.
+<tr><td colspan="2" bgcolor="red">
+Devi effettuare tutte le valutazioni per poter generare il programma!!!
 <?endif;?>
 			<?//print_r ($esami_count);?>
 
+</td></tr>
+
+
+<!-- DIV prog_selezionati -->
+
+<? if ($prog_selezionati>0):?>
+<tr><td colspan="2"><table>
+<tr><td colspan="3">Programmi generati:</td></tr>
+<tr><th>Data esame</th><th>Tipo di allenamento</th><th>Intensit&agrave;</th></tr>
+<? foreach($prog_selezionati as $prog):?>
+			<tr>
+                <td><?=strftime( ' %d - %m - %g ',  strtotime($prog->timestamp));?></td>
+                <td><?= $prog->tipo_prog?></td>
+                <td><?= $prog->num_prog?></td>
+      <!--
+			    <td><a href="<?=site_url()?>/visualizza/sf36/<?= $sf->idsf36?>">Visualizza</a></td>
+-->
+			</tr>
+		<? endforeach?>
+</table></td></tr></table>
+<? endif;?>
+
+</table>
 
 <br>
 antropometria
 <canvas id="canvas" height="250" width="300"></canvas>
+
+
 </div>
+
+
+
 <div id="split2">
 
 
@@ -167,7 +192,7 @@ antropometria
 <div class="esami" id="esami_antropometria">
 <? if ($t_antropometria>0):?>
 <table class="esame">
-<tr><td colspan="2" id="titolo">ANTROPOMETRIA</td></tr><tr><th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
+<tr><td colspan="3" id="titolo">ANTROPOMETRIA</td></tr><tr><th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
 <? foreach($t_antropometria as $ant):?>
 			<tr>
                 <td><?=strftime( ' %d - %m - %g ',  strtotime($ant->data));?></td>
@@ -384,7 +409,9 @@ antropometria
 	var lineChartData = {
 		labels : [
 		<? foreach($t_antropometria as $ant):?>
-		"<?= $ant->data?>",
+
+		
+		"<?=strftime( ' %d - %m - %g ',  strtotime($ant->data));?>",
 		<? endforeach?>],
 		
 		datasets : [
