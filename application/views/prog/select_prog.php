@@ -27,8 +27,8 @@ table thead tr {
 			<tr>
 				<th>Programma</th>
 				<th>Intensit&agrave;</th>
-				<th>VO2 (xx%)</th>
-				<th>HR (xx%)</th>
+				<th>VO2 (x%)</th>
+				<th>HR (x%)</th>
 				<th><abbr title="Ratings of Perceived Exertion">RPE</abbr></th>
 				<th>Watt</th>
 				<th colspan="5">Protocollo</th>
@@ -118,7 +118,7 @@ table thead tr {
 			<tr>
 				<td><input type="radio" name="prog_rinforzo" value="1"  <?php if($prog_choosen==1) echo "checked" ?>>&nbsp;1</td>
 				<td><em>Very Light</em></td>
-				<td>&lt; 30</td>
+				<td>&lt; <?= (int)($sft->max * 0.30) ?> (30)</td>
 				<td>3 min di riscaldamento</td>
 				<td>10 ripetizioni</td>
 				<td>3 min di riposo</td>
@@ -129,7 +129,7 @@ table thead tr {
 			<tr>
 				<td><input type="radio" name="prog_rinforzo" value="2" <?php if($prog_choosen==2) echo "checked" ?>>&nbsp;2</td>
 				<td><em>Light</em></td>
-				<td>30 - 49</td>
+				<td><?= (int)($sft->max * 0.40) ?> - <?= (int)($sft->max * 0.49) ?> (30-49)</td>
 				<td>3 min di riscaldamento</td>
 				<td>10 ripetizioni</td>
 				<td>3 min di riposo</td>
@@ -140,7 +140,7 @@ table thead tr {
 			<tr>
 				<td><input type="radio" name="prog_rinforzo" value="3" <?php if($prog_choosen==3) echo "checked" ?>>&nbsp;3</td>
 				<td><em>Moderate</em></td>
-				<td>50 - 59</td>
+				<td><?= (int)($sft->max * 0.50) ?> - <?= (int)($sft->max * 0.59) ?> (50-59)</td>
 				<td>3 min di riscaldamento</td>
 				<td>10 ripetizioni</td>
 				<td>3 min di riposo</td>
@@ -151,7 +151,7 @@ table thead tr {
 			<tr>
 				<td><input type="radio" name="prog_rinforzo" value="4" <?php if($prog_choosen==4) echo "checked" ?>>&nbsp;4</td>
 				<td><em>Vigorous</em></td>
-				<td>60 - 69</td>
+				<td><?= (int)($sft->max * 0.60) ?> - <?= (int)($sft->max * 0.69) ?> (60-69)</td>
 				<td>3 min di riscaldamento</td>
 				<td>10 ripetizioni</td>
 				<td>3 min di riposo</td>

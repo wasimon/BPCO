@@ -335,7 +335,8 @@ echo form_open('esami/SFT', $attributes);
 <tr>
  <td><input type="text" <?=$x?> class="required number"  name="peso" value="<? if($display)echo $sft->peso  ;?>" size="10" id="peso" /></td>
  <td><input type="text" <?=$x?> class="required number"  name="ripetizioni" value="<? if($display)echo $sft->ripetizioni  ;?>" size="10" id="ripetizioni" onFocus="startCalc();" onBlur="stopCalc();"></td>
- <td><input type="text" disabled="disabled" <?=$x?>   name="massimale" value="<? if($display)echo $sft->massimale  ;?>" size="10" id="massimale" /></td>
+ 
+ <td><input type="text" readonly name="massimale" value="<? if($display)echo $sft->massimale  ;?>" size="10" id="massimale" /></td>
 </tr></table>
 </fieldset>
 

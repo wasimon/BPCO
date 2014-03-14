@@ -30,12 +30,16 @@ class Esami_model extends CI_Model {
 		return $insert;
 	}
 	
-	// Antropometria
-	function getAntropometria($codfis)
+
+	function getAntropometria($codfis, $last=TRUE)
 	{
 		try {
 			$this->db->order_by('idantro', 'DESC');
-			$results = $this->db->get_where('t_antropometria', array('codfis' => $codfis), 1, 0);
+			
+			if($last)
+				$results = $this->db->get_where('t_antropometria', array('codfis' => $codfis), 1, 0);
+			else
+				$results = $this->db->get_where('t_antropometria', array('codfis' => $codfis));
 			
 			if($results->num_rows())
 				return $results->row();
@@ -90,7 +94,27 @@ class Esami_model extends CI_Model {
 		return $insert;
 	}
 
-	function create_sft($input)
+
+	function getSFT($codfis, $last=TRUE)
+	{
+		try {
+			$this->db->order_by('idsft', 'DESC');
+			
+			if ($last)
+				$results = $this->db->get_where('t_sft', array('codfis' => $codfis), 1, 0);
+			else
+				$results = $this->db->get_where('t_sft', array('codfis' => $codfis));
+			
+			if($results->num_rows())
+				return $results->row();
+			
+		} catch (Exception $e) {
+			log_message('warning', 'Error while loading SFT for :'.$codfis);
+		}
+		
+		return NULL;
+	}
+	function createSFT($input)
 	{
 		$insert = $this->db->insert('t_sft', $input);
 		return $insert;
@@ -107,11 +131,15 @@ class Esami_model extends CI_Model {
 
 
 // Ciclo ERG
-	function getCicloERG($codfis)
+	function getCicloERG($codfis, $last=TRUE)
 	{
 		try {
 			$this->db->order_by('idciclo', 'DESC');
-			$results = $this->db->get_where('t_cicloerg', array('codfis' => $codfis), 1, 0);
+			
+			if($last)
+				$results = $this->db->get_where('t_cicloerg', array('codfis' => $codfis), 1, 0);
+			else
+				$results = $this->db->get_where('t_cicloerg', array('codfis' => $codfis));
 			
 			if($results->num_rows())
 				return $results->row();

@@ -40,12 +40,12 @@
 
 $route['default_controller'] = "site";
 $route['404_override'] = '';
-$route['esami/prog/(:any)'] = 'esami/prog/$1'; // TODO: Rimuovere se non serve
+
+$route['esami/prog/(:any)'] = 'prog/index/$1'; // TODO: Rimuovere se non serve
 $route['esami/(:any)'] = 'esami/index/$1';
 
+$route['prog/save/(:any)'] = 'prog/save/$1';
 $route['prog/(:any)'] = 'prog/index/$1';
-
-// $route['sticazzi'] = 'site';  //http://127.0.0.1:8888/bpco/index.php/sticazzi
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

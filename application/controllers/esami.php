@@ -41,7 +41,7 @@ class Esami extends CI_Controller
 					unset($data['aria']);
 					unset($data['pausa']);
 					unset($data['stop']);
-					$succes = $this->esami_model->create_sft($data);
+					$succes = $this->esami_model->createSFT($data);
 					break;
                     
 				case 'mrc':
