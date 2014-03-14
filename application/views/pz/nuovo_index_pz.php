@@ -1,6 +1,6 @@
 <html><head>
 <!-- TODO -->	
-	<script src="http://127.0.0.1/JS/Chart.js"></script>
+	<script src="/js/Chart.js"></script>
 	<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
 	<style>
 		canvas{
@@ -109,7 +109,7 @@ A:hover { text-decoration: underline; }
 <div id="container" class="clearfix">
 <!-- riga indice -->
 <div id="barra">
-<table width="100%" border="0" style="border: none; border-spacing:0;">
+<table width="100%" border="0" cellspacing="3" cellpadding="3" style="border: none; border-spacing:0;">
 <tr>
 <td class="barra" id="t_antropometria">ANTROPOMETRIA</td>
 <td class="barra" id="t_mrc">MRC</td>
@@ -195,7 +195,7 @@ antropometria
 <tr><td colspan="3" id="titolo">ANTROPOMETRIA</td></tr><tr><th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
 <? foreach($t_antropometria as $ant):?>
 			<tr>
-                <td><?=strftime( ' %d - %m - %g ',  strtotime($ant->data));?></td>
+                <td><?=strftime( ' %d - %m - %g ', $ant->data);?></td>
                 <td><?= $ant->BMI?></td>
                  <td><a href="<?=site_url()?>/visualizza/antropometria/<?= $ant->idantro?>">Visualizza</a></td>
 			</tr>
@@ -214,7 +214,7 @@ antropometria
 <div class="esami" id="esami_mrc">
 <? if ($t_mrc>0):?>
 <table class="esame">
-<tr><td colspan="2" id="titolo">MRC</td></tr><tr><th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
+<tr><td colspan="3" id="titolo">MRC</td></tr><tr><th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
 <? foreach($t_mrc as $mrc):?>
 
 			<tr>
@@ -235,7 +235,7 @@ antropometria
 <div class="esami" id="esami_sf36">
 <? if ($t_sf36>0):?>
 <table class="esame">
-<tr><td colspan="2" id="titolo">Short form 36</td></tr>
+<tr><td colspan="3" id="titolo">Short form 36</td></tr>
 <tr><th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
 <? foreach($t_sf36 as $sf):?>
 			<tr>
@@ -257,7 +257,7 @@ antropometria
 <div class="esami" id="esami_sgrq">
 <? if ($t_sgrq>0):?>
 <table class="esame"><tr>
-<tr><td colspan="2" id="titolo">Saint George</td></tr>
+<tr><td colspan="3" id="titolo">Saint George</td></tr>
 <th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
 <? foreach($t_sgrq as $sg):?>
 			<tr>
@@ -281,7 +281,7 @@ antropometria
 <div class="esami" id="esami_cicloerg">
 <? if ($t_cicloerg>0):?>
 <table class="esame">
-<tr><td colspan="2" id="titolo">Test da sforzo</td></tr>
+<tr><td colspan="3" id="titolo">Test da sforzo</td></tr>
 <tr><th>Data esame</th><th>Totale</th></tr>
 <? foreach($t_cicloerg as $ciclo):?>
 			<tr>
@@ -303,7 +303,7 @@ antropometria
 <div class="esami" id="esami_sft">
 <? if ($t_sft>0):?>
 <table class="esame">
-<tr><td colspan="2" id="titolo">Senior fitness test</td></tr>
+<tr><td colspan="3" id="titolo">Senior fitness test</td></tr>
 <tr><th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
 <? foreach($t_sft as $st):?>
 			<tr>
@@ -325,7 +325,7 @@ antropometria
 <div class="esami" id="esami_tinetti">
 <? if ($t_tinetti>0):?>
 <table class="esame">
-<tr><td colspan="2" id="titolo">Tinetti</td></tr>
+<tr><td colspan="3" id="titolo">Tinetti</td></tr>
 <tr><th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
 <? foreach($t_tinetti as $tin):?>
 			<tr>
@@ -348,7 +348,7 @@ antropometria
 <div class="esami" id="esami_mmse">
 <? if ($t_mmse>0):?>
 <table class="esame">
-<tr><td colspan="2" id="titolo">Mini Mental State</td></tr>
+<tr><td colspan="3" id="titolo">Mini Mental State</td></tr>
 <tr><th>Data esame</th><th>Totale</th><th>Visualizza</th></tr>
 <? foreach($t_mmse as $mmse):?>
 			<tr>

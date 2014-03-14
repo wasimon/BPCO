@@ -11,11 +11,12 @@
 <style type="text/css">
 
 body{
-	background-image:url('logo.png');
+	background-image:url('/img/logo.png');
+    background-size: contain; /* Height: auto is to keep aspect ratio */
+	background-attachment: fixed;
 	background-repeat: no-repeat;
-	background-position: right top;
+	background-position: center;
 	margin-right: 200px;
-
 }
 fieldset{
     width: 300px;
