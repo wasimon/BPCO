@@ -22,6 +22,7 @@ class Prog extends CI_Controller
 		$subj = $this->pazienti->getByCF($cf);
 		$erg = $this->esami->getCicloERG($cf);
 		$sft = $this->esami->getSFT($cf);
+		$antrop = $this->esami->getAntropometria($cf);
 		
 		$ratio = ($erg->vo2max / $erg->vo2predetto);
 
@@ -43,28 +44,30 @@ class Prog extends CI_Controller
 				break;
 		}
 		
-		$this->view_data['prog_choosen'] = $prog_ch;
+		$this->view_data['prog'][TIPO_PROG_AEROBICO] = $prog_ch;
+		$this->view_data['prog'][TIPO_PROG_RINFORZO] = $prog_ch;
+		$this->view_data['prog'][TIPO_PROG_ADDOMINALI] = $prog_ch;
+
 		$this->view_data['cod_fis'] = $cf;
+		$this->view_data['vo2max'] = $erg->vo2max;
+		$this->view_data['sft_max'] = $sft->massimale;
+		$this->view_data['BMI'] = $antrop->BMI;
 		
 		// TODO: Calcola eta di nascita
 		$eta = 45;
 		if ($subj->sesso == 'M')
-			$erg->hr = 230 - (1.1*$eta);
+			$this->view_data['hearth_rate'] = 230 - (1.1*$eta);
 		else
-			$erg->hr = 207 - (1.1*$eta);
-		
-
-		$this->view_data['cicloERG'] = $erg;
-		
-		$sft->max = $sft->massimale;
-		$this->view_data['sft'] = $sft;
+			$this->view_data['hearth_rate'] = 207 - (1.1*$eta);
 		
 		$this->view_data['hidden_fields'] = array( 
 			'cf'=>$cf,
 			'suggested_prog'=>$prog_ch,
 		);
 		
-		$this->load->view('prog/select_prog', $this->view_data);
+		$this->load->view('prog/select_prog_head', $this->view_data);
+		$this->load->view('prog/view_prog', $this->view_data);
+		$this->load->view('prog/select_prog_foot', $this->view_data);
 	}
 	
 	
