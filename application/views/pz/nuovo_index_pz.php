@@ -166,9 +166,8 @@ Devi effettuare tutte le valutazioni per poter generare il programma!!!
                 <td><?=date(' d - m - Y ', $prog->timestamp);?></td>
                 <td><?= $prog->tipo_prog?></td>
                 <td><?= $prog->num_prog?></td>
-      <!--
-			    <td><a href="<?=site_url()?>/visualizza/sf36/<?= $sf->idsf36?>">Visualizza</a></td>
--->
+    		    <td><a href="<?=site_url()?>/esami/prog/PDF/<?=$codicefiscale?>"> genera PDF</a></td>
+
 			</tr>
 		<? endforeach?>
 </table></td></tr></table>
