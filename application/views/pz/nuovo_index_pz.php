@@ -163,7 +163,7 @@ Devi effettuare tutte le valutazioni per poter generare il programma!!!
 <tr><th>Data esame</th><th>Tipo di allenamento</th><th>Intensit&agrave;</th></tr>
 <? foreach($prog_selezionati as $prog):?>
 			<tr>
-                <td><?=strftime( ' %d - %m - %g ',  strtotime($prog->timestamp));?></td>
+                <td><?=date(' d - m - Y ', $prog->timestamp);?></td>
                 <td><?= $prog->tipo_prog?></td>
                 <td><?= $prog->num_prog?></td>
       <!--

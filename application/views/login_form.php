@@ -16,15 +16,24 @@ body{
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-position: center;
-	margin-right: 200px;
+
+	
 }
 fieldset{
+	
     width: 300px;
     height: 200px;
     position: relative;
     vertical-align: middle;
-	background-color: white;
-    
+	
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+	    
 }
 #intro {
 
@@ -32,15 +41,14 @@ width: 200px;
 height: 200px;
 position: absolute;
 top: 35%;
-left: 40%;
+left: 20%;
 margin-top: -50px;
 margin-left: -50px;
 }
 
  </style>
  
- <br><br><br><br>
- <center><h1>Metti in moto il tuo respiro</h1></center>
+ <h1>Metti in moto il tuo respiro</h1>
 <div id="intro" align="center">
 <fieldset >
 <legend>Login </legend>
