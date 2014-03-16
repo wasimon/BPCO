@@ -18,52 +18,7 @@ class Prog extends CI_Controller
     
 	function index($cf)
 	{
-		$prog_ch = 0;
-		$subj = $this->pazienti->getByCF($cf);
-		$erg = $this->esami->getCicloERG($cf);
-		$sft = $this->esami->getSFT($cf);
-		$antrop = $this->esami->getAntropometria($cf);
-		
-		$ratio = ($erg->vo2max / $erg->vo2predetto);
-
-		switch (TRUE) {
-			case ($ratio <= 0.25):
-				$prog_ch = 1;
-				break;
-			
-			case ($ratio > 0.25 && $ratio <= 0.5):
-				$prog_ch = 2;
-				break;
-
-			case ($ratio > 0.5 && $ratio <= 0.75):
-				$prog_ch = 3;
-				break;
-
-			case ($ratio > 0.75):
-				$prog_ch = 4;
-				break;
-		}
-		
-		$this->view_data['prog'][TIPO_PROG_AEROBICO] = $prog_ch;
-		$this->view_data['prog'][TIPO_PROG_RINFORZO] = $prog_ch;
-		$this->view_data['prog'][TIPO_PROG_ADDOMINALI] = $prog_ch;
-
-		$this->view_data['cod_fis'] = $cf;
-		$this->view_data['vo2max'] = $erg->vo2max;
-		$this->view_data['sft_max'] = $sft->massimale;
-		$this->view_data['BMI'] = $antrop->BMI;
-		
-		// TODO: Calcola eta di nascita
-		$eta = 45;
-		if ($subj->sesso == 'M')
-			$this->view_data['hearth_rate'] = 230 - (1.1*$eta);
-		else
-			$this->view_data['hearth_rate'] = 207 - (1.1*$eta);
-		
-		$this->view_data['hidden_fields'] = array( 
-			'cf'=>$cf,
-			'suggested_prog'=>$prog_ch,
-		);
+		$this->_genViewData($cf);
 		
 		$this->load->view('prog/select_prog_head', $this->view_data);
 		$this->load->view('prog/view_prog', $this->view_data);
@@ -77,7 +32,7 @@ class Prog extends CI_Controller
 		{
 			$this->index();
 		}
-		 else
+		else
 		{
 			$codfis = $this->input->post('cf');
 			$default = $this->input->post('suggested_prog');
@@ -101,21 +56,20 @@ class Prog extends CI_Controller
 	
 	function PDF($cf)
 	{
-		require('tcpdf/tcpdf.php');
+		require_once('tcpdf/tcpdf.php');
 
+		$paziente = $this->pazienti->getByCF($cf);
+		$this->_genViewData($cf, FALSE);
 
 
 		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 		// set document information
-		$pdf->SetCreator(PDF_CREATOR);
-		$pdf->SetAuthor('Nicola Asuni');
-		$pdf->SetTitle('TCPDF Example 001');
-		$pdf->SetSubject('TCPDF Tutorial');
-		$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+		$pdf->SetCreator(BPCO_PDF_CREATOR);
+		$pdf->SetTitle('BPCO Esercizi Selezionati');
 
 		// set default header data
-		$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 001', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
+		$pdf->SetHeaderData("../img/logo.png", 15, $this->view_data['PDF']['title'], $this->view_data['PDF']['header']);
 		$pdf->setFooterData(array(0,64,0), array(0,64,128));
 
 		// set header and footer fonts
@@ -158,10 +112,12 @@ class Prog extends CI_Controller
 		$pdf->AddPage();
 
 		// set text shadow effect
-		$pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
+		// $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
 
 		// Set some content to print
-		$html = 'ciao';	
+		// $html = 'ciao';	
+		
+		$html = $this->load->view('prog/view_prog', $this->view_data, TRUE);
 
 		// Print text using writeHTMLCell()
 		$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
@@ -170,8 +126,76 @@ class Prog extends CI_Controller
 
 		// Close and output PDF document
 		// This method has several options, check the source code documentation for more information.
-		$pdf->Output('example_001.pdf', 'I');
+		$pdf->Output($this->view_data['PDF']['filename'], 'I');
 
 	}
+	
+	
+	private function _genViewData($cf, $calculate = TRUE)
+	{
+		$prog_ch = 0;
+		$subj = $this->pazienti->getByCF($cf);
+		$erg = $this->esami->getCicloERG($cf);
+		$sft = $this->esami->getSFT($cf);
+		$antrop = $this->esami->getAntropometria($cf);
+		
+		if ($calculate)
+		{
+			$ratio = ($erg->vo2max / $erg->vo2predetto);
+
+			switch (TRUE) {
+				case ($ratio <= 0.25):
+				$prog_ch = 1;
+				break;
+			
+				case ($ratio > 0.25 && $ratio <= 0.5):
+				$prog_ch = 2;
+				break;
+
+				case ($ratio > 0.5 && $ratio <= 0.75):
+				$prog_ch = 3;
+				break;
+
+				case ($ratio > 0.75):
+				$prog_ch = 4;
+				break;
+			}
+		
+			$this->view_data['prog'][TIPO_PROG_AEROBICO] = $prog_ch;
+			$this->view_data['prog'][TIPO_PROG_RINFORZO] = $prog_ch;
+			$this->view_data['prog'][TIPO_PROG_ADDOMINALI] = $prog_ch;
+		}
+		else
+		{
+			$saved_progs = $this->programmi->getProg($cf);
+			
+			$this->view_data['prog'][TIPO_PROG_AEROBICO] = $saved_progs[TIPO_PROG_AEROBICO]->p;
+			$this->view_data['prog'][TIPO_PROG_RINFORZO] = $saved_progs[TIPO_PROG_RINFORZO]->p;
+			$this->view_data['prog'][TIPO_PROG_ADDOMINALI] = $saved_progs[TIPO_PROG_ADDOMINALI]->p;
+			
+			$this->view_data['PDF']['filename'] = "{$subj->cognome}.{$subj->nome}.".date('Y-m-d', current(	$saved_progs)->timestamp).".pdf";
+			$this->view_data['PDF']['title'] = "Programmi Selezionati per il paziente {$subj->cognome} {$subj->nome} in data ".date('Y-m-d', current(	$saved_progs)->timestamp);
+			$this->view_data['PDF']['header'] = "";
+		}
+
+
+		$this->view_data['cod_fis'] = $cf;
+		$this->view_data['vo2max'] = $erg->vo2max;
+		$this->view_data['sft_max'] = $sft->massimale;
+		$this->view_data['BMI'] = $antrop->BMI;
+		
+		// TODO: Calcola eta di nascita
+		$eta = 45;
+		if ($subj->sesso == 'M')
+			$this->view_data['hearth_rate'] = 230 - (1.1*$eta);
+		else
+			$this->view_data['hearth_rate'] = 207 - (1.1*$eta);
+		
+		$this->view_data['hidden_fields'] = array( 
+			'cf'=>$cf,
+			'suggested_prog'=>$prog_ch,
+		);
 	}
+	
+}
  
