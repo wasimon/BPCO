@@ -58,7 +58,8 @@ class Prog extends CI_Controller
 	{
 		require_once('tcpdf/tcpdf.php');
 
-		$paziente = $this->pazienti->getByCF($cf);
+		$subj = $this->pazienti->getByCF($cf);
+		
 		$this->_genViewData($cf, FALSE);
 
 		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -100,27 +101,19 @@ class Prog extends CI_Controller
 		// set default font subsetting mode
 		$pdf->setFontSubsetting(true);
 
-		// Set font
-		// dejavusans is a UTF-8 Unicode font, if you only need to
-		// print standard ASCII chars, you can use core fonts like
-		// helvetica or times to reduce file size.
 		$pdf->SetFont('dejavusans', '', 14, '', true);
 
-		// Add a page
-		// This method has several options, check the source code documentation for more information.
-		$pdf->AddPage();
+		for ($i=0; $i <2 ; $i++) { 
+			$pdf->AddPage();
 
-		// set text shadow effect
-		// $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
+			include_once 'application/views/prog/stampa/'.$i.'.php';
 
-		//  include_once 'application/views/stampa.php';
+			$pdf->writeHTMLCell(0, 0, '', '', $html.'$i', 0, 1, 0, true, '', true);
 
+			$pdf->lastPage();
+		}
 
-		$html = $this->load->view('prog/view_prog', $this->view_data, TRUE);
-
-
-		$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
-		$pdf->Output($this->view_data['PDF']['filename'], 'I');
+		$pdf->Output('Programma_'.$subj->nome, 'I');
 
 
 	}
@@ -133,6 +126,7 @@ class Prog extends CI_Controller
 		$erg = $this->esami->getCicloERG($cf);
 		$sft = $this->esami->getSFT($cf);
 		$antrop = $this->esami->getAntropometria($cf);
+		
 		
 		if ($calculate)
 		{
