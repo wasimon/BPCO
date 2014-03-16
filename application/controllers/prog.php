@@ -108,14 +108,14 @@ class Prog extends CI_Controller
 		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 		// set document information
-		$pdf->SetCreator(PDF_CREATOR);
-		$pdf->SetAuthor('Nicola Asuni');
-		$pdf->SetTitle('TCPDF Example 001');
-		$pdf->SetSubject('TCPDF Tutorial');
+		$pdf->SetCreator('gianni');
+		$pdf->SetAuthor('Simone Tardivo');
+		$pdf->SetTitle('TITOLO');
+		$pdf->SetSubject('SOTTOTITOLO');
 		$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 		// set default header data
-		$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 001', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
+		$pdf->SetHeaderData('../img/logo.png', '100','Respiro in moto',' nome medico', array(0,64,255), array(0,64,128));
 		$pdf->setFooterData(array(0,64,0), array(0,64,128));
 
 		// set header and footer fonts
@@ -160,13 +160,33 @@ class Prog extends CI_Controller
 		// set text shadow effect
 		$pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
 
+//  include_once 'application/views/stampa.php';
+
 		// Set some content to print
-		$html = 'ciao';	
+$html='ciao'.$cf.'mona';
+
+
+$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+
+// reset pointer to the last page
+$pdf->lastPage();
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// add a page
+$pdf->AddPage();
+
+$html='ciao mona';
+
 
 		// Print text using writeHTMLCell()
 		$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
 		// ---------------------------------------------------------
+
+
+		$pdf->lastPage();
 
 		// Close and output PDF document
 		// This method has several options, check the source code documentation for more information.
