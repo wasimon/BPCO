@@ -1,19 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<link rel="stylesheet" href="print.css" type="text/css">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Programma Respiro in moto</title>
-</head>
-
-<body>
-	<div width=100%>
+<<<<<<< Local Changes
+$html='
 										<h1>RESPIRO IN MOTO</h1>
 										<img src="logo.png" width="720" align="center" />
-		</div>								
 
-<div class="intestazione">RESPIRO IN MOTO, quaderno di: Simone Tardivo</div>
-<hr>
+<div>RESPIRO IN MOTO, quaderno di:'.$.'</div>
+'
+
+// reset pointer to the last page
+$pdf->lastPage();
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Print a table
+
+// add a page
+$pdf->AddPage();
     
 										<h1>QUADERNO PERSONALE DI…</h1>
 
@@ -740,3 +740,5 @@ Puoi utilizzare questo foglio come diario/calendario, lo sfondo colorato corrisp
 <p>&nbsp;</p>
 </body>
 </html>
+=======
+>>>>>>> External Changes
