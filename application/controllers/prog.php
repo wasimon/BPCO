@@ -18,7 +18,7 @@ class Prog extends CI_Controller
     
 	function index($cf)
 	{
-		$this->_genViewData($cf);
+		$this->_generateViewData($cf);
 		
 		$this->load->view('prog/select_prog_head', $this->view_data);
 		$this->load->view('prog/view_prog', $this->view_data);
@@ -54,79 +54,108 @@ class Prog extends CI_Controller
 		}
 	}
 	
-	function PDF($cf)
+	function PDF($cf, $download_pdf=FALSE)
 	{
+		// Path realtiva ad index.php
 		require_once('tcpdf/tcpdf.php');
 
-		$subj = $this->pazienti->getByCF($cf);
 		
-		$this->_genViewData($cf, FALSE);
-
-		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
-		// set document information
+		// Genera i dati che saranno utilizzati in tutte le view caricate
+		$this->_generateViewData($cf, FALSE);
+		$this->view_data['le_variabili'] = array_keys($this->view_data);
+		
+		// SETUP DELLA LIBRERIA TCPDF
+		$pdf = new TCPDF();
+		// set document information ( definito in application/config/constants.php )
 		$pdf->SetCreator(BPCO_PDF_CREATOR);
-		$pdf->SetTitle('BPCO Esercizi Selezionati');
-
+		$pdf->SetTitle($this->view_data['PDF']['title']);
+		
 		// set default header data
 		$pdf->SetHeaderData("../img/logo.png", 15, $this->view_data['PDF']['title'], $this->view_data['PDF']['header']);
 		$pdf->setFooterData(array(0,64,0), array(0,64,128));
-
 		// set header and footer fonts
-		$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-		$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
-
-		// set default monospaced font
+		$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', 10));
+		$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', 8));
 		$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-
 		// set margins
 		$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
 		$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
 		$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-
-		// set auto page breaks
-		$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-
 		// set image scale factor
 		$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-		// set some language-dependent strings (optional)
-		if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-			require_once(dirname(__FILE__).'/lang/eng.php');
-			$pdf->setLanguageArray($l);
-		}
-
-		// ---------------------------------------------------------
-
 		// set default font subsetting mode
 		$pdf->setFontSubsetting(true);
+		$pdf->SetFont('dejavusans', '', 11, '', true);
+		// ---------------------------------------------------------
 
-		$pdf->SetFont('dejavusans', '', 14, '', true);
+		// Disabilita l'interruzione automatica della pagina
+		$pdf->SetAutoPageBreak(FALSE);
 
-		for ($i=0; $i <2 ; $i++) { 
+		// DOCS: http://ellislab.com/codeigniter/user-guide/helpers/directory_helper.html
+		// Note: Paths are almost always relative to your main index.php file.
+		$this->load->helper('directory');
+		$dir_map = directory_map('./application/views/prog/PDF/', FALSE);
+		
+		// In questo modo non serve nominare le pagine con il solo numero, possono avere anche un nome user-friendly
+		// o per meglio dire "developer-friendly" (leggasi `Saimon-friendly`)
+		foreach ($dir_map as $view_name)
+		{
 			$pdf->AddPage();
 
-			include_once 'application/views/prog/stampa/'.$i.'.php';
+			// Precedente implementazione:
+			// include_once 'application/views/prog/stampa/'.$i.'.php';
+			// $pdf->writeHTMLCell(0, 0, '', '', $html.'$i', 0, 1, 0, true, '', true);
+			
+			// USAGE:
+			// Tutte la chiavi definite in $this->view_data (che viene riempito dalla funzione $this->_generateViewData() )
+			//   sono trasformate in variabili avvessibili nella view. Per esempio se definiamo $this->view_data['saimon'] = "una cacca";
+			//   e nel file della view facciamo: echo("Saimon è ".$saimon ) php ci stamperà la stringa: "Saimon è una cacca"
+			//   Vedete gli esempi che ho fatto nei file delle view. ;-)
+			// 
+			// $return_value = $this->load->view(string $ViewName, array $ViewVariables, boolean $return_instead_of_echo);
+			$page_html = $this->load->view("prog/PDF/{$view_name}", $this->view_data, TRUE);
+			
+			// Supported tags are: a, b, blockquote, br, dd, del, div, dl, dt, em, font, h1, h2, h3,
+			//	 h4, h5, h6, hr, i, img, li, ol, p, pre, small, span, strong, sub, sup, table, tcpdf,
+			//	 td, th, thead, tr, tt, u, ul
+			// NOTE: all the HTML attributes must be enclosed in double-quote.
+			// DOCS: http://www.tcpdf.org/doc/code/classTCPDF.html#ac3fdf25fcd36f1dce04f92187c621407
+			$pdf->writeHTML($page_html);
 
-			$pdf->writeHTMLCell(0, 0, '', '', $html.'$i', 0, 1, 0, true, '', true);
 
-			$pdf->lastPage();
+			$pdf->endPage();
 		}
 
-		$pdf->Output('Programma_'.$subj->nome, 'I');
-
-
+		if ($download_pdf===TRUE OR strcasecmp($download_pdf, 'si') == 0 OR strcasecmp($download_pdf, 'download') == 0)
+		{
+			// Force download if url is: /prog/PDF/$CODFISC/download OR /prog/PDF/$CODFISC/si
+			$pdf_mode = "D";
+		}
+		else
+		{
+			// In all other cases simply let the browser decide what to do
+			$pdf_mode = "I";
+		}
+		
+		// il secondo parametro della funzione Output puo essere utile!
+		// DOCS: http://www.tcpdf.org/doc/code/classTCPDF.html#a3d6dcb62298ec9d42e9125ee2f5b23a1
+		$pdf->Output($this->view_data['PDF']['filename'], $pdf_mode);
 	}
 	
 	
-	private function _genViewData($cf, $calculate = TRUE)
+	private function _generateViewData($cf, $calculate = TRUE)
 	{
 		$prog_ch = 0;
-		$subj = $this->pazienti->getByCF($cf);
-		$erg = $this->esami->getCicloERG($cf);
-		$sft = $this->esami->getSFT($cf);
-		$antrop = $this->esami->getAntropometria($cf);
 		
+		$this->view_data['paziente'] = $this->pazienti->getAnagrafica($cf);
+		$this->view_data['esami'] = $this->esami->getAllExams($cf, TRUE);
+		// Opzionalmente per far caricare gli esami come array:
+		// $this->view_data['esami'] = $this->esami->getAllExams($cf, TRUE, TRUE);
+
+		$pz = $this->view_data['paziente'];
+		$erg = $this->view_data['esami']->cicloerg;
+		$sft = $this->view_data['esami']->sft;
+		$antrop = $this->view_data['esami']->antropometria;
 		
 		if ($calculate)
 		{
@@ -162,9 +191,9 @@ class Prog extends CI_Controller
 			$this->view_data['prog'][TIPO_PROG_RINFORZO] = $saved_progs[TIPO_PROG_RINFORZO]->p;
 			$this->view_data['prog'][TIPO_PROG_ADDOMINALI] = $saved_progs[TIPO_PROG_ADDOMINALI]->p;
 			
-			$this->view_data['PDF']['filename'] = "{$subj->cognome}.{$subj->nome}.".date('Y-m-d', current(	$saved_progs)->timestamp).".pdf";
-			$this->view_data['PDF']['title'] = "Programmi Selezionati per il paziente {$subj->cognome} {$subj->nome} in data ".date('Y-m-d', current(	$saved_progs)->timestamp);
-			$this->view_data['PDF']['header'] = "";
+			$this->view_data['PDF']['filename'] = "Cartella.di.{$pz->cognome}.{$pz->nome}.".date('Y-m-d', current(	$saved_progs)->timestamp).".pdf";
+			$this->view_data['PDF']['title'] = "Programmi Selezionati per il paziente '{$pz->cognome} {$pz->nome}' in data ".date('Y-m-d', current(	$saved_progs)->timestamp);
+			$this->view_data['PDF']['header'] = "TESTO DI HEADER (Si imposta nella riga 196 di controllers/prog.php)";
 		}
 
 
@@ -173,9 +202,9 @@ class Prog extends CI_Controller
 		$this->view_data['sft_max'] = $sft->massimale;
 		$this->view_data['BMI'] = $antrop->BMI;
 		
-		// TODO: Calcola eta di nascita
+		// TODO: Calcolare eta di nascita
 		$eta = 45;
-		if ($subj->sesso == 'M')
+		if ($pz->sesso == 'M')
 			$this->view_data['hearth_rate'] = 230 - (1.1*$eta);
 		else
 			$this->view_data['hearth_rate'] = 207 - (1.1*$eta);
