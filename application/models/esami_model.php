@@ -7,16 +7,16 @@ class Esami_model extends CI_Model {
 
 	function getAllExams($cf, $last_only=FALSE, $as_array=FALSE)
 	{
-		$esami = NULL;
+		$esami = new stdClass();
 		
-		$this->antropometria = $this->getAntropometria($cf, $last_only);
-		$this->cicloerg = $this->getCicloERG($cf, $last_only);
-		$this->mmse = $this->getMMSE($cf, $last_only);
-		$this->mrc = $this->getMRC($cf, $last_only);
-		$this->sf36 = $this->getSF36($cf, $last_only);
-		$this->sft = $this->getSFT($cf, $last_only);
-		$this->sgrq = $this->getSGRQ($cf, $last_only);
-		$esami->tinetti = $this->getTinetti($cf, $last_only);
+		$esami->antropometria = $this->getAntropometria($cf, $last_only, $as_array);
+		$esami->cicloerg = $this->getCicloERG($cf, $last_only, $as_array);
+		$esami->mmse = $this->getMMSE($cf, $last_only, $as_array);
+		$esami->mrc = $this->getMRC($cf, $last_only, $as_array);
+		$esami->sf36 = $this->getSF36($cf, $last_only, $as_array);
+		$esami->sft = $this->getSFT($cf, $last_only, $as_array);
+		$esami->sgrq = $this->getSGRQ($cf, $last_only, $as_array);
+		$esami->tinetti = $this->getTinetti($cf, $last_only, $as_array);
 		
 		if ($as_array)
 			return (array) $esami;
@@ -26,7 +26,7 @@ class Esami_model extends CI_Model {
 
 
 
-	function getTinetti($codfis, $load_last_only=TRUE)
+	function getTinetti($codfis, $load_last_only=TRUE, $as_array=FALSE)
 	{
 		try {
 			$this->db->order_by('idtinetti', 'DESC');
@@ -37,8 +37,12 @@ class Esami_model extends CI_Model {
 				$results = $this->db->get_where('t_tinetti', array('codfis' => $codfis));
 			
 			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
 				return $results->row();
-			
+			}
 		} catch (Exception $e) {
 			log_message('warning', 'Error while loading Tinetti for :'.$codfis);
 		}
@@ -66,7 +70,7 @@ class Esami_model extends CI_Model {
 	}
 	
 
-	function getAntropometria($codfis, $load_last_only=TRUE)
+	function getAntropometria($codfis, $load_last_only=TRUE, $as_array=FALSE)
 	{
 		try {
 			$this->db->order_by('idantro', 'DESC');
@@ -77,8 +81,12 @@ class Esami_model extends CI_Model {
 				$results = $this->db->get_where('t_antropometria', array('codfis' => $codfis));
 			
 			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
 				return $results->row();
-			
+			}
 		} catch (Exception $e) {
 			log_message('warning', 'Error while loading CicloERG for :'.$codfis);
 		}
@@ -92,7 +100,7 @@ class Esami_model extends CI_Model {
 	}    
 
 
-	function getSF36($codfis, $load_last_only=TRUE)
+	function getSF36($codfis, $load_last_only=TRUE, $as_array=FALSE)
 	{
 		try {
 			$this->db->order_by('idsf36', 'DESC');
@@ -103,7 +111,12 @@ class Esami_model extends CI_Model {
 				$results = $this->db->get_where('t_sf36', array('codfis' => $codfis));
 			
 			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
 				return $results->row();
+			}
 			
 		} catch (Exception $e) {
 			log_message('warning', 'Error while loading SF36 for :'.$codfis);
@@ -118,7 +131,7 @@ class Esami_model extends CI_Model {
 	}
   
 	
-	function getMMSE($codfis, $load_last_only=TRUE)
+	function getMMSE($codfis, $load_last_only=TRUE, $as_array=FALSE)
 	{
 		try {
 			$this->db->order_by('idmmse', 'DESC');
@@ -129,7 +142,12 @@ class Esami_model extends CI_Model {
 				$results = $this->db->get_where('t_mmse', array('codfis' => $codfis));
 			
 			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
 				return $results->row();
+			}
 			
 		} catch (Exception $e) {
 			log_message('warning', 'Error while loading MMSE for :'.$codfis);
@@ -163,7 +181,7 @@ class Esami_model extends CI_Model {
 	}
   
 	
-	function getSGRQ($codfis, $load_last_only=TRUE)
+	function getSGRQ($codfis, $load_last_only=TRUE, $as_array=FALSE)
 	{
 		try {
 			$this->db->order_by('idsgrq', 'DESC');
@@ -174,7 +192,12 @@ class Esami_model extends CI_Model {
 				$results = $this->db->get_where('t_sgrq', array('codfis' => $codfis));
 			
 			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
 				return $results->row();
+			}
 			
 		} catch (Exception $e) {
 			log_message('warning', 'Error while loading SGRQ for :'.$codfis);
@@ -189,7 +212,7 @@ class Esami_model extends CI_Model {
 	}
 
 
-	function getSFT($codfis, $load_last_only=TRUE)
+	function getSFT($codfis, $load_last_only=TRUE, $as_array=FALSE)
 	{
 		try {
 			$this->db->order_by('idsft', 'DESC');
@@ -200,7 +223,12 @@ class Esami_model extends CI_Model {
 				$results = $this->db->get_where('t_sft', array('codfis' => $codfis));
 			
 			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
 				return $results->row();
+			}
 			
 		} catch (Exception $e) {
 			log_message('warning', 'Error while loading SFT for :'.$codfis);
@@ -214,7 +242,7 @@ class Esami_model extends CI_Model {
 		return $insert;
 	}
   
-	function getMRC($codfis, $load_last_only=TRUE)
+	function getMRC($codfis, $load_last_only=TRUE, $as_array=FALSE)
 	{
 		try {
 			$this->db->order_by('idmrc', 'DESC');
@@ -225,7 +253,12 @@ class Esami_model extends CI_Model {
 				$results = $this->db->get_where('t_mrc', array('codfis' => $codfis));
 			
 			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
 				return $results->row();
+			}
 			
 		} catch (Exception $e) {
 			log_message('warning', 'Error while loading MRC for :'.$codfis);
@@ -244,7 +277,7 @@ class Esami_model extends CI_Model {
 
 
 // Ciclo ERG
-	function getCicloERG($codfis, $load_last_only=TRUE)
+	function getCicloERG($codfis, $load_last_only=TRUE, $as_array=FALSE)
 	{
 		try {
 			$this->db->order_by('idciclo', 'DESC');
@@ -255,7 +288,12 @@ class Esami_model extends CI_Model {
 				$results = $this->db->get_where('t_cicloerg', array('codfis' => $codfis));
 			
 			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
 				return $results->row();
+			}
 			
 		} catch (Exception $e) {
 			log_message('warning', 'Error while loading CicloERG for :'.$codfis);
