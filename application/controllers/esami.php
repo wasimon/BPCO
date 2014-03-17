@@ -22,15 +22,15 @@ class Esami extends CI_Controller
 			switch($input)
 			{
 				case 'tinetti':
-					$succes = $this->esami_model->create_tinetti($data);
+					$succes = $this->esami_model->createTinetti($data);
 					break;
     
 				case 'sf36':
-					$succes = $this->esami_model->create_SF36($data);
+					$succes = $this->esami_model->createSF36($data);
 					break;
                     
 				case 'MMSE':
-					$succes = $this->esami_model->create_MMSE($data);
+					$succes = $this->esami_model->createMMSE($data);
 					break;
                     
 				case 'sgrq':
@@ -46,7 +46,7 @@ class Esami extends CI_Controller
                     
 				case 'mrc':
 					unset($data['presenza']);
-					$succes = $this->esami_model->create_mrc($data);
+					$succes = $this->esami_model->createMRC($data);
 					break;
                     
 				case 'cicloerg':
@@ -133,13 +133,6 @@ class Esami extends CI_Controller
 		# code...
 	}
 	*/
-	
-	// GENERA IL PROGRAMMA DI ALLENAMENTO
-	public function prog($codfisc)
-	{
-		//echo $codfisc;
-		$risultato1 = $this->esami_model->get_esami($codfisc);
-	}
 	
 }       
 
