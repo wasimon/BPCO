@@ -10,7 +10,7 @@
 Esami Caricati:
 $esami = <?= print_r(array_keys((array)$esami), true); ?>
 
-
+<?=print_r ($this->session->all_userdata()); ?>
 
 Esempio accesso ad un valore di un esame:
 (vedi righe 18,23,28 di views/prog/PDF/999_ultima_pagina.php )

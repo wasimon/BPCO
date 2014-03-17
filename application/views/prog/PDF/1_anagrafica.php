@@ -1,23 +1,27 @@
-<style type="text/css" media="screen">
-	.colonne .titolo {
-		display: inline-block;
-		margin-right: 200px;
-	}
+<style type="text/css" media="all">
+th{font-weight:bold;}
 </style>
 
-<h1>Dati Paziente</h1>
-<p>In questa pagina uno un po' di variabili per dimostrare come vengono usate.<br> Per una lista completa delle variabili disponibili vedere l'ultima pagina del pdf!</p>
+<h1>Dati personali</h1>
 
-<div class="colonne">
-	<div><strong class="titolo">Nome:</strong> <span class="dato"><?= $paziente->nome ?></span></div>
-	<div><strong class="titolo">Cognome:</strong> <span class="dato"><?= $paziente->cognome ?></span></div>
-	<!-- La riga "data di nascita" potrebbe generare un warning per come è impostata sul database al momento quindi l'ho commentata! -->
-	<!-- <div><strong class="titolo">Data di nascita:</strong> <span class="dato"><?= date('d - m - Y', $paziente->datanascita) ?></span></div> -->
-	<div><strong class="titolo">Data di nascita (come salvata sul database):</strong> <span class="dato"><?= $paziente->datanascita ?></span></div>
-	<hr><br>
-	<div><strong class="titolo">Telefono:</strong> <span class="dato"><?= $paziente->tel ?></span></div>
-</div>
-<h4></h4>
-<pre style="max-height:250px;overflow:hidden;">
-	$paziente = <? print_r($paziente) ?>
-</pre>
+
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr><th>Nome</th><td><?= $paziente->nome ?></td></tr>
+	<tr><th>Cognome</th><td><?= $paziente->cognome ?></td></tr>
+	<tr><th>Data di nascita</th><td><?= $paziente->datanascita ?></td></tr>
+	<tr><th>Indirizzo</th><td><?= $paziente->indirizzovia ?></td></tr>
+	<tr><th>Citt&agrave;</th><td><?= $paziente->indirizzocitta ?></td></tr>
+	<tr><th>CAP</th><td><?= $paziente->indirizzocap ?></td></tr>
+	<tr><th>Provincia</th><td><?= $paziente->indirizzoprovincia ?></td></tr>
+	<tr><th>Numeri di telefono</th><td><?= $paziente->tel ?>&nbsp;&ndash;&nbsp;<?= $paziente->cel ?></td></tr>
+	<tr><th>Persona di riferimento</th><td><?= $paziente->personariferimento ?></td></tr>
+	<tr><th>Numero di telefono</th><td><?= $paziente->telriferimento ?></td></tr>
+	<tr><th>Medico curante</th><td><?= $paziente->medicofamiglia ?></td></tr>
+	<tr><th>Centro pneumologico di riferimento</th><td><?= $paziente->centropneumo ?></td></tr>
+	<tr><th>Specialista di riferimento</th><td><?= $paziente->specpneumo ?></td></tr>
+	<tr><th>Numero di telefono</th><td><?= $paziente->telpneumologo ?></td></tr>
+	<tr><th>Centro di attivit&agrave; di riferimento</th><td><?= $paziente->centromotorio ?></td></tr>
+	<tr><th>Specialista di riferimento</th><td><?= $paziente->specmotorio ?></td></tr>
+	<tr><th>Numero di telefono</th><td><?= $paziente->telmotorio ?></td></tr>
+	
+</table>

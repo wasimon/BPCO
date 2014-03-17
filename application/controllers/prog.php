@@ -10,6 +10,8 @@ class Prog extends CI_Controller
 		$this->load->model('pazienti_model', 'pazienti');
 		$this->load->model('esami_model', 'esami');
 		$this->load->model('programmi_model', 'programmi');
+		$this->load->model('dottori_model', 'dottori');
+		
 		
 		$this->view_data = array(
 			'hidden_fields'=>array(),
@@ -149,6 +151,9 @@ class Prog extends CI_Controller
 		
 		$this->view_data['paziente'] = $this->pazienti->getAnagrafica($cf);
 		$this->view_data['esami'] = $this->esami->getAllExams($cf, TRUE);
+		//carico dati medico
+		$idm = $this->session->userdata('idmedico');
+		$this->view_data['dottori'] = $this->dottori->getDatiMedico($idm);
 		// Opzionalmente per far caricare gli esami come array:
 		// $this->view_data['esami'] = $this->esami->getAllExams($cf, TRUE, TRUE);
 
@@ -156,7 +161,7 @@ class Prog extends CI_Controller
 		$erg = $this->view_data['esami']->cicloerg;
 		$sft = $this->view_data['esami']->sft;
 		$antrop = $this->view_data['esami']->antropometria;
-		
+		$doc = $this->view_data['dottori'];
 		if ($calculate)
 		{
 			$ratio = ($erg->vo2max / $erg->vo2predetto);
@@ -192,8 +197,9 @@ class Prog extends CI_Controller
 			$this->view_data['prog'][TIPO_PROG_ADDOMINALI] = $saved_progs[TIPO_PROG_ADDOMINALI]->p;
 			
 			$this->view_data['PDF']['filename'] = "Cartella.di.{$pz->cognome}.{$pz->nome}.".date('Y-m-d', current(	$saved_progs)->timestamp).".pdf";
-			$this->view_data['PDF']['title'] = "Programmi Selezionati per il paziente '{$pz->cognome} {$pz->nome}' in data ".date('Y-m-d', current(	$saved_progs)->timestamp);
-			$this->view_data['PDF']['header'] = "TESTO DI HEADER (Si imposta nella riga 196 di controllers/prog.php)";
+			$this->view_data['PDF']['title'] = "Programma di trattamento domiciliare del sign. '{$pz->cognome} {$pz->nome}' creato in data ".date('d-m-Y', current(	$saved_progs)->timestamp);
+			
+			$this->view_data['PDF']['header'] = "Programma elaborato dal dottor {$doc->cognome} {$doc->nome}, Tel. {$doc->telefono}";
 		}
 
 
