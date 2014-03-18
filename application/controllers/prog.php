@@ -200,6 +200,7 @@ class Prog extends CI_Controller
 			$this->view_data['PDF']['title'] = "Programma di trattamento domiciliare del sign. '{$pz->cognome} {$pz->nome}' creato in data ".date('d-m-Y', current(	$saved_progs)->timestamp);
 			
 			$this->view_data['PDF']['header'] = "Programma elaborato dal dottor {$doc->cognome} {$doc->nome}, Tel. {$doc->telefono}";
+				
 		}
 
 
@@ -220,6 +221,7 @@ class Prog extends CI_Controller
 			'suggested_prog'=>$prog_ch,
 		);
 	}
+	
 	
 }
 
