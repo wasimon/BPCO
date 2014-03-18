@@ -87,7 +87,7 @@ table.risultati{
                     <td><?= $pz->cognome?></td>
                     <td><?= $pz->datanascita?></td>
                     <td><?= $pz->codfis?></td>
-         <td><a href='<?=base_url()?>index.php/pz/crea_index/<?=$pz->codfis?>'>Visualizza</a></td> 
+         <td><a href='<?=base_url()?>/pz/crea_index/<?=$pz->codfis?>'>Visualizza</a></td> 
      
     			</tr>
     		<? endforeach?>

@@ -30,7 +30,13 @@ class Dottori_model extends CI_Model	{
 		return FALSE;
 	}   
     
-        
+	function getDatiMedico($idm)
+	{	
+
+		$q = $this->db->get_where('medico', array('idmedico'=> $idm));
+		return $q->row();
+		// return $results->row();
+		}         
   
 	function getAll()
 	{

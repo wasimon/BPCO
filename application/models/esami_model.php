@@ -2,15 +2,54 @@
 
 class Esami_model extends CI_Model {
 
-	// TODO: Aggiungere dei controlli, sui dati passati PRIMa di inserire il tutto nel DB.
-	
-	function get_esami($cf)
+	// TODO: Aggiungere dei controlli, sui dati passati PRIMA di inserire il tutto nel DB.
+
+
+	function getAllExams($cf, $last_only=FALSE, $as_array=FALSE)
 	{
-		$anagrafica = $this->db->get_where('paziente', array('codfis' => $cf));
-		return $anagrafica;
+		$esami = new stdClass();
+		
+		$esami->antropometria = $this->getAntropometria($cf, $last_only, $as_array);
+		$esami->cicloerg = $this->getCicloERG($cf, $last_only, $as_array);
+		$esami->mmse = $this->getMMSE($cf, $last_only, $as_array);
+		$esami->mrc = $this->getMRC($cf, $last_only, $as_array);
+		$esami->sf36 = $this->getSF36($cf, $last_only, $as_array);
+		$esami->sft = $this->getSFT($cf, $last_only, $as_array);
+		$esami->sgrq = $this->getSGRQ($cf, $last_only, $as_array);
+		$esami->tinetti = $this->getTinetti($cf, $last_only, $as_array);
+		
+		if ($as_array)
+			return (array) $esami;
+
+		return $esami;
 	}
 
-	function create_tinetti($data)
+
+
+	function getTinetti($codfis, $load_last_only=TRUE, $as_array=FALSE)
+	{
+		try {
+			$this->db->order_by('idtinetti', 'DESC');
+			
+			if($load_last_only)
+				$results = $this->db->get_where('t_tinetti', array('codfis' => $codfis), 1, 0);
+			else
+				$results = $this->db->get_where('t_tinetti', array('codfis' => $codfis));
+			
+			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
+				return $results->row();
+			}
+		} catch (Exception $e) {
+			log_message('warning', 'Error while loading Tinetti for :'.$codfis);
+		}
+		
+		return NULL;
+	}
+	function createTinetti($data)
 	{
 		$etot=0;        
 		$atot=0;
@@ -31,19 +70,23 @@ class Esami_model extends CI_Model {
 	}
 	
 
-	function getAntropometria($codfis, $last=TRUE)
+	function getAntropometria($codfis, $load_last_only=TRUE, $as_array=FALSE)
 	{
 		try {
 			$this->db->order_by('idantro', 'DESC');
 			
-			if($last)
+			if($load_last_only)
 				$results = $this->db->get_where('t_antropometria', array('codfis' => $codfis), 1, 0);
 			else
 				$results = $this->db->get_where('t_antropometria', array('codfis' => $codfis));
 			
 			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
 				return $results->row();
-			
+			}
 		} catch (Exception $e) {
 			log_message('warning', 'Error while loading CicloERG for :'.$codfis);
 		}
@@ -57,13 +100,62 @@ class Esami_model extends CI_Model {
 	}    
 
 
-	function create_SF36($input)
+	function getSF36($codfis, $load_last_only=TRUE, $as_array=FALSE)
+	{
+		try {
+			$this->db->order_by('idsf36', 'DESC');
+			
+			if($load_last_only)
+				$results = $this->db->get_where('t_sf36', array('codfis' => $codfis), 1, 0);
+			else
+				$results = $this->db->get_where('t_sf36', array('codfis' => $codfis));
+			
+			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
+				return $results->row();
+			}
+			
+		} catch (Exception $e) {
+			log_message('warning', 'Error while loading SF36 for :'.$codfis);
+		}
+		
+		return NULL;
+	}
+	function createSF36($input)
 	{
 		$insert = $this->db->insert('t_SF36', $input);
 		return $insert;
 	}
-    
-	function create_MMSE($data)
+  
+	
+	function getMMSE($codfis, $load_last_only=TRUE, $as_array=FALSE)
+	{
+		try {
+			$this->db->order_by('idmmse', 'DESC');
+			
+			if($load_last_only)
+				$results = $this->db->get_where('t_mmse', array('codfis' => $codfis), 1, 0);
+			else
+				$results = $this->db->get_where('t_mmse', array('codfis' => $codfis));
+			
+			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
+				return $results->row();
+			}
+			
+		} catch (Exception $e) {
+			log_message('warning', 'Error while loading MMSE for :'.$codfis);
+		}
+		
+		return NULL;
+	}
+	function createMMSE($data)
 	{
 		$totale = 0;
 		for ($i = 1; $i <= 10; $i++)
@@ -87,7 +179,32 @@ class Esami_model extends CI_Model {
 		$insert = $this->db->insert('t_MMSE', $data);
 		return $insert;
 	}
-    
+  
+	
+	function getSGRQ($codfis, $load_last_only=TRUE, $as_array=FALSE)
+	{
+		try {
+			$this->db->order_by('idsgrq', 'DESC');
+			
+			if($load_last_only)
+				$results = $this->db->get_where('t_sgrq', array('codfis' => $codfis), 1, 0);
+			else
+				$results = $this->db->get_where('t_sgrq', array('codfis' => $codfis));
+			
+			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
+				return $results->row();
+			}
+			
+		} catch (Exception $e) {
+			log_message('warning', 'Error while loading SGRQ for :'.$codfis);
+		}
+		
+		return NULL;
+	}
 	function create_sgrq($input)
 	{
 		$insert = $this->db->insert('t_sgrq', $input);
@@ -95,18 +212,23 @@ class Esami_model extends CI_Model {
 	}
 
 
-	function getSFT($codfis, $last=TRUE)
+	function getSFT($codfis, $load_last_only=TRUE, $as_array=FALSE)
 	{
 		try {
 			$this->db->order_by('idsft', 'DESC');
 			
-			if ($last)
+			if ($load_last_only)
 				$results = $this->db->get_where('t_sft', array('codfis' => $codfis), 1, 0);
 			else
 				$results = $this->db->get_where('t_sft', array('codfis' => $codfis));
 			
 			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
 				return $results->row();
+			}
 			
 		} catch (Exception $e) {
 			log_message('warning', 'Error while loading SFT for :'.$codfis);
@@ -119,8 +241,32 @@ class Esami_model extends CI_Model {
 		$insert = $this->db->insert('t_sft', $input);
 		return $insert;
 	}
-    
-	function create_mrc($input)
+  
+	function getMRC($codfis, $load_last_only=TRUE, $as_array=FALSE)
+	{
+		try {
+			$this->db->order_by('idmrc', 'DESC');
+			
+			if ($load_last_only)
+				$results = $this->db->get_where('t_mrc', array('codfis' => $codfis), 1, 0);
+			else
+				$results = $this->db->get_where('t_mrc', array('codfis' => $codfis));
+			
+			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
+				return $results->row();
+			}
+			
+		} catch (Exception $e) {
+			log_message('warning', 'Error while loading MRC for :'.$codfis);
+		}
+		
+		return NULL;
+	}
+	function createMRC($input)
 	{
 		if ( empty($input['durata_notte']) ) {
 			$input['durata_notte'] = 0;
@@ -131,18 +277,23 @@ class Esami_model extends CI_Model {
 
 
 // Ciclo ERG
-	function getCicloERG($codfis, $last=TRUE)
+	function getCicloERG($codfis, $load_last_only=TRUE, $as_array=FALSE)
 	{
 		try {
 			$this->db->order_by('idciclo', 'DESC');
 			
-			if($last)
+			if($load_last_only)
 				$results = $this->db->get_where('t_cicloerg', array('codfis' => $codfis), 1, 0);
 			else
 				$results = $this->db->get_where('t_cicloerg', array('codfis' => $codfis));
 			
 			if($results->num_rows())
+			{
+				if ($as_array)
+					return $results->row_array();
+				
 				return $results->row();
+			}
 			
 		} catch (Exception $e) {
 			log_message('warning', 'Error while loading CicloERG for :'.$codfis);
@@ -150,7 +301,6 @@ class Esami_model extends CI_Model {
 		
 		return NULL;
 	}
-	
 	function createCicloERG($input)
 	{
 		$insert = $this->db->insert('t_cicloerg', $input);
