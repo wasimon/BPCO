@@ -3,6 +3,9 @@ Allow from all
 # Rewrite without index.php
 RewriteEngine on
 
+RewriteCond %{QUERY_STRING} ^qr$
+RewriteRule ^(.*)$ /index.php?qr=true
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond $1 !^(index\.php|images|robots\.txt)
 RewriteRule ^(.*)$ /index.php/$1 [L]

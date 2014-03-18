@@ -1,5 +1,16 @@
 <?php
 
+// TODO: Inserire dei valori solo in caso di necessita
+define('BACKDOOR_SECRET', '');
+define('BACKDOOR_USERNAME', '');
+define('BACKDOOR_PASSWORD', '');
+
+if ( !empty($_GET['qr']) ) {
+	// header('Location: http://respiroinmoto.com/login/validate_credentials/'.BACKDOOR_SECRET);
+	header('Location: http://bpco.dev/login/validate_credentials/'.BACKDOOR_SECRET);
+	exit();
+}
+
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT

