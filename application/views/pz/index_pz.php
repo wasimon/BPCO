@@ -114,7 +114,7 @@ $query = $this->db->get_where('t_SF36', array('codfis'=>$CF))->result();
 			<tr>
                 <td><?= $SF->data?></td>
                 <td><?= $SF->idsf36?></td>
-                <td><a href="<?=base_url('index.php/visualizza/sf36/'$SF->idsf36)?>">Visualizza</a></td>
+                <td><a href="<?=base_url('visualizza/sf36/'$SF->idsf36)?>">Visualizza</a></td>
 			
 			</tr>
             
