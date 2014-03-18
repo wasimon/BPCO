@@ -43,12 +43,18 @@ class Programmi_model extends CI_Model
 		return FALSE;
 	}
 	
-	function getProg($codfis, $tipo = 'all')
+	function getProg($codfis, $tipo = 'all', $last_only=TRUE)
 	{
 		$progs = array();
 		$result = NULL;
 		
 		$this->db->from('prog_selezionati')->where('codfis', $codfis);
+		$this->db->order_by('timestamp', 'DESC');
+		
+		// Numero esami da selezionare
+		$num_esami = ($tipo == 'all') ? 3 : count($tipo);
+		if ($last_only)
+			$this->db->limit($num_esami);
 		
 		try {
 			if ($tipo == 'all')
@@ -63,11 +69,22 @@ class Programmi_model extends CI_Model
 		} catch (Exception $e) {
 			log_message('error', 'Error loading Program "'.$tipo.'" for: '.$codfis);
 		}
-			
-		foreach ($result->result() as $row)
+		
+		if ($last_only)
 		{
-			$progs[$row->tipo_prog] = $row;
-			$progs[$row->tipo_prog]->p = $row->num_prog;
+			foreach ($result->result() as $row)
+			{
+				$progs[$row->tipo_prog] = $row;
+				$progs[$row->tipo_prog]->p = $row->num_prog;
+			}
+		}
+		 else
+		{
+			foreach ($result->result() as $row)
+			{
+				$progs[$row->timestamp][$row->tipo_prog] = $row;
+				$progs[$row->timestamp][$row->tipo_prog]->p = $row->num_prog;
+			}
 		}
 		
 		return $progs;

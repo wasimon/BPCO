@@ -3,6 +3,7 @@
 class Site extends CI_Controller {
 
 	var $user = array();
+	var $view_data = array();
  
 	function __construct()
 	{

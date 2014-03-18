@@ -139,8 +139,9 @@ class Pz extends CI_Controller
 	}
 
 
-	function crea_index($input)
+	function crea_index($CF)
 	{
+		$this->load->model('programmi_model', 'programmi');
 
 		#$elenco = array(0 => 't_antropometria','t_cicloerg','t_mmse','t_mrc','t_sf36','t_sft','t_sgrq','t_spsms','t_tinetti');
 		$esami_count = array(
@@ -153,14 +154,13 @@ class Pz extends CI_Controller
 			't_sgrq' =>0,
 			't_spsms' =>0,
 			't_tinetti'=>0,
-			'prog_selezionati'=>0,
 		);
 		//$this->view_data['elenco'] = $elenco;
 
 
 		foreach($esami_count as $nome_tabella=>$val){
     
-			$esami = $this->db->get_where($nome_tabella, array('codfis'=>$input))->result();
+			$esami = $this->db->get_where($nome_tabella, array('codfis'=>$CF))->result();
 
 			if(is_array($esami) AND count($esami)>0):
 
@@ -173,12 +173,10 @@ class Pz extends CI_Controller
 
 		$this->view_data['esami_count'] = $esami_count;
 
-		$anagrafica = $this->db->get_where('paziente', array('codfis'=>$input))->row();
+		$this->view_data['anagrafica']= $this->db->get_where('paziente', array('codfis'=>$CF))->row();;
 
-		$this->view_data['anagrafica']= $anagrafica;
-
-		$this->view_data['codicefiscale'] = $input;
-
+		$this->view_data['codicefiscale'] = $CF;
+		$this->view_data['prog_selezionati'] = $this->programmi->getProg($CF, 'all', FALSE);
 
 		$this->load->view('pz/nuovo_index_pz', $this->view_data);  
 	}
