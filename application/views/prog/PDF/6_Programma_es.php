@@ -27,4 +27,12 @@ th{font-weight:bold;}
         <li>Esercizio   di rinforzo muscolare;</li>
         <li>Defaticamento</li>
 </ul>		
-		
+ aerobico = <?= $prog[TIPO_PROG_AEROBICO]; ?><br>
+
+rinforzo = <?= $prog[TIPO_PROG_RINFORZO]; ?><br>
+
+addominali =  <?= $prog[TIPO_PROG_ADDOMINALI]; ?><br>
+ciao<br>
+
+ 
+ <? print_r ($hearth_rate);?>
