@@ -45,6 +45,7 @@ $route['esami/prog/(:any)'] = 'prog/index/$1'; // TODO: Rimuovere se non serve
 $route['esami/(:any)'] = 'esami/index/$1';
 
 $route['prog/save/(:any)'] = 'prog/save/$1';
+$route['prog/PDF/(:any)'] = 'prog/PDF/$1';
 $route['prog/(:any)'] = 'prog/index/$1';
 
 /* End of file routes.php */

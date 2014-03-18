@@ -15,7 +15,7 @@ class Pazienti_model extends CI_Model
 		return FALSE;
 	}
 
-	function getByCF($CF)
+	function getAnagrafica($CF)
 	{	
 		$pz = $this->db->get_where('paziente', array('codfis' => $CF), 1, 0);
 		

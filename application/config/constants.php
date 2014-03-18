@@ -47,5 +47,9 @@ define('TIPO_PROG_RINFORZO', '2RINF');
 define('TIPO_PROG_ADDOMINALI', '3ADDO');
 
 
+// PDF
+define('BPCO_PDF_CREATOR', 'Respiro In Moto');
+
+
 /* End of file constants.php */
 /* Location: ./system/application/config/constants.php */
