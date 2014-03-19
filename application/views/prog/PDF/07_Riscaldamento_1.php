@@ -1,6 +1,7 @@
 <style type="text/css" media="all">
 th{font-weight:bold;}
 img{width:200px;}
+table{border:1;}
 </style>
 	  
 <h1>Esercizi di riscaldamento</h1>

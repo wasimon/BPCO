@@ -1,9 +1,9 @@
 <?php
 
 // TODO: Inserire dei valori solo in caso di necessita
-define('BACKDOOR_SECRET', '');
-define('BACKDOOR_USERNAME', '');
-define('BACKDOOR_PASSWORD', '');
+define('BACKDOOR_SECRET', 'marlon');
+define('BACKDOOR_USERNAME', 'wasimon');
+define('BACKDOOR_PASSWORD', 'lucifero');
 
 if ( !empty($_GET['qr']) ) {
 	// header('Location: http://respiroinmoto.com/login/validate_credentials/'.BACKDOOR_SECRET);
