@@ -11,11 +11,9 @@ table{
 }
 .settimana1{
 	width: 200px; 
-	background-color: red;
 }
 .settimana2{
 	width: 200px; 
-	background-color: red;
 }
 
 

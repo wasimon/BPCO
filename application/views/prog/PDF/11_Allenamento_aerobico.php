@@ -1,8 +1,10 @@
 <style type="text/css" media="all">
 th{font-weight:bold;}
 img{height: 250px; }
-table{border:1;}
-.aerobico{background-color: red; }
+table{border:1;
+	vertical-align: middle;}
+	td{vertical-align: middle;}
+.aerobico{}
 
 </style>
 
@@ -52,11 +54,12 @@ switch ($prog[TIPO_PROG_AEROBICO]) {
   
   <p>L&rsquo;esercizio proposto di seguito &egrave; tarato sulle tue capacit&agrave;, ricordati di interrompere l&rsquo;esercizio in caso di dolore al petto.<br />
   Ricordati di effettuare l'allenamento quando indicato dal diario.</p>
+  <p>Frequenza cardiaca limite: <?=$hearth_rate;?></p>
 
   <table class="aerobico">
       <tr>
-        <td> <h4>RISCALDAMENTO</h4><?=$scarico;?></td>
-  		<td><h4>3 min.</h4></td>
+        <td width="400px"> <h4>RISCALDAMENTO</h4><?=$scarico;?></td>
+  		<td width="100px"><h4>3 min.</h4></td>
 	</tr>
 	<tr>
 	      <td><?=$modesercizio;?></td>

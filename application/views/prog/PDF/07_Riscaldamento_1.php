@@ -19,7 +19,7 @@ table{border:1;}
 			<li>Riporta il braccio in basso e ripeti con l&rsquo;altro. </li>
 		</ul>
 	  </td>
-	  <td><img src="/img/PDF/spalle1.JPG" ></td></tr></table>
+	  <td><img src="/img/PDF/spalle1.jpg" ></td></tr></table>
     
 	
 
@@ -32,5 +32,5 @@ table{border:1;}
           <li>Lentamente riporta il braccio nella posizione iniziale e ripeti con l&rsquo;altro. </li>
 	        </ul>
 	  	  </td>
-	  	  <td><img src="/img/PDF/spalle2.JPG"></td></tr></table>
+	  	  <td><img src="/img/PDF/spalle2.jpg"></td></tr></table>
 	

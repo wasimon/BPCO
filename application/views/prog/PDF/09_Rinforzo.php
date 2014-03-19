@@ -1,6 +1,6 @@
 <style type="text/css" media="all">
 th{font-weight:bold;}
-img{width:200px;}
+img{height:200;}
 table{border:1;}
 </style>
 		<h1> Esercizi di rinforzo per gli arti superiori</h1>
@@ -21,8 +21,14 @@ table{border:1;}
       <li>Riporta il braccio in basso e ripeti con l&rsquo;altro. </li>
     	</ul>
 	</td>
-    <td> <img src="/img/PDF/spalle4.JPG" ></td></tr>
-		<tr><th width="50%">Ripetizioni: _____</th><th width="50%">Carico:   ________ </th></tr>
+    <td> <img src="/img/PDF/spalle1.jpg" ></td></tr>
+	<tr><td colspan="2"> Riscaldamento, esegui l'esercizio senza pesi</td></tr>
+		<tr><th width="50%">Ripetizioni: 10</th><th width="50%">Carico:  <?=$sft_max?> </th></tr>
+		<tr><td colspan="2"> Riposa per 3 minuti</td></tr>
+		<tr><th width="50%">Ripetizioni: 10</th><th width="50%">Carico:  <?=$sft_max?> </th></tr>
+		<tr><td colspan="2"> Riposa per 3 minuti</td></tr>
+		<tr><th width="50%">Ripetizioni: 10</th><th width="50%">Carico:  <?=$sft_max?> </th></tr>
+		<tr><td colspan="2"> Defaticamento, esegui l'esercizio senza pesi</td></tr>
 </table>
 
 <table>
@@ -34,6 +40,13 @@ table{border:1;}
 	        <li>Lentamente riporta le braccia nella posizione iniziale e ripeti. </li>
     	</ul>
 	</td>
-    <td> <img src="/img/PDF/spalle5.JPG" ></td></tr>
-		<tr><th width="50%">Ripetizioni: _____</th><th width="50%">Carico:   ________ </th></tr>
+    <td> <img src="/img/PDF/spalle2.jpg" ></td></tr>
+	<tr><td colspan="2"> Riscaldamento, esegui l'esercizio senza pesi</td></tr>
+		<tr><th width="50%">Ripetizioni: 10</th><th width="50%">Carico:  <?=$sft_max?> </th></tr>
+		<tr><td colspan="2"> Riposa per 3 minuti</td></tr>
+		<tr><th width="50%">Ripetizioni: 10</th><th width="50%">Carico:  <?=$sft_max?> </th></tr>
+		<tr><td colspan="2"> Riposa per 3 minuti</td></tr>
+		<tr><th width="50%">Ripetizioni: 10</th><th width="50%">Carico:  <?=$sft_max?> </th></tr>
+		<tr><td colspan="2"> Defaticamento, esegui l'esercizio senza pesi</td></tr>
+
 </table>
