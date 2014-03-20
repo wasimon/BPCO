@@ -1,8 +1,6 @@
 <style type="text/css" media="all">
 th{font-weight:bold;}
 img{height: 100px;}
-table{border:1;
-padding:5px; }
 .immagine { text-align: center; vertical-align: middle;}
 
 </style>
@@ -97,8 +95,7 @@ Al termine del tuo allenamento svolgi sempre questi esercizi: riportano il batti
 </p>
 <? for ($i=0; $i < 2; $i++) { 
 ?>
-
-<table>
+<table border="0" cellspacing="5" cellpadding="5">
   <tr><td><?=$es[$i];?></td>
     <td class="immagine"><img src="<?=$img[$i];?>"></td>
 </tr>
@@ -106,5 +103,8 @@ Al termine del tuo allenamento svolgi sempre questi esercizi: riportano il batti
 		<th colspan="2"><?=$rep[$i];?></th>
 	</tr>
 </table>
+<?php if ($i<1): ?>
+<hr>	
+<?php endif ?>
 
 <? };?>

@@ -1,17 +1,99 @@
-<html>
-<head>
-	<style type="text/css" media="all">
-	th{font-weight:bold;}
-	#settimana{
-		width: 100px; 
-		background-color: red;
-	
-	
-	}
-	</style>
-	
-	
-</head><body>
+<style type="text/css" media="all">
+th{font-weight:bold;}
+.importante{
+	text-align: center;
+	align: center;
+	font-weight:bold;
+	width: 250px;
+	border: solid red 10px;
+}
+table{
+	text-align:left;
+	width: 250px;
+	font-color: darkgrey;
+}
+
+</style>
+
+
+<table border="1" cellspacing="0" cellpadding="0">
+  <tr>
+      <td width="119"><p align="center">&nbsp;</p></td>
+      <td colspan="2" width="170"><p align="center">MATTINO </p></td>
+      <td colspan="2" width="170"><p align="center">POMERIGGIO </p></td>
+	  
+  <tr>
+    <td width="119"><p align="center">&nbsp;</p></td>
+    <td width="85"><p align="center">CYCLETTE</p></td>
+    <td width="85"><p align="center">RINFORZO</p></td>
+    <td width="85"><p align="center">CYCLETTE</p></td>
+    <td width="85"><p align="center">RINFORZO</p></td>
+  </tr>
+  <tr>
+    <td width="119"><p align="center"><strong>LUNEDI</strong><strong> </strong></p></td>
+    <td width="85"<?=$aero[0];?>><p align="center">&nbsp;</p></td>
+    <td width="85"<?=$rinf[0];?>><p align="center">&nbsp;</p></td>
+    <td width="85"<?=$doppio[0];?>><p align="center">&nbsp;</p></td>
+    <td width="85"<?=$rinf2[0];?>><p align="center">&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td width="119"><p align="center"><strong>MARTEDI</strong></p></td>
+    <td width="85"<?=$aero[1];?>><p align="center">&nbsp;</p></td>
+    <td width="85"<?=$rinf[1];?>><p align="center">&nbsp;</p></td>
+    <td width="85"<?=$doppio[1];?>><p align="center">&nbsp;</p></td>
+    <td width="85"<?=$rinf2[1];?>><p align="center">&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td width="119"><p align="center"><strong>MERCOLEDI</strong></p></td>
+   <td width="85"<?=$aero[2];?>><p align="center">&nbsp;</p></td>
+   <td width="85"<?=$rinf[2];?>><p align="center">&nbsp;</p></td>
+   <td width="85"<?=$doppio[2];?>><p align="center">&nbsp;</p></td>
+   <td width="85"<?=$rinf2[2];?>><p align="center">&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td width="119"><p align="center"><strong>GIOVEDI</strong></p></td>
+    <td width="85"<?=$aero[3];?>><p align="center">&nbsp;</p></td>
+    <td width="85"<?=$rinf[3];?>><p align="center">&nbsp;</p></td>
+    <td width="85"<?=$doppio[3];?>><p align="center">&nbsp;</p></td>
+    <td width="85"<?=$rinf2[3];?>><p align="center">&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td width="119"><p align="center"><strong>VENERDI</strong></p></td>
+   <td width="85"<?=$aero[4];?>><p align="center">&nbsp;</p></td>
+   <td width="85"<?=$rinf[4];?>><p align="center">&nbsp;</p></td>
+   <td width="85"<?=$doppio[4];?>><p align="center">&nbsp;</p></td>
+   <td width="85"<?=$rinf2[4];?>><p align="center">&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td width="119"><p align="center"><strong>WEEKEND</strong></p></td>
+    <td width="340" colspan="4"><p align="center">&nbsp;</p></td>
+  </tr>
+</table>
+
+<p>Tieni presente che <strong>l&rsquo;attivit&agrave; fisica migliora il benessere del corpo e della mente</strong>, ma perch&eacute; tu ne tragga beneficio devi saper capire se ti stai allenando troppo o troppo poco.</p>
+
+<div class="importante" align="center">
+<p>Se… </p>
+
+<table border="1" cellspacing="5" cellpadding="5">
+	<tr><td>- senti il &ldquo;fiato corto&rdquo;…</td></tr>
+		<tr><td>- senti fitte e/o dolore diffuso al torace…</td></tr>
+			<tr><td>- hai palpitazioni…</td></tr>
+</table>
+
+<p>…ti stai allenando troppo! Rallenta!</p>
+<table border="1" cellspacing="5" cellpadding="5">
+	<tr><td>- non ti sembra di fare fatica…</td></tr>
+</table>  
+<p>…ti stai allenando troppo poco.</p>
+
+</div>
+<p align="center"><strong>Come fai a sapere se stai effettuando il tuo programma di esercizio in modo corretto?</strong></p>
+<p>Rispetta le indicazioni riportate nella scheda d'esercizio.<br />
+  Utilizza il computer della cyclette per monitorare frequenza cardiaca e/o watt prodotti, non devono superare quelli indicati nella scheda dell'esercizio.</p>
+  
+  <p>Frequenza cardiaca limite: <?=$hearth_rate;?></p>
+
 	
 	
 <table border="1" cellspacing="5" cellpadding="5">

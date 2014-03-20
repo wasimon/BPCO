@@ -14,8 +14,10 @@ th{font-weight:bold;}
 	<tr><th>CAP</th><td><?= $paziente->indirizzocap ?></td></tr>
 	<tr><th>Provincia</th><td><?= $paziente->indirizzoprovincia ?></td></tr>
 	<tr><th>Numeri di telefono</th><td><?= $paziente->tel ?>&nbsp;&ndash;&nbsp;<?= $paziente->cel ?></td></tr>
+	<tr><td colspan="2"><hr></td></tr>
 	<tr><th>Persona di riferimento</th><td><?= $paziente->personariferimento ?></td></tr>
 	<tr><th>Numero di telefono</th><td><?= $paziente->telriferimento ?></td></tr>
+	<tr><td colspan="2"><hr></td></tr>
 	<tr><th>Medico curante</th><td><?= $paziente->medicofamiglia ?></td></tr>
 	<tr><th>Centro pneumologico di riferimento</th><td><?= $paziente->centropneumo ?></td></tr>
 	<tr><th>Specialista di riferimento</th><td><?= $paziente->specpneumo ?></td></tr>

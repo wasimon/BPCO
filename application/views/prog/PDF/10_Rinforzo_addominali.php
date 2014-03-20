@@ -1,7 +1,6 @@
 <style type="text/css" media="all">
 th{font-weight:bold;}
 img{width:200px;}
-table{border:1;}
 </style>
 
 <?	
@@ -45,15 +44,14 @@ switch ($prog[TIPO_PROG_ADDOMINALI]) {
 
 
 
-<h1>Esercizi di rinforzo per i muscoli addominali</h1>
-<table>
+<h1>Esercizi di rinforzo per i muscoli addominali</h1><br>
+<table border="0" cellspacing="5" cellpadding="5">
   <tr>
     <td><h2>Addominali</h2>
 	<?=$addominali[0];?>
 	
 	</td>
-    <td>  <img src="<?=$addominali[1];?>
-"> </td></tr>
+    <td>  <img src="<?=$addominali[1];?>"> </td></tr>
 
-		<tr><th colspan="2">Ripetizioni: _____</th></tr>
+		<tr><th colspan="2">Ripetizioni: 6-8</th></tr>
 </table>

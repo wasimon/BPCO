@@ -1,7 +1,7 @@
 <style type="text/css" media="all">
 th{font-weight:bold;}
 img{width:200px;}
-table{border:1;}
+table{border:none;}
 </style>
 	  
 <h1>Esercizi di riscaldamento</h1>
@@ -10,7 +10,7 @@ table{border:1;}
 
 <h2>Spalle</h2>
 
-		<table>
+<table border="0" cellspacing="5" cellpadding="5">
 		<tr><td>
 		<h2>Flessione delle braccia</h2>
 		<ul>
@@ -21,9 +21,9 @@ table{border:1;}
 	  </td>
 	  <td><img src="/img/PDF/spalle1.jpg" ></td></tr></table>
     
-	
+	<hr>
 
-	  <table>
+<table border="0" cellspacing="5" cellpadding="5">
 	  <tr><td>
 	  <h2>Abduzione delle braccia</h2>
 	  <ul>
