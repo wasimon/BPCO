@@ -7,6 +7,7 @@ padding:5px; }
 </style>
 <?	
 $settimana=array(
+'<h2>PRIMA SETTIMANA:</h2>',
 '<h2>SECONDA SETTIMANA:</h2>',
 '<h2>TERZA SETTIMANA:</h2>',
 '<h2>QUARTA SETTIMANA:</h2>',
@@ -69,9 +70,8 @@ Scrivi all'interno degli spazi se hai effettuato regolarmente le attivit&agrave;
 Ricordati di scrivere all'interno dell'ultima riga di ogni settimana le attivit&agrave; che hai svolto nel weekend.
 Puoi utilizzare questo foglio come diario/calendario, lo sfondo colorato corrisponde ai tipi di esercizio che devi effettuare quel giorno della settimana.
 
-<h2>PRIMA SETTIMANA:</h2>
-<? for ($i=0; $i < 3; $i++):?>
-
+<? for ($i=0; $i < 4; $i++):?>
+<?=$settimana[$i];?>
 <table border="1" cellspacing="0" cellpadding="0">
   <tr>
       <td width="119"><p align="center">&nbsp;</p></td>
@@ -125,5 +125,4 @@ Puoi utilizzare questo foglio come diario/calendario, lo sfondo colorato corrisp
     <td width="340" colspan="4"><p align="center">&nbsp;</p></td>
   </tr>
 </table>
-<?=$settimana[$i];?>
 <?endfor;?>
