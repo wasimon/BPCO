@@ -44,7 +44,7 @@ $peso = $sft_max*0.6;
       <li>Riporta il braccio in basso e ripeti con l&rsquo;altro. </li>
     	</ul>
 	</td>
-    <td> <img src="/img/PDF/spalle1.jpg" ></td></tr>
+    <td> <img src="/img/PDF/spalle1x.jpg" ></td></tr>
 
 </table>
 <hr>
@@ -58,7 +58,7 @@ $peso = $sft_max*0.6;
  		</ul>
 	</td>
 	
-    <td> <img src="/img/PDF/spalle2.jpg" ></td></tr>
+    <td> <img src="/img/PDF/spalle2x.jpg" ></td></tr>
 </table>
 <hr>
 <strong>

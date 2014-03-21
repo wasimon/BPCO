@@ -49,19 +49,19 @@ switch ($prog[TIPO_PROG_AEROBICO]) {
 
 switch ($prog[TIPO_PROG_RINFORZO]) {
 	case (4):
-	$rinf=array($si,$si,$si,$si,$si);
+	$rinf2=array($si,$si,$si,$si,$si);
 	break;
 	
 	case (3):
-	$rinf=array($si,$si,$no,$si,$si);
+	$rinf2=array($si,$si,$no,$si,$si);
 	break;
 	
 	case (2):
-	$rinf=array($si,$no,$si,$no,$si);
+	$rinf2=array($si,$no,$si,$no,$si);
 	break;
 
 	case (1):
-	$rinf=array($si,$no,$no,$si,$no);
+	$rinf2=array($si,$no,$no,$si,$no);
 	break;
 }
 ?>	

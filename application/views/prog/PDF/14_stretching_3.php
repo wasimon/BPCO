@@ -1,6 +1,5 @@
 <style type="text/css" media="all">
 th{font-weight:bold;}
-img{height: 100px;}
 .immagine { text-align: center; vertical-align: middle;}
 
 </style>

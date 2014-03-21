@@ -47,6 +47,7 @@ class Pz extends CI_Controller
 		}
 		else
 		{
+			//TODO dava errore... ma non penso sia necessaria come cosa..
 			$this->view_data['message'] .= "<p>Completa questo form per aggiungere un nuovo paziente.</p>";
 			$this->load->view('agg_paziente', $this->view_data);
 		}
