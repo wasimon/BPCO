@@ -129,6 +129,7 @@ class Prog extends CI_Controller
 					break;
 			}
 			
+			exit();
 		}
 		
 		// SETUP DELLA LIBRERIA TCPDF
