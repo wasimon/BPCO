@@ -67,11 +67,69 @@ class Prog extends CI_Controller
 	{
 		// Path realtiva ad index.php
 		require_once('tcpdf/tcpdf.php');
-
-		
 		// Genera i dati che saranno utilizzati in tutte le view caricate
 		$this->_generateViewData($cf, FALSE);
 		$this->view_data['le_variabili'] = array_keys($this->view_data);
+		
+		
+		if ($download_pdf===TRUE OR strcasecmp($download_pdf, 'si') == 0 OR strcasecmp($download_pdf, 'download') == 0)
+		{
+			// Force download if url is: /prog/PDF/$CODFISC/download OR /prog/PDF/$CODFISC/si
+			$pdf_mode = "D";
+		}
+		else
+		{
+			// In all other cases simply let the browser decide what to do
+			$pdf_mode = "I";
+		}
+
+		$saved_file = FCPATH.$this->view_data['PDF']['filename'];
+		if ( file_exists( $saved_file )) {
+			# return file
+			switch ($pdf_mode) {
+				case 'D':
+					header('Content-Description: File Transfer');
+					if (headers_sent()) {
+						echo('Some data has already been output to browser, can\'t send PDF file');
+					}
+					header('Cache-Control: private, must-revalidate, post-check=0, pre-check=0, max-age=1');
+					header('Pragma: public');
+					header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+					header('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
+					// force download dialog
+					if (strpos(php_sapi_name(), 'cgi') === false) {
+						header('Content-Type: application/force-download');
+						header('Content-Type: application/octet-stream', false);
+						header('Content-Type: application/download', false);
+						header('Content-Type: application/pdf', false);
+					} else {
+						header('Content-Type: application/pdf');
+					}
+					// use the Content-Disposition header to supply a recommended filename
+					header('Content-Disposition: attachment; filename="'.$this->view_data['PDF']['filename'].'"');
+					header('Content-Transfer-Encoding: binary');
+					TCPDF_STATIC::sendOutputData(file_get_contents($saved_file), filesize($saved_file));
+					break;
+				
+				case 'I':
+					if (php_sapi_name() != 'cli') {
+						// send output to a browser
+						header('Content-Type: application/pdf');
+						if (headers_sent()) {
+							$this->Error('Some data has already been output to browser, can\'t send PDF file');
+						}
+						header('Cache-Control: private, must-revalidate, post-check=0, pre-check=0, max-age=1');
+						//header('Cache-Control: public, must-revalidate, max-age=0'); // HTTP/1.1
+						header('Pragma: public');
+						header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+						header('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
+						header('Content-Disposition: inline; filename="'.$this->view_data['PDF']['filename'].'"');
+						TCPDF_STATIC::sendOutputData(file_get_contents($saved_file), filesize($saved_file));
+					}
+					break;
+			}
+			
+		}
 		
 		// SETUP DELLA LIBRERIA TCPDF
 		$pdf = new TCPDF();
@@ -131,21 +189,10 @@ class Prog extends CI_Controller
 
 			$pdf->endPage();
 		}
-
-		if ($download_pdf===TRUE OR strcasecmp($download_pdf, 'si') == 0 OR strcasecmp($download_pdf, 'download') == 0)
-		{
-			// Force download if url is: /prog/PDF/$CODFISC/download OR /prog/PDF/$CODFISC/si
-			$pdf_mode = "D";
-		}
-		else
-		{
-			// In all other cases simply let the browser decide what to do
-			$pdf_mode = "I";
-		}
 		
 		// il secondo parametro della funzione Output puo essere utile!
 		// DOCS: http://www.tcpdf.org/doc/code/classTCPDF.html#a3d6dcb62298ec9d42e9125ee2f5b23a1
-		$pdf->Output($this->view_data['PDF']['filename'], $pdf_mode);
+		$pdf->Output($this->view_data['PDF']['filename'], "F".$pdf_mode);
 	}
 	
 	
@@ -204,18 +251,21 @@ $this->view_data['PDF']['header'] = "Programma elaborato dal dottor {$doc->cogno
 				
 		}
 
-
 		$this->view_data['cod_fis'] = $cf;
 		$this->view_data['vo2max'] = $erg->vo2max;
 		$this->view_data['sft_max'] = $sft->massimale;
 		$this->view_data['BMI'] = $antrop->BMI;
 		
-		// TODO: Calcolare eta di nascita
-		$eta = 45;
+		$age = 45; // Default se il valore nel db non e' corretto
+		if (($birth_time = strtotime($pz->datanascita))!==FALSE) {
+			$birth_year = date('Y', $birth_time);
+			$curr_year = date("Y");
+			$age = (date("md", $birth_time) > date("md")) ? (($curr_year - $birth_year) - 1)  :  ($curr_year - $birth_year);
+		}
 		if ($pz->sesso == 'M')
-			$this->view_data['hearth_rate'] = 230 - (1.1*$eta);
+			$this->view_data['hearth_rate'] = 230 - (1.1*$age);
 		else
-			$this->view_data['hearth_rate'] = 207 - (1.1*$eta);
+			$this->view_data['hearth_rate'] = 207 - (1.1*$age);
 		
 		$this->view_data['hidden_fields'] = array( 
 			'cf'=>$cf,
