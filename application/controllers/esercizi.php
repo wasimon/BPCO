@@ -1,4 +1,4 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Esercizi extends CI_Controller 
 {
@@ -11,4 +11,3 @@ class Esercizi extends CI_Controller
 	}
     
 }
-?>

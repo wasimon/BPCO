@@ -12,11 +12,6 @@ class Visualizza extends CI_Controller
 		$this->view_data['display'] = TRUE;
 	}
 
-	function index($id)
-	{
-		var_dump($id);	   
-	}
-
 	function antropometria($id)
 	{
 		$this->view_data['ant'] = $this->db->get_where('t_antropometria', array('idantro'=>$id))->row();

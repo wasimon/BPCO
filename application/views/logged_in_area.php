@@ -40,12 +40,6 @@ table.risultati{
   <div align="center" style="border: solid black ;">
   
 	<h2>Bentornato Dott. <?php echo $this->session->userdata('nome'); ?></h2>
-    
-	
-	
-	<? //print_r ($this->session->userdata);?>
-    
-	
 	
 	
 	 <p>Questa sezione rappresenta l'area visibile solo al medico che ha effettuato il login.</p>
@@ -57,10 +51,10 @@ table.risultati{
   
   </br></br>
   <?php echo anchor('pz/aggiungi/'.$this->session->userdata('idmedico'), 'AGGIUNGI UN PAZIENTE'); ?>
-  </br></br>
-   <a href='#'id="select2">RIMUOVI UN PAZIENTE</a></br></br>
+  
+	<!-- </br></br><a href='#'id="select2">RIMUOVI UN PAZIENTE</a> -->
  
-  <?php echo anchor ('esercizi', 'VISUALIZZA GLI ESERCIZI'); ?>
+  </br></br><?php echo anchor ('esercizi', 'VISUALIZZA GLI ESERCIZI'); ?>
   </br></br>                
     </h4>
   </div>
@@ -87,7 +81,7 @@ table.risultati{
                     <td><?= $pz->cognome?></td>
                     <td><?= $pz->datanascita?></td>
                     <td><?= $pz->codfis?></td>
-         <td><a href='<?=base_url()?>/pz/crea_index/<?=$pz->codfis?>'>Visualizza</a></td> 
+         <td><a href='<?=base_url()?>pz/crea_index/<?=$pz->codfis?>'>Visualizza</a></td> 
      
     			</tr>
     		<? endforeach?>
@@ -120,7 +114,7 @@ table.risultati{
                     <td><?= $pz->cognome?></td>
                     <td><?= $pz->datanascita?></td>
                     <td><?= $pz->codfis?></td>
-         <td><a href='<?=base_url()?>pz/carica_delete/<?=$pz->codfis?>'>Rimuovi</a></td> 
+         <!-- <td><a href='<?=base_url()?>pz/carica_delete/<?=$pz->codfis?>'>Rimuovi</a></td>  -->
      
     			</tr>
     		<? endforeach?>

@@ -7,6 +7,13 @@ class Prog extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+    
+    // ci serve che il medico sia loggato altrimenti non possiamo costruire il PDF
+    if($this->session->userdata('is_logged_in') != TRUE)
+    {
+      redirect('login');
+    }
+    
 		$this->load->model('pazienti_model', 'pazienti');
 		$this->load->model('esami_model', 'esami');
 		$this->load->model('programmi_model', 'programmi');
@@ -96,17 +103,14 @@ class Prog extends CI_Controller
 		// DOCS: http://ellislab.com/codeigniter/user-guide/helpers/directory_helper.html
 		// Note: Paths are almost always relative to your main index.php file.
 		$this->load->helper('directory');
-		$dir_map = directory_map('./application/views/prog/PDF/', FALSE);
-		
+		$dir_map = directory_map('./application/views/prog/PDF/', 1);
+    sort($dir_map, SORT_STRING|SORT_FLAG_CASE);
+    
 		// In questo modo non serve nominare le pagine con il solo numero, possono avere anche un nome user-friendly
 		// o per meglio dire "developer-friendly" (leggasi `Saimon-friendly`)
 		foreach ($dir_map as $view_name)
 		{
 			$pdf->AddPage();
-
-			// Precedente implementazione:
-			// include_once 'application/views/prog/stampa/'.$i.'.php';
-			// $pdf->writeHTMLCell(0, 0, '', '', $html.'$i', 0, 1, 0, true, '', true);
 			
 			// USAGE:
 			// Tutte la chiavi definite in $this->view_data (che viene riempito dalla funzione $this->_generateViewData() )
@@ -149,14 +153,11 @@ class Prog extends CI_Controller
 	{
 		$prog_ch = 0;
 		
-		$this->view_data['paziente'] = $this->pazienti->getAnagrafica($cf);
-		$this->view_data['esami'] = $this->esami->getAllExams($cf, TRUE);
-		//carico dati medico
 		$idm = $this->session->userdata('idmedico');
 		$this->view_data['dottori'] = $this->dottori->getDatiMedico($idm);
-		// Opzionalmente per far caricare gli esami come array:
-		// $this->view_data['esami'] = $this->esami->getAllExams($cf, TRUE, TRUE);
-
+    
+		$this->view_data['paziente'] = $this->pazienti->getAnagrafica($cf);
+		$this->view_data['esami'] = $this->esami->getAllExams($cf, TRUE);
 		$pz = $this->view_data['paziente'];
 		$erg = $this->view_data['esami']->cicloerg;
 		$sft = $this->view_data['esami']->sft;
@@ -224,5 +225,3 @@ $this->view_data['PDF']['header'] = "Programma elaborato dal dottor {$doc->cogno
 	
 	
 }
-
- 

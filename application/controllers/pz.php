@@ -1,4 +1,4 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Pz extends CI_Controller 
 {
@@ -8,11 +8,17 @@ class Pz extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+    // ci serve che il medico sia loggato
+    if($this->session->userdata('is_logged_in') != TRUE)
+    {
+      redirect('login');
+    }
 		$this->load->model('pazienti_model', 'pazienti');
 		$this->load->model('esami_model', 'esami');
 
 		$this->view_data = array();
 		
+    $this->view_data['message'] = "";
 		if ($this->session->flashdata('message')) {
 			$this->view_data['message'] = "<p style='color:green;font-weight:700;'>".$this->session->flashdata('message')."</p>";
 		}
@@ -34,20 +40,19 @@ class Pz extends CI_Controller
 
 			if ($insert === FALSE)
 			{
-				$view_data['message'] = "<p class='error'><em>Errore</em>: Impossibile aggiungere il paziente.</p>";
+				$view_data['message'] .= "<p class='error'><em>Errore</em>: Impossibile aggiungere il paziente.</p>";
 				$this->load->view('agg_paziente', $this->view_data);
 				return;
 			}
 			else
 			{
-				$view_data['message'] = "<p style='color:green'>Paziente Aggiunto.</p>";
+				$view_data['message'] .= "<p style='color:green'>Paziente Aggiunto.</p>";
 				$this->load->view('esami/iscrizione_2', $this->view_data);
 				return;
 			}
 		}
 		else
 		{
-			//TODO dava errore... ma non penso sia necessaria come cosa..
 			$this->view_data['message'] .= "<p>Completa questo form per aggiungere un nuovo paziente.</p>";
 			$this->load->view('agg_paziente', $this->view_data);
 		}
@@ -57,12 +62,8 @@ class Pz extends CI_Controller
 	{
 		$input = $this->input->post();
 		unset($input['submit']);
-    
-       
-       
+
 		$insert = $this->db->insert('t_antropometria', $input);
-		//return $insert;
-		//echo 'Paziente inserito';
 		$this->load->view('esami/iscrizione_3');      
 	}
 
@@ -71,8 +72,7 @@ class Pz extends CI_Controller
 		$input = $this->input->post();
 		unset($input['submit']);
 		unset($input['presenza']);
-    
-              
+
 		$insert = $this->db->insert('t_mrc', $input);
 
 		$codfis = $input['codfis'];
@@ -84,7 +84,6 @@ class Pz extends CI_Controller
 		$this->view_data['pazienti'] = $this->db->get_where('paziente', array('idmedico'=>$input))->result();
      	  
 		$this->load->view('lista_pz', $this->view_data);     
-
 	}
 
 	function visualizza_uno($input)
@@ -96,14 +95,9 @@ class Pz extends CI_Controller
 
 	function edit($codfis)
 	{
-		echo 'edit';
-		echo $codfis;
-       
-       
 		$view_data['pazienti'] = $this->db->get_where('paziente', array('codfis'=>$codfis))->result();
         
 		$this->load->view('pz/mod_pz', $view_data);
-       
 	}
 	
 	// Delete
@@ -122,21 +116,19 @@ class Pz extends CI_Controller
 		$insert = $this->db->insert('eliminati', $sposta);
 		$erase = $this->db->delete('paziente', array('codfis'=>$input));
 		$view_data['eliminato'] = true;
-		$this->load->view('pz/delete', $view_data); ;
-      
-    
+		$this->load->view('pz/delete', $view_data);
 	}
 
 
 	//Update paziente
-	function update($input)
+	function update($CF)
 	{
-		$this->db->where('codfis', array('codfis'=>$input));
+		$this->db->where('codfis', array('codfis'=>$CF));
 		$this->db->update('paziente');
 		
-  
-		echo 'fatta???'; 
-		
+    $this->view_data['message'] .= "<p>Paziente Aggiornato</p>";
+    
+    $this->crea_index($CF)
 	}
 
 
@@ -144,7 +136,6 @@ class Pz extends CI_Controller
 	{
 		$this->load->model('programmi_model', 'programmi');
 
-		#$elenco = array(0 => 't_antropometria','t_cicloerg','t_mmse','t_mrc','t_sf36','t_sft','t_sgrq','t_spsms','t_tinetti');
 		$esami_count = array(
 			't_antropometria' =>0,
 			't_cicloerg' =>0,
@@ -156,8 +147,6 @@ class Pz extends CI_Controller
 			't_spsms' =>0,
 			't_tinetti'=>0,
 		);
-		//$this->view_data['elenco'] = $elenco;
-
 
 		foreach($esami_count as $nome_tabella=>$val){
     
@@ -184,4 +173,3 @@ class Pz extends CI_Controller
 
 }
 
-?>

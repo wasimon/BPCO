@@ -8,20 +8,18 @@ class Site extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-
+    // ci serve che il medico sia loggato altrimenti 
+    if($this->session->userdata('is_logged_in') != TRUE)
+    {
+      redirect('login');
+    }
+    
 		$this->user = $this->session->all_userdata();
 	}
 
 	public function index()
 	{
-		if( ! $this->session->userdata('is_logged_in'))
-		{
-			$this->login();
-		}
-		 else
-		{
-			$this->members_area();
-		}
+		$this->members_area();
 	}
 	
 	public function login()
@@ -31,12 +29,6 @@ class Site extends CI_Controller {
    
 	function members_area()
 	{
-		if( ! $this->session->userdata('is_logged_in'))
-		{
-			$this->login();
-			return;
-		}
-		
 		$input= $this->session->userdata('idmedico');
 		$this->view_data['pazienti'] = $this->db->get_where('paziente', array('idmedico'=>$input))->result();
 	
@@ -46,12 +38,6 @@ class Site extends CI_Controller {
     
 	function aggiungi_esame()
 	{
-		if( ! $this->session->userdata('is_logged_in'))
-		{
-			$this->login();
-			return;
-		}
-		
 		$codfis = $this->input->post('codfis');
 		$esame = $this->input->post('esame');
         
@@ -60,5 +46,4 @@ class Site extends CI_Controller {
 	}
 
 }
-
 

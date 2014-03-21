@@ -126,7 +126,7 @@ class Esami_model extends CI_Model {
 	}
 	function createSF36($input)
 	{
-		$insert = $this->db->insert('t_SF36', $input);
+		$insert = $this->db->insert('t_sf36', $input);
 		return $insert;
 	}
   
@@ -176,7 +176,7 @@ class Esami_model extends CI_Model {
 		$data['mmseagg'] = 0; //TODO: Correggere il coefficente d'aggiustamento
 		$data['mmsefinale'] = 0; //TODO: Correggere il coefficente finale
 
-		$insert = $this->db->insert('t_MMSE', $data);
+		$insert = $this->db->insert('t_mmse', $data);
 		return $insert;
 	}
   
