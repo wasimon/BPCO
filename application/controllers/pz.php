@@ -40,13 +40,13 @@ class Pz extends CI_Controller
 
 			if ($insert === FALSE)
 			{
-				$view_data['message'] .= "<p class='error'><em>Errore</em>: Impossibile aggiungere il paziente.</p>";
+				$this->view_data['message'] .= "<p class='error'><em>Errore</em>: Impossibile aggiungere il paziente.</p>";
 				$this->load->view('agg_paziente', $this->view_data);
 				return;
 			}
 			else
 			{
-				$view_data['message'] .= "<p style='color:green'>Paziente Aggiunto.</p>";
+				$this->view_data['message'] .= "<p style='color:green'>Paziente Aggiunto.</p>";
 				$this->load->view('esami/iscrizione_2', $this->view_data);
 				return;
 			}
@@ -128,7 +128,7 @@ class Pz extends CI_Controller
 		
     $this->view_data['message'] .= "<p>Paziente Aggiornato</p>";
     
-    $this->crea_index($CF)
+    $this->crea_index($CF);
 	}
 
 
