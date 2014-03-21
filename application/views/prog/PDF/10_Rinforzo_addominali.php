@@ -24,19 +24,19 @@ $es4 = "<ul>
 			
 switch ($prog[TIPO_PROG_ADDOMINALI]) {
 	case (4):
-	$addominali=array($es4,'/img/PDF/addo4.JPG');
+	$addominali=array($es4,'/img/PDF/addo4.jpg');
 	break;
 
 	case (3):
-	$addominali=array($es3,'/img/PDF/addo3.JPG');
+	$addominali=array($es3,'/img/PDF/addo3.jpg');
 	break;
 
 	case (2):
-	$addominali=array($es2,'/img/PDF/addo2.JPG');
+	$addominali=array($es2,'/img/PDF/addo2.jpg');
 	break;
 
 	case (1):
-	$addominali=array($es1,'/img/PDF/addo1.JPG');
+	$addominali=array($es1,'/img/PDF/addo1.jpg');
 	break;
 }
 

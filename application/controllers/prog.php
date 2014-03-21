@@ -104,7 +104,7 @@ class Prog extends CI_Controller
 		// Note: Paths are almost always relative to your main index.php file.
 		$this->load->helper('directory');
 		$dir_map = directory_map('./application/views/prog/PDF/', 1);
-    sort($dir_map, SORT_STRING|SORT_FLAG_CASE);
+    sort($dir_map, SORT_STRING);
     
 		// In questo modo non serve nominare le pagine con il solo numero, possono avere anche un nome user-friendly
 		// o per meglio dire "developer-friendly" (leggasi `Saimon-friendly`)
