@@ -304,7 +304,7 @@
 						<tr>
 							<td><?=strftime( ' %d - %m - %g ', $ant->data);?></td>
 							<td><?= $ant->BMI?></td>
-							<td><a href="<?=site_url()?>/visualizza/antropometria/<?= $ant->idantro?>">Visualizza</a></td>
+							<td><a href="<?=site_url()?>visualizza/antropometria/<?= $ant->idantro?>">Visualizza</a></td>
 						</tr>
 					<? endforeach?>
 				</table>
@@ -314,7 +314,7 @@
 			</div>
 	
 			<table class="aggiungi-esame">
-			  <tr><td id="aggiungi" ><a href="<?=site_url()?>/esami/antropometria/<?=$codicefiscale?>">AGGIUNGI UN ESAME</a> </td></tr>
+			  <tr><td id="aggiungi" ><a href="<?=site_url()?>esami/antropometria/<?=$codicefiscale?>">AGGIUNGI UN ESAME</a> </td></tr>
 			</table>
 		</div>
 
@@ -330,7 +330,7 @@
 						<tr>
 							<td><?=strftime( ' %d - %m - %g ',  strtotime($mrc->data));?></td>
 							<td><?= $mrc->mrc?></td>
-							<td><a href='<?=site_url()?>/visualizza/MRC/<?=$mrc->idmrc?>'>Visualizza</a></td>
+							<td><a href='<?=site_url()?>visualizza/MRC/<?=$mrc->idmrc?>'>Visualizza</a></td>
 						</tr>
 					<? endforeach?>
 				</table>
@@ -340,7 +340,7 @@
 			</div>
 	
 			<table class="aggiungi-esame">
-			  <tr><td id="aggiungi" ><a href="<?=site_url()?>/esami/mrc/<?=$codicefiscale?>">AGGIUNGI UN ESAME</a> </td></tr>
+			  <tr><td id="aggiungi" ><a href="<?=site_url()?>esami/mrc/<?=$codicefiscale?>">AGGIUNGI UN ESAME</a> </td></tr>
 			</table>
 		</div>
 
@@ -356,7 +356,7 @@
 						<tr>
 							<td><?=strftime( ' %d - %m - %g ',  strtotime($sf->data));?></td>
 							<td><?= $sf->sf1?></td>
-							<td><a href="<?=site_url()?>/visualizza/sf36/<?= $sf->idsf36?>">Visualizza</a></td>
+							<td><a href="<?=site_url()?>visualizza/sf36/<?= $sf->idsf36?>">Visualizza</a></td>
 						</tr>
 					<? endforeach?>
 				</table>
@@ -366,7 +366,7 @@
 			</div>
 	
 			<table class="aggiungi-esame">
-				<tr><td id="aggiungi" ><a href='<?=site_url()?>/esami/sf36/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+				<tr><td id="aggiungi" ><a href='<?=site_url()?>esami/sf36/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 			</table>
 		</div>
 
@@ -382,7 +382,7 @@
 						<tr>
 				  		<td><?=strftime( ' %d - %m - %g ',  strtotime($sg->data));?></td>
 				      <td><?= $sg->sgrq1?></td>
-				      <td><a href="<?=site_url();?>/visualizza/SGRQ/<?= $sg->idsgrq?>">Visualizza</a></td>
+				      <td><a href="<?=site_url();?>visualizza/SGRQ/<?= $sg->idsgrq?>">Visualizza</a></td>
 						</tr>
 					<? endforeach?>
 				</table>
@@ -392,7 +392,7 @@
 			</div>
 	
 			<table class="aggiungi-esame">
-			  <tr><td id="aggiungi" ><a href='<?=site_url()?>/esami/sgrq/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+			  <tr><td id="aggiungi" ><a href='<?=site_url()?>esami/sgrq/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 			</table>
 		</div>
 
@@ -408,7 +408,7 @@
 							<tr>
 								<td><?=strftime( ' %d - %m - %g ',  strtotime($ciclo->data));?></td>
 								<td><?= $ciclo->fcbase ?></td>
-								<td><a href="<?=site_url();?>/visualizza/cicloerg/<?= $ciclo->idciclo?>">Visualizza</a></td>
+								<td><a href="<?=site_url();?>visualizza/cicloerg/<?= $ciclo->idciclo?>">Visualizza</a></td>
 							</tr>
 						<? endforeach?>
 					</table>
@@ -418,7 +418,7 @@
 			</div>
 	
 			<table class="aggiungi-esame">
-				<tr><td id="aggiungi" ><a href='<?=site_url()?>/esami/cicloerg/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+				<tr><td id="aggiungi" ><a href='<?=site_url()?>esami/cicloerg/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 			</table>
 		</div>
 
@@ -434,7 +434,7 @@
 							<tr>
 								<td><?=strftime( ' %d - %m - %g ',  strtotime($st->data));?></td>
 								<td><?= $st->mwt?></td>
-								<td><a href="<?=site_url();?>/visualizza/SFT/<?= $st->idsft?>">Visualizza</a></td>
+								<td><a href="<?=site_url();?>visualizza/SFT/<?= $st->idsft?>">Visualizza</a></td>
 							</tr>
 						<? endforeach?>
 					</table>
@@ -444,7 +444,7 @@
 			</div>
 
 			<table class="aggiungi-esame">
-			  <tr><td id="aggiungi" ><a href='<?=site_url()?>/esami/sft/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+			  <tr><td id="aggiungi" ><a href='<?=site_url()?>esami/sft/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 			</table>
 		</div>
 
@@ -460,7 +460,7 @@
 							<tr>
 								<td><?=strftime( ' %d - %m - %g ',  strtotime($tin->data));?></td>
 								<td><?= $tin->tinettitotale?></td>
-								<td><a href="<?=site_url();?>/visualizza/tinetti/<?= $tin->idtinetti?>">Visualizza</a></td>
+								<td><a href="<?=site_url();?>visualizza/tinetti/<?= $tin->idtinetti?>">Visualizza</a></td>
 							</tr>
 						<? endforeach?>
 					</table>
@@ -470,7 +470,7 @@
 			</div>
 			
 			<table class="aggiungi-esame">
-			  <tr><td id="aggiungi" ><a href='<?=site_url()?>/esami/tinetti/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+			  <tr><td id="aggiungi" ><a href='<?=site_url()?>esami/tinetti/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 			</table>
 		</div>
 
@@ -487,7 +487,7 @@
 							<tr>
 								<td><?=strftime( ' %d - %m - %g ',  strtotime($mmse->data));?></td>
 								<td><?= $mmse->mmsetot?></td>
-								<td><a href="<?=site_url();?>/visualizza/MMSE/<?= $mmse->idmmse?>">Visualizza</a></td>
+								<td><a href="<?=site_url();?>visualizza/MMSE/<?= $mmse->idmmse?>">Visualizza</a></td>
 							</tr>
 						<? endforeach?>
 					</table>
@@ -497,7 +497,7 @@
 			</div>
 			
 			<table class="aggiungi-esame">
-			  <tr><td id="aggiungi" ><a href='<?=site_url()?>/esami/mmse/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
+			  <tr><td id="aggiungi" ><a href='<?=site_url()?>esami/mmse/<?=$codicefiscale?>'>AGGIUNGI UN ESAME</a> </td></tr>
 			</table>
 
 		</div>

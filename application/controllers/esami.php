@@ -73,7 +73,7 @@ class Esami extends CI_Controller
       } catch (Exception $e) {
         $err_id = substr(sha1($data.$_SERVER['REQUEST_TIME']), 0, 8);
         show_error("Impossibile aggiungere l'esame a causa di un errore. <br>Contattare l'amministratore del sistema e comuncargli questa stringa: <code>{$err_id}</code>");
-        log_message('error', "ID ERRORE:  {$err_id}\n   Eccezione mentre si aggiungeva l'esame: {$input}. Messaggio: ".$e->getMessage())
+        log_message('error', "ID ERRORE:  {$err_id}\n   Eccezione mentre si aggiungeva l'esame: {$input}. Messaggio: ".$e->getMessage());
       }
       
 			
