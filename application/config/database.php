@@ -39,8 +39,8 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = "localhost";
 $db['default']['username'] = "bpco";
-$db['default']['password'] = "lucifero";
-$db['default']['database'] = "bpco_dev";
+$db['default']['password'] = "NEnfGZ3pJcsJSWvm";
+$db['default']['database'] = "bpco_live";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";
 $db['default']['pconnect'] = TRUE;
