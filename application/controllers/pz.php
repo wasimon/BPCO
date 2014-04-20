@@ -41,20 +41,20 @@ class Pz extends CI_Controller
 			if ($insert === FALSE)
 			{
 				$this->view_data['message'] .= "<p class='error'><em>Errore</em>: Impossibile aggiungere il paziente.</p>";
-				$this->load->view('agg_paziente', $this->view_data);
+				$this->load->view_template('agg_paziente', $this->view_data);
 				return;
 			}
 			else
 			{
 				$this->view_data['message'] .= "<p style='color:green'>Paziente Aggiunto.</p>";
-				$this->load->view('esami/iscrizione_2', $this->view_data);
+				$this->load->view_template('esami/iscrizione_2', $this->view_data);
 				return;
 			}
 		}
 		else
 		{
 			$this->view_data['message'] .= "<p>Completa questo form per aggiungere un nuovo paziente.</p>";
-			$this->load->view('agg_paziente', $this->view_data);
+			$this->load->view_template('agg_paziente', $this->view_data);
 		}
 	}
 
@@ -64,7 +64,7 @@ class Pz extends CI_Controller
 		unset($input['submit']);
 
 		$insert = $this->db->insert('t_antropometria', $input);
-		$this->load->view('esami/iscrizione_3');      
+		$this->load->view(array('esami/iscrizione_3'));      
 	}
 
 	function iscrizione_3()
@@ -83,21 +83,21 @@ class Pz extends CI_Controller
 	{
 		$this->view_data['pazienti'] = $this->db->get_where('paziente', array('idmedico'=>$input))->result();
      	  
-		$this->load->view('lista_pz', $this->view_data);     
+		$this->load->view_template('lista_pz', $this->view_data);     
 	}
 
 	function visualizza_uno($input)
 	{
 		$this->view_data['pazienti'] = $this->db->get_where('paziente', array('codfis'=>$input))->result();
     
-		$this->load->view('pz/index_pz', $this->view_data);  
+		$this->load->view_template('pz/index_pz', $this->view_data);  
 	}
 
 	function edit($codfis)
 	{
 		$view_data['pazienti'] = $this->db->get_where('paziente', array('codfis'=>$codfis))->result();
         
-		$this->load->view('pz/mod_pz', $view_data);
+		$this->load->view_template('pz/mod_pz', $view_data);
 	}
 	
 	// Delete
@@ -106,7 +106,7 @@ class Pz extends CI_Controller
 	   
 		$view_data['pazienti'] = $this->db->get_where('paziente', array('codfis'=>$input))->row();
         
-		$this->load->view('pz/delete', $view_data);   
+		$this->load->view_template('pz/delete', $view_data);   
  	}
 
 	function delete($input)
@@ -116,7 +116,7 @@ class Pz extends CI_Controller
 		$insert = $this->db->insert('eliminati', $sposta);
 		$erase = $this->db->delete('paziente', array('codfis'=>$input));
 		$view_data['eliminato'] = true;
-		$this->load->view('pz/delete', $view_data);
+		$this->load->view_template('pz/delete', $view_data);
 	}
 
 

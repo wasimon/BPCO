@@ -21,18 +21,13 @@ class Site extends CI_Controller {
 	{
 		$this->members_area();
 	}
-	
-	public function login()
-	{
-		$this->load->view('login_form');
-	}
    
 	function members_area()
 	{
 		$input= $this->session->userdata('idmedico');
 		$this->view_data['pazienti'] = $this->db->get_where('paziente', array('idmedico'=>$input))->result();
 	
-		$this->load->view('logged_in_area',$this->view_data);	
+		$this->load->view_template('logged_in_area', $this->view_data);
 	}
     
     

@@ -1,0 +1,214 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+body {
+  padding-top: 60px;
+  /* Required for Navbar */
+}
+.navbar-brand {
+  padding: 5px;
+}
+.navbar-brand img {
+  height: 100%;
+  width: auto;
+  vertical-align: top;
+}
+.container h1#page-title {
+  text-align: center;
+}
+.container section {
+  zoom: 1;
+  margin: 25px 0px;
+}
+.container section:before,
+.container section:after {
+  content: "";
+  display: table;
+}
+.container section:after {
+  clear: both;
+}
+.dataTables_length {
+  width: 40%;
+  float: left;
+}
+.dataTables_filter {
+  width: 50%;
+  float: right;
+  text-align: right;
+}
+.dataTables_info {
+  width: 60%;
+  float: left;
+}
+.dataTables_paginate {
+  width: 44px;
+  float: right;
+  text-align: right;
+}
+/* Pagination nested */
+.paginate_disabled_previous,
+.paginate_enabled_previous,
+.paginate_disabled_next,
+.paginate_enabled_next {
+  height: 19px;
+  width: 19px;
+  margin-left: 3px;
+  float: left;
+}
+.paginate_disabled_previous {
+  background-image: url('images/back_disabled.jpg');
+}
+.paginate_enabled_previous {
+  background-image: url('images/back_enabled.jpg');
+}
+.paginate_disabled_next {
+  background-image: url('images/forward_disabled.jpg');
+}
+.paginate_enabled_next {
+  background-image: url('images/forward_enabled.jpg');
+}
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables sorting
+ */
+.sorting_asc {
+  background: url('images/sort_asc.png') no-repeat center right;
+}
+.sorting_desc {
+  background: url('images/sort_desc.png') no-repeat center right;
+}
+.sorting {
+  background: url('images/sort_both.png') no-repeat center right;
+}
+.sorting_asc_disabled {
+  background: url('images/sort_asc_disabled.png') no-repeat center right;
+}
+.sorting_desc_disabled {
+  background: url('images/sort_desc_disabled.png') no-repeat center right;
+}
+tr.odd {
+  background-color: #E2E4FF;
+}
+tr.even {
+  background-color: white;
+}
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Misc
+ */
+.dataTables_scroll {
+  clear: both;
+}
+.dataTables_scrollBody {
+  *margin-top: -1px;
+}
+.top,
+.bottom {
+  padding: 15px;
+  background-color: #F5F5F5;
+  border: 1px solid #CCCCCC;
+}
+.top .dataTables_info {
+  float: none;
+}
+.clear {
+  clear: both;
+}
+.dataTables_empty {
+  text-align: center;
+}
+tfoot input {
+  margin: 0.5em 0;
+  width: 100%;
+  color: #444;
+}
+tfoot input.search_init {
+  color: #999;
+}
+td.group {
+  background-color: #d1cfd0;
+  border-bottom: 2px solid #A19B9E;
+  border-top: 2px solid #A19B9E;
+}
+td.details {
+  background-color: #d1cfd0;
+  border: 2px solid #A19B9E;
+}
+.paging_full_numbers {
+  width: 400px;
+  height: 22px;
+  line-height: 22px;
+}
+.paging_full_numbers span.paginate_button,
+.paging_full_numbers span.paginate_active {
+  border: 1px solid #aaa;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  padding: 2px 5px;
+  margin: 0 3px;
+  cursor: pointer;
+  *cursor: hand;
+}
+.paging_full_numbers span.paginate_button {
+  background-color: #ddd;
+}
+.paging_full_numbers span.paginate_button:hover {
+  background-color: #ccc;
+}
+.paging_full_numbers span.paginate_active {
+  background-color: #99B3FF;
+}
+#login-form,
+#signup-form {
+  width: 50%;
+  min-width: 400px;
+  margin: 200px auto 100px auto;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #000;
+  color: white;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMjUiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjc1Ii8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+  background: -moz-linear-gradient(-45deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.75) 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(0, 0, 0, 0.25)), color-stop(100%, rgba(0, 0, 0, 0.75)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-45deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.75) 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-45deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.75) 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.75) 100%);
+  /* IE10+ */
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.75) 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#40000000', endColorstr='#bf000000', GradientType=1);
+  /* IE6-8 fallback on horizontal gradient */
+}
+#login-form h2,
+#signup-form h2 {
+  margin-top: 0px;
+}
+#login-form fieldset,
+#signup-form fieldset {
+  margin-bottom: 10px;
+}
+#login-form .checkbox,
+#signup-form .checkbox {
+  margin-bottom: 10px;
+  text-align: left;
+}
+form .form-control-group .form-control {
+  margin: -1px 0px;
+  border-radius: 0;
+}
+form .form-control-group .form-control.first {
+  margin-bottom: -1px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+form .form-control-group .form-control.last {
+  margin-bottom: 10px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}

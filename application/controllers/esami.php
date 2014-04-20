@@ -92,7 +92,7 @@ class Esami extends CI_Controller
 		else
 		{
 			$pagina = 'esami/'.$input;
-			$this->load->view($pagina);
+			$this->load->view_template($pagina);
 		}
         
 	}

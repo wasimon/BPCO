@@ -6,7 +6,7 @@ class Esercizi extends CI_Controller
         
 		$this->view_data['esercizi'] = $this->db->get('esercizi')->result();
      	  
-		$this->load->view('lista_esercizi', $this->view_data);             
+		$this->load->view_template('lista_esercizi', $this->view_data);             
         
 	}
     

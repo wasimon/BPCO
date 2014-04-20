@@ -36,6 +36,17 @@ define('FOPEN_READ_WRITE_CREATE', 				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT', 			'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
+/*
+|--------------------------------------------------------------------------
+| Custom-Defined Constants
+|--------------------------------------------------------------------------
+|
+| These constants are used by the application
+|
+*/
+
+define('DEBUG', FALSE);
+
 
 define('MEMBERSHIP_ENABLED', 'OK');
 define('MEMBERSHIP_DISABLED', 'DIS');
@@ -49,6 +60,7 @@ define('TIPO_PROG_ADDOMINALI', '3ADDO');
 
 // PDF
 define('BPCO_PDF_CREATOR', 'Respiro In Moto');
+
 
 
 /* End of file constants.php */
